@@ -1,9 +1,8 @@
 <%@page import="com.controller.student.classes.StudentOperations" %>
 <%@page import="java.sql.*" %>
 <%if(session.getAttribute("userdetail")!=null){
-	ResultSet userdetail=(ResultSet)session.getAttribute("userdetail");
 %>
-<%StudentOperations s=new StudentOperations(userdetail.getString("companydb"));
+<%StudentOperations s=new StudentOperations();
 ResultSet language=s.getlanguage();ResultSet section=s.getsection();
 ResultSet housegroup=s.gethousegroup();ResultSet caste=s.getcaste(); 
 ResultSet specialinterest=s.getspecialinterest();
@@ -124,7 +123,6 @@ ResultSet examtype=s.selectexamtype();%>
 						<div id="a" class="tab-pane fade in ">
 							<form action="initialdetailadd" method="post" style="width:20%;margin-top:10px;" class="form" >
 								<h6><strong>Language Name:</strong></h6>
-								<input type="hidden" name="companydb" value="<%=userdetail.getString("companydb")%>">
 								<input type="text" class="form-control" name="languagename" placeholder="Language name..." required>
 								<br><button type="submit" class="btn btn-success">+ ADD</button>
 							</form>
@@ -132,7 +130,6 @@ ResultSet examtype=s.selectexamtype();%>
 						<div id="b" class="tab-pane fade in ">
 							<form action="initialdetailadd" method="post" style="width:20%;margin-top:10px;" class="form">
 								<h6><strong>Section Name:</strong></h6>
-								<input type="hidden" name="companydb" value="<%=userdetail.getString("companydb")%>">
 								<input type="text" class="form-control" name="sectionname" placeholder="Section name..." required>
 								<br><button type="submit" class="btn btn-success">+ ADD</button>
 							</form>
@@ -140,7 +137,6 @@ ResultSet examtype=s.selectexamtype();%>
 						<div id="c" class="tab-pane fade in ">
 							<form action="initialdetailadd" method="post" style="width:20%;margin-top:10px;" class="form">
 								<h6><strong>House Group Name:</strong></h6>
-								<input type="hidden" name="companydb" value="<%=userdetail.getString("companydb")%>">
 								<input type="text" class="form-control" name="housegroupname" placeholder="House Group name..." required>
 								<br><button type="submit" class="btn btn-success">+ ADD</button>
 							</form>
@@ -148,7 +144,6 @@ ResultSet examtype=s.selectexamtype();%>
 						<div id="d" class="tab-pane fade in ">
 							<form action="initialdetailadd" method="post" style="width:20%;margin-top:10px;" class="form">
 								<h6><strong>Ethnic Group Name:</strong></h6>
-								<input type="hidden" name="companydb" value="<%=userdetail.getString("companydb")%>">
 								<input type="text" class="form-control" name="castename" placeholder="Ethnic group name..." required>
 								<br><button type="submit" class="btn btn-success">+ ADD</button>
 							</form>
@@ -156,7 +151,6 @@ ResultSet examtype=s.selectexamtype();%>
 						<div id="e" class="tab-pane fade in ">
 							<form action="initialdetailadd" method="post" style="width:20%;margin-top:10px;" class="form">
 								<h6><strong>Special Interest Name:</strong></h6>
-								<input type="hidden" name="companydb" value="<%=userdetail.getString("companydb")%>">
 								<input type="text" class="form-control" name="specialinterestname" placeholder="Special interest name..." required>
 								<br><button type="submit" class="btn btn-success">+ ADD</button>
 							</form>
@@ -164,7 +158,6 @@ ResultSet examtype=s.selectexamtype();%>
 						<div id="f" class="tab-pane fade in ">
 							<form action="initialdetailadd" method="post" style="width:20%;margin-top:10px;" class="form">
 								<h6><strong>Academic Class Name:</strong></h6>
-								<input type="hidden" name="companydb" value="<%=userdetail.getString("companydb")%>">
 								<input type="text" class="form-control" name="classname" placeholder="Academic class name..." required>
 								<br><button type="submit" class="btn btn-success">+ ADD</button>
 							</form>
@@ -172,7 +165,6 @@ ResultSet examtype=s.selectexamtype();%>
 						<div id="g" class="tab-pane fade in ">
 							<form action="examtype.add" method="post" style="width:20%;margin-top:10px;" class="form" id="examtypeform">
 								<h6><strong>Exam Type Name:</strong></h6>
-								<input type="hidden" name="companydb" value="<%=userdetail.getString("companydb")%>">
 								<input type="text" class="form-control" name="examtypename" placeholder="Exam type name..." required><br>
 								<h6><strong>Exam Type Description:</strong></h6>
 								<textarea class="form-control" name="description" form="examtypeform" value="" rows="5"></textarea>

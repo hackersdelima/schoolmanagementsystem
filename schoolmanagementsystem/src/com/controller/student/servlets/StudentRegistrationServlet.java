@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import com.controller.student.classes.StudentOperations;
 import com.controller.student.classes.StudentRegistrationModel;
+import com.school.model.UserModel;
 @WebServlet("/StudentRegistrationServlet")
 public class StudentRegistrationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -75,18 +76,13 @@ public class StudentRegistrationServlet extends HttpServlet {
 		s.setRelationtype2(request.getParameter("relationtype2"));
 		s.setAdmissiondate(request.getParameter("admissiondate"));
 		s.setAdmissiondateen(request.getParameter("admissiondateen"));
-		String database=request.getParameter("database");
 		HttpSession session=request.getSession(true);
-		ResultSet rs=(ResultSet) session.getAttribute("userdetail");
+		UserModel rs=(UserModel) session.getAttribute("userdetail");
 		System.out.println(s.getFmobile());
 		
 		String inputter="";
-		try {
-			inputter = rs.getString(3);
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		}
+			inputter = rs.getUsername();
+	
 		
 		StudentOperations o=new StudentOperations();
 		try{
