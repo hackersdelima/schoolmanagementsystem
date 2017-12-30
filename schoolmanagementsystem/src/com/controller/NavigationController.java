@@ -1,6 +1,8 @@
 package com.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -9,6 +11,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.school.academic.model.ClassModel;
+import com.school.dao.AcademicsSettingsAddDao;
+import com.school.daoImpl.AcademicsSettingsAddDaoImpl;
 
 /**
  * Servlet implementation class NavigationController
@@ -55,6 +61,17 @@ public class NavigationController extends HttpServlet {
 		}
 		else if(uri.endsWith("dashboard.click")){
 			RequestDispatcher rd=request.getRequestDispatcher("view/dashboard.jsp");
+			rd.forward(request, response);
+		}
+		else if(uri.endsWith("assigncourse.click")){
+			
+			AcademicsSettingsAddDao dao=new AcademicsSettingsAddDaoImpl();
+			List<ClassModel> list=new ArrayList<ClassModel>();
+			 list=dao.get(request,response);
+			
+				
+			
+			RequestDispatcher rd=request.getRequestDispatcher("view/academics/assigncourse.jsp");
 			rd.forward(request, response);
 		}
 	}

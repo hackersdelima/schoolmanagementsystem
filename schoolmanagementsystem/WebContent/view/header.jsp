@@ -188,6 +188,7 @@
 	          			 	<li><a href="subjects.click" target="iframe_a"><i class="fa fa-circle-o"></i>Subjects</a></li>
 	               	 		<li><a href="subjectassign.click" target="iframe_a"><i class="fa fa-circle-o"></i> Assign Subjects</a></li>
 	               	 		<li><a href="createexam.click" target="iframe_a"><i class="fa fa-circle-o"></i>Create Exam</a></li>
+	               	 		<li><a href="assigncourse.click" target="iframe_a"><i class="fa fa-circle-o"></i>Assign Course</a></li>
 	          		 </ul>
 	          	</li>
 	            <li><a href="initialdetails.click" target="iframe_a"><i class="fa fa-circle-o"></i> Add/Edit Initial Details</a></li>
