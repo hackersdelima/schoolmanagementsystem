@@ -26,7 +26,7 @@ public class AcademicsSettingsAddDaoImpl implements AcademicsSettingsAddDao {
 	public boolean assignsubject(Model m) throws SQLException{
 		int a;
 		boolean status=false;
-		con=DbConnection.dbconnection(m.getCompanydb());
+		con=DbConnection.getConnection();
 		String query="insert into course (subjectid,studentid) values('"+m.getSubjectid()+"','"+m.getStudentid()+"')";
 		try{
 			ps=con.prepareStatement(query);

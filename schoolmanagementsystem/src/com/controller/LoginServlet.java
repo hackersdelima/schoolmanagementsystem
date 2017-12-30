@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.school.model.UserModel;
+
 import java.sql.*;
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
@@ -18,27 +20,27 @@ public class LoginServlet extends HttpServlet {
 		PrintWriter out=response.getWriter();
 		String username=request.getParameter("username");
 		String password=request.getParameter("password");
-		String schooldb="";
 		MainClass m=new MainClass();
-		if(m.checkmaindb(username, password)==true){
+		if(m.checkuser(username, password)==true){
 			HttpSession session=request.getSession(true);
-			ResultSet userdetail=m.userdetails(username, password);
+			UserModel userdetail=(UserModel)m.userdetails(username, password);
+			if(userdetail.getStatus().equals("1")){
 			session.setAttribute("userdetail", userdetail);
-				try {
-					if(userdetail.next()==true){
-						schooldb=userdetail.getString("companydb");
-					}
-				} catch (SQLException e) {
-					System.out.println("getting schooldb error"+e);
-				}
-			m.connectschooldb(schooldb);
+			
 			RequestDispatcher rs=request.getRequestDispatcher("view/header.jsp");
 			rs.forward(request,response);
+			}
+			else{
+				String errormsg="Invalid login credentials!";
+				request.setAttribute("errormsg", errormsg);
+				RequestDispatcher rs=request.getRequestDispatcher("index.jsp");
+				rs.forward(request,response);
+			}
 		}
 		else{
 			String errormsg="Invalid login credentials!";
 			request.setAttribute("errormsg", errormsg);
-			RequestDispatcher rs=request.getRequestDispatcher("view/index.jsp");
+			RequestDispatcher rs=request.getRequestDispatcher("index.jsp");
 			rs.forward(request,response);
 		}
 	}
