@@ -67,7 +67,7 @@ public class NavigationController extends HttpServlet {
 			
 			AcademicsSettingsAddDao dao=new AcademicsSettingsAddDaoImpl();
 			List<ClassModel> list=new ArrayList<ClassModel>();
-			 list=dao.get(request,response);
+			 list=dao.getclasslist(request,response);
 			
 				
 			
