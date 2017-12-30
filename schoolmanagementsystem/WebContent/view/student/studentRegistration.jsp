@@ -1,9 +1,8 @@
 <%@page import="com.controller.student.classes.StudentOperations" %>
 <%@page import="java.util.*" %>
 <%@page import="java.sql.*" %>
-<%if((session.getAttribute("userdetail"))!=null){
-	ResultSet userdetail=(ResultSet)session.getAttribute("userdetail");%>
-<%StudentOperations s=new StudentOperations(userdetail.getString("companydb"));
+<%if((session.getAttribute("userdetail"))!=null){%>
+<%StudentOperations s=new StudentOperations();
 ResultSet districts=s.districts();ResultSet disablelist=s.disabletypelist();
 ResultSet language=s.getlanguage(); ResultSet caste=s.getcaste();
 ResultSet section=s.getsection();ResultSet housegroup=s.gethousegroup();
@@ -25,7 +24,6 @@ ResultSet classlist=s.selectclass();%>
 	<div class="panel panel-default" style="width:90%; margin:auto;" >
   		<div class="panel-heading"><h4><strong>Student Admission</strong></h4>
   		<form method="post" action="studentregistration" id="form"></form>
-		<input type="hidden" value="<%=userdetail.getString("companydb") %>" name="database" form="form">
 		<button type="submit" class="btn btn-success "  form="form"><i class="fa fa-check"></i> SUBMIT</button>
   		</div>
   		<div class="panel-body">

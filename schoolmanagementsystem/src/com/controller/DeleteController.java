@@ -31,7 +31,7 @@ public class DeleteController extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		StudentOperations s=new StudentOperations(companydb);
+		StudentOperations s=new StudentOperations();
 		
 		if(uri.endsWith("subject.del"))
 		{

@@ -1,33 +1,19 @@
 package com.controller.student.classes;
 import java.sql.*;
+
+import com.school.dbconnection.DbConnection;
 //import com.controller.dbconnect.Dbconnect;
 public class StudentOperations {
 	Connection conn=null;
 	Statement stmt=null;
 	ResultSet r=null;
 	PreparedStatement ps=null;
-	public StudentOperations(String database){
-		
-		try{
-			Class.forName("com.mysql.jdbc.Driver");	
-		}
-		catch(Exception e){
-			System.out.println(e);
-		}
-		try{
-			conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/"+database+"","root","");
-			stmt=conn.createStatement();
-			System.out.println(database+" connected");
-		}
-		catch (Exception e){
-			System.out.println(e);
-		}
-		
-	}
+	
 	public String totalstudents() throws SQLException{
 		String query="select count(*) as totalstudents from studentinfo";
 		String total="";
 		try{
+			conn=DbConnection.getConnection();
 			ps=conn.prepareStatement(query);
 			r=ps.executeQuery();
 			while(r.next()){
@@ -48,6 +34,7 @@ public class StudentOperations {
 		boolean status=false;
 		String query="insert into studentinfo(LegacyId,studentname,sex,smotherlanguage,sethinicgroup,sreligion,dob,doben,differentlyabledYN,differentlyabledtype,admissionclass,section,rollno,housegroup,oldschool,reasonleav,hobby,specialinterest,inputter,entrydate,admissiondate,admissiondateen)values('"+s.getLegacyId()+"','"+s.getStudentname()+"','"+s.getSex()+"','"+s.getSmotherlanguage()+"','"+s.getSethinicgroup()+"','"+s.getSReligion()+"','"+s.getDob()+"','"+s.getDoben()+"','"+s.getDifferentlyabledYN()+"','"+s.getDifferentlyabledtype()+"','"+s.getAdmissionclass()+"','"+s.getSection()+"','"+s.getRollno()+"','"+s.getHousegroup()+"','"+s.getOldschool()+"','"+s.getReasonleav()+"','"+s.getHobby()+"','"+s.getSpecialinterest()+"','"+inputter+"',CURDATE(),'"+s.getAdmissiondate()+"','"+s.getAdmissiondateen()+"')";
 		try{
+			conn=DbConnection.getConnection();
 			Statement stmt=conn.createStatement();
 			stmt.executeUpdate(query);
 			status=true;
@@ -63,6 +50,7 @@ public class StudentOperations {
 		String maxid="";
 		String query="select max(studentid) from studentinfo";
 		try{
+			conn=DbConnection.getConnection();
 			Statement stmt=conn.createStatement();
 			rs=stmt.executeQuery(query);
 			while(rs.next()){
@@ -77,6 +65,7 @@ public class StudentOperations {
 	public void insertfatherdetail(StudentRegistrationModel s,String studentid){
 		String query="insert into sfatherdetailtbl(studentid,fathername,faddress,foffice,fposition,fincome,fmobile,ftelephone,femail,fephone,fcitizenshipno,fcitizenshipissuedby,fcitizenshipissueddate,fcitizenshipissueddateen,flicenseno,flicenseissuedby,flicenseissueddate,flicenseissueddateen,fofficialidno,fofficialidissuedby,fofficialidissueddate,fofficialidissueddateen,fvoteridno,fvoteridissuedby,fvoteridissueddate,fvoteridissueddateen,fpassportno,fpassportissuedby,fpassportissueddate,fpassportissueddateen)values('"+studentid+"','"+s.getFathername()+"','"+s.getFaddress()+"','"+s.getFoffice()+"','"+s.getFposition()+"','"+s.getFincome()+"','"+s.getFmobile()+"','"+s.getFtelephone()+"','"+s.getFemail()+"','"+s.getFephone()+"','"+s.getFcitizenshipno()+"','"+s.getFcitizenshipissuedby()+"','"+s.getFcitizenshipissueddate()+"','"+s.getFcitizenshipissueddateen()+"','"+s.getFlicenseno()+"','"+s.getFlicenseissuedby()+"','"+s.getFlicenseissueddate()+"','"+s.getFlicenseissueddateen()+"','"+s.getFofficialidno()+"','"+s.getFofficialidissuedby()+"','"+s.getFofficialidissueddate()+"','"+s.getFofficialidissueddateen()+"','"+s.getFvoteridno()+"','"+s.getFvoteridissuedby()+"','"+s.getFvoteridissueddate()+"','"+s.getFvoteridissueddateen()+"','"+s.getFpassportno()+"','"+s.getFpassportissuedby()+"','"+s.getFpassportissueddate()+"','"+s.getFpassportissueddateen()+"')";
 		try{
+			conn=DbConnection.getConnection();
 			Statement stmt=conn.createStatement();
 			stmt.executeUpdate(query);		
 			System.out.println("father detail inserted");
@@ -88,6 +77,7 @@ public class StudentOperations {
 	public void insertmotherdetail(StudentRegistrationModel s,String studentid){
 		String query="insert into smotherdetailtbl(studentid,mothername,maddress,moffice,mposition,mincome,mmobile,mtelephone,memail,mephone,mcitizenshipno,mcitizenshipissuedby,mcitizenshipissueddate,mcitizenshipissueddateen,mlicenseno,mlicenseissuedby,mlicenseissueddate,mlicenseissueddateen,mofficialidno,mofficialidissuedby,mofficialidissueddate,mofficialidissueddateen,mvoteridno,mvoteridissuedby,mvoteridissueddate,mvoteridissueddateen,mpassportno,mpassportissuedby,mpassportissueddate,mpassportissueddateen)values('"+studentid+"','"+s.getMothername()+"','"+s.getMaddress()+"','"+s.getMoffice()+"','"+s.getMposition()+"','"+s.getMincome()+"','"+s.getMmobile()+"','"+s.getMtelephone()+"','"+s.getMemail()+"','"+s.getMephone()+"','"+s.getMcitizenshipno()+"','"+s.getMcitizenshipissuedby()+"','"+s.getMcitizenshipissueddate()+"','"+s.getMcitizenshipissueddateen()+"','"+s.getMlicenseno()+"','"+s.getMlicenseissuedby()+"','"+s.getMlicenseissueddate()+"','"+s.getMlicenseissueddateen()+"','"+s.getMofficialidno()+"','"+s.getMofficialidissuedby()+"','"+s.getMofficialidissueddate()+"','"+s.getMofficialidissueddateen()+"','"+s.getMvoteridno()+"','"+s.getMvoteridissuedby()+"','"+s.getMvoteridissueddate()+"','"+s.getMvoteridissueddateen()+"','"+s.getMpassportno()+"','"+s.getMpassportissuedby()+"','"+s.getMpassportissueddate()+"','"+s.getMpassportissueddateen()+"')";
 		try{
+			conn=DbConnection.getConnection();
 			Statement stmt=conn.createStatement();
 			stmt.executeUpdate(query);	
 			System.out.println("mother detail inserted");
@@ -99,6 +89,7 @@ public class StudentOperations {
 	public void insertbirthcertifiatedetail(StudentRegistrationModel s,String studentid){
 		String query="insert into sbirthcertificatetbl(studentid,sbirthcertificateno,sbirthcertificateissuedby,sbirthcertificateissueddate,sbirthcertificateissueddateen)values('"+studentid+"','"+s.birthcertificateno+"','"+s.birthcertificateissuedby+"','"+s.birthcertificateissueddate+"','"+s.birthcertificateissueddateen+"') ";
 		try{
+			conn=DbConnection.getConnection();
 			Statement stmt=conn.createStatement();
 			stmt.executeUpdate(query);	
 			System.out.println("birthcertificate detail inserted");
@@ -110,6 +101,7 @@ public class StudentOperations {
 	public void insertaddressdetail(StudentRegistrationModel s,String studentid){
 		String query="insert into saddresstbl(studentid,District,VdcMun, Wardno,tole,tempaddress)values('"+studentid+"','"+s.getDistrict()+"','"+s.getVdcMun()+"','"+s.getWardNo()+"','"+s.getTole()+"','"+s.getTempaddress()+"')";
 		try{
+			conn=DbConnection.getConnection();
 			Statement stmt=conn.createStatement();
 			stmt.executeUpdate(query);	
 			System.out.println("address detail inserted");
@@ -121,6 +113,7 @@ public class StudentOperations {
 	public void insertlocalguardiandetail1(StudentRegistrationModel s,String studentid){
 		String query="insert into slocalguardiantbl(studentid,localguardianname,localadd,relationtype,localmob)values('"+studentid+"','"+s.getLocal1()+"','"+s.getLocaladd1()+"','"+s.getRelaiontype1()+"','"+s.getLocalmob1()+"')";
 		try{
+			conn=DbConnection.getConnection();
 			Statement stmt=conn.createStatement();
 			stmt.executeUpdate(query);	
 			System.out.println("localguardian detail inserted");
@@ -132,6 +125,7 @@ public class StudentOperations {
 	public void insertlocalguardiandetail2(StudentRegistrationModel s,String studentid){
 		String query="insert into slocalguardiantbl(studentid,localguardianname,localadd,relationtype,localmob)values('"+studentid+"','"+s.getLocal2()+"','"+s.getLocaladd2()+"','"+s.getRelationtype2()+"','"+s.getLocalmob2()+"')";
 		try{
+			conn=DbConnection.getConnection();
 			Statement stmt=conn.createStatement();
 			stmt.executeUpdate(query);	
 			System.out.println("localguardian detail inserted");
@@ -145,6 +139,7 @@ public class StudentOperations {
 		ResultSet rs=null;
 		String query="select * from schoolmanagementsystemdb.districtcodes";
 		try{
+			conn=DbConnection.getConnection();
 			Statement stmt=conn.createStatement();
 			 rs=stmt.executeQuery(query);
 		}
@@ -158,6 +153,7 @@ public class StudentOperations {
 		ResultSet rs=null;
 		String query="select * from schoolmanagementsystemdb.disabledtype";
 		try{
+			conn=DbConnection.getConnection();
 			Statement stmt=conn.createStatement();
 			 rs=stmt.executeQuery(query);
 		}
@@ -171,6 +167,7 @@ public class StudentOperations {
 		ResultSet rs=null;
 		String query="select * from studentinfo;";
 		try{
+			conn=DbConnection.getConnection();
 			if(conn!=null){
 				stmt=conn.createStatement();
 				rs=stmt.executeQuery(query);
@@ -193,6 +190,7 @@ public class StudentOperations {
 		String query="select *,sfatherdetailtbl.*,smotherdetailtbl.*,sbirthcertificatetbl.*,saddresstbl.* from studentinfo join sfatherdetailtbl on studentinfo.studentid=sfatherdetailtbl.studentid JOIN smotherdetailtbl on studentinfo.studentid=smotherdetailtbl.studentid JOIN  sbirthcertificatetbl on studentinfo.studentid=sbirthcertificatetbl.studentid JOIN saddresstbl on studentinfo.studentid=saddresstbl.studentid where studentinfo.studentid='"+studentid+"'";
 		ResultSet rs=null;
 		try{
+			conn=DbConnection.getConnection();
 			Statement stmt=conn.createStatement();
 			rs=stmt.executeQuery(query);
 		}
@@ -205,6 +203,7 @@ public class StudentOperations {
 		String query="select * from languagetbl";
 		ResultSet rs=null;
 		try{
+			conn=DbConnection.getConnection();
 			Statement stmt=conn.createStatement();
 			rs=stmt.executeQuery(query);
 		}
@@ -217,6 +216,7 @@ public class StudentOperations {
 		String query="select * from castetbl";
 		ResultSet rs=null;
 		try{
+			conn=DbConnection.getConnection();
 			Statement stmt=conn.createStatement();
 			rs=stmt.executeQuery(query);
 		}
@@ -229,6 +229,7 @@ public class StudentOperations {
 		String query="select * from sectiontbl";
 		ResultSet rs=null;
 		try{
+			conn=DbConnection.getConnection();
 			Statement stmt=conn.createStatement();
 			rs=stmt.executeQuery(query);
 		}
@@ -241,6 +242,7 @@ public class StudentOperations {
 		String query="select * from housegrouptbl";
 		ResultSet rs=null;
 		try{
+			conn=DbConnection.getConnection();
 			Statement stmt=conn.createStatement();
 			rs=stmt.executeQuery(query);
 		}
@@ -253,6 +255,7 @@ public class StudentOperations {
 		String query="select * from specialinteresttbl";
 		ResultSet rs=null;
 		try{
+			conn=DbConnection.getConnection();
 			Statement stmt=conn.createStatement();
 			rs=stmt.executeQuery(query);
 		}
@@ -265,6 +268,7 @@ public class StudentOperations {
 	public void addlanguage(String languagename){
 		String query="insert into languagetbl(languagename) values ('"+languagename+"')";
 		try{
+			conn=DbConnection.getConnection();
 			Statement stmt=conn.createStatement();
 			stmt.executeUpdate(query);
 		}
@@ -275,6 +279,7 @@ public class StudentOperations {
 	public void addcaste(String castename){
 		String query="insert into castetbl(castename) values ('"+castename+"')";
 		try{
+			conn=DbConnection.getConnection();
 			Statement stmt=conn.createStatement();
 			stmt.executeUpdate(query);
 		}
@@ -285,6 +290,7 @@ public class StudentOperations {
 	public void addsection(String sectionname){
 		String query="insert into sectiontbl(sectionname) values ('"+sectionname+"')";
 		try{
+			conn=DbConnection.getConnection();
 			Statement stmt=conn.createStatement();
 			stmt.executeUpdate(query);
 		}
@@ -295,6 +301,7 @@ public class StudentOperations {
 	public void addhousegroup(String housegroupname){
 		String query="insert into housegrouptbl(housegroupname) values ('"+housegroupname+"')";
 		try{
+			conn=DbConnection.getConnection();
 			Statement stmt=conn.createStatement();
 			stmt.executeUpdate(query);
 		}
@@ -305,6 +312,7 @@ public class StudentOperations {
 	public void addspecialinterest(String specialinterestname){
 		String query="insert into specialinteresttbl(specialinterestname) values ('"+specialinterestname+"')";
 		try{
+			conn=DbConnection.getConnection();
 			Statement stmt=conn.createStatement();
 			stmt.executeUpdate(query);
 		}
@@ -315,6 +323,7 @@ public class StudentOperations {
 	public void addexamtype(String examtypename, String description) throws SQLException{
 		String query="insert into exam_type(examtypename, description) values ('"+examtypename+"','"+description+"')";
 		try{
+			conn=DbConnection.getConnection();
 			Statement stmt=conn.createStatement();
 			stmt.executeUpdate(query);
 		}
@@ -335,6 +344,7 @@ public class StudentOperations {
 		int a;
 		String query="insert into subjectlist(subjectname,subjecttype) values ('"+subjectname+"','"+subjecttype+"')";
 		try{
+			conn=DbConnection.getConnection();
 			Statement stmt=conn.createStatement();
 			a=stmt.executeUpdate(query);
 			if(a>0){
@@ -350,6 +360,7 @@ public class StudentOperations {
 		String query="select * from subjectlist";
 		ResultSet rs=null;
 		try{
+			conn=DbConnection.getConnection();
 			Statement stmt=conn.createStatement();
 			rs=stmt.executeQuery(query);
 		}
@@ -362,6 +373,7 @@ public class StudentOperations {
 		ResultSet rs=null;
 		String query="select * from classlist";
 		try{
+			conn=DbConnection.getConnection();
 			stmt=conn.createStatement();
 			rs=stmt.executeQuery(query);
 		}
@@ -374,6 +386,7 @@ public class StudentOperations {
 		ResultSet rs=null;
 		String query="select * from exam_type";
 		try{
+			conn=DbConnection.getConnection();
 			stmt=conn.createStatement();
 			rs=stmt.executeQuery(query);
 		}
@@ -386,6 +399,7 @@ public class StudentOperations {
 		ResultSet rs=null;
 		String query="select *,exam_type.examtypename from exam join exam_type on exam.examtypeid=exam_type.examtypeid";
 		try{
+			conn=DbConnection.getConnection();
 			stmt=conn.createStatement();
 			rs=stmt.executeQuery(query);
 		}
@@ -398,6 +412,7 @@ public class StudentOperations {
 	public void addclass(String classname) {
 		String query="insert into classlist (classname) values ('"+classname+"')";
 		try{
+			conn=DbConnection.getConnection();
 			stmt=conn.createStatement();
 			stmt.executeUpdate(query);
 		}
@@ -410,6 +425,7 @@ public class StudentOperations {
 		int a;
 		String query="delete from subjectlist where subjectid='"+subjectid+"'";
 		try{
+			conn=DbConnection.getConnection();
 			stmt=conn.createStatement();
 			a=stmt.executeUpdate(query);
 			if(a>0){
@@ -446,6 +462,7 @@ public class StudentOperations {
 		int a;
 		String query="delete from exam where examid='"+id+"'";
 		try{
+			conn=DbConnection.getConnection();
 			stmt=conn.createStatement();
 			a=stmt.executeUpdate(query);
 			if(a>0){
@@ -470,6 +487,7 @@ public class StudentOperations {
 		boolean status=false;
 		String query="insert into exam (examtypeid,examname,startdate) values('"+m.getExamtype()+"','"+m.getExamname()+"','"+m.getStartdate()+"')";
 		try{
+			conn=DbConnection.getConnection();
 			stmt=conn.createStatement();
 			a=stmt.executeUpdate(query);
 			if(a>0){

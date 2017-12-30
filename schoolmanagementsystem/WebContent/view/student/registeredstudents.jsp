@@ -2,7 +2,7 @@
 <%@page import="java.util.*" %>
 <%@page import="java.sql.*" %>
 <% if((session.getAttribute("userdetail"))!=null){
-	ResultSet userdetail=(ResultSet)session.getAttribute("userdetail");%>
+	%>
 <link rel="import" href="include.jsp">
 <div class="background">
 <div class="breadcrumb-line">
@@ -55,7 +55,7 @@
 										</thead>
 										<tbody id="example">
 			<%
-			StudentOperations s=new StudentOperations(userdetail.getString("companydb"));
+			StudentOperations s=new StudentOperations();
 			ResultSet rs=s.studentDetails();
 			int sn=1;
 			

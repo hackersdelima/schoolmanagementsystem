@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@page import='java.sql.*' %>
+    <%@page import='com.school.model.UserModel' %>
 <%if((session.getAttribute("userdetail"))!=null){
-	ResultSet userdetail=(ResultSet)session.getAttribute("userdetail");
+	UserModel userdetail=(UserModel)session.getAttribute("userdetail");
 	%>
 <!DOCTYPE html>
 <html lang="en-US" ng-app="myApp">
@@ -17,7 +18,7 @@
 	      <!-- mini logo for sidebar mini 50x50 pixels -->
 	      <span class="logo-mini"><b>DN</b></span>
 	      <!-- logo for regular state and mobile devices -->
-	      <span class="logo-lg"><b><%=userdetail.getString("role").toUpperCase()%></b>&nbsp;Digi-Nepal</span>
+	      <span class="logo-lg"><b><%=userdetail.getUsername()%></b>&nbsp;Digi-Nepal</span>
 	    </a>
 	    <!-- Header Navbar: style can be found in header.less -->
 	    <nav class="navbar navbar-static-top">
@@ -80,7 +81,7 @@
 	          <li class="dropdown user user-menu">
 	            <a class="dropdown-toggle clickable" data-toggle="dropdown">
 	              <i class="fa fa-user"></i>
-	              <span class="hidden-xs"><%=userdetail.getString("name") %></span>
+	              <span class="hidden-xs"><%=userdetail.getUsername() %></span>
 	            </a>
 	            <ul class="dropdown-menu">
 	              <!-- Menu Body -->
@@ -124,7 +125,7 @@
 	        <h4><i class="fa fa-user"></i></h4>
 	        </div>
 	        <div class="pull-left info">
-	          <p><%=userdetail.getString("name") %></p>
+	          <p><%=userdetail.getUsername() %></p>
 	          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 	        </div>
 	      </div>

@@ -32,7 +32,7 @@ public class AddController extends HttpServlet {
 			e.printStackTrace();
 		}
 		Model m=new Model();
-		StudentOperations s=new StudentOperations(companydb);
+		StudentOperations s=new StudentOperations();
 		if(uri.endsWith("examtype.add"))
 		{
 			try {

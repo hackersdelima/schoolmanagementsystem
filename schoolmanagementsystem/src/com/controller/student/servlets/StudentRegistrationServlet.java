@@ -88,7 +88,7 @@ public class StudentRegistrationServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		StudentOperations o=new StudentOperations(database);
+		StudentOperations o=new StudentOperations();
 		try{
 		if(o.studentRegistration(s,inputter)==true)
 		{

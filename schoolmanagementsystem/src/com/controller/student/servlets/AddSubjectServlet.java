@@ -23,7 +23,7 @@ public class AddSubjectServlet extends HttpServlet {
 		String subjectname=request.getParameter("subjectname");
 		String subjecttype=request.getParameter("subjecttype");
 		String companydb=request.getParameter("companydb");
-		StudentOperations s=new StudentOperations(companydb);
+		StudentOperations s=new StudentOperations();
 		status=s.addsubject(subjectname,subjecttype);
 		if(status){
 			request.setAttribute("msg", "Successful!");

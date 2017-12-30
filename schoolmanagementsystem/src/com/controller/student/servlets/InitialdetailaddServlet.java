@@ -22,7 +22,7 @@ public class InitialdetailaddServlet extends HttpServlet {
 		housegroupname=request.getParameter("housegroupname");
 		specialinterestname=request.getParameter("specialinterestname");
 		classname=request.getParameter("classname");
-		StudentOperations s=new StudentOperations(companydb);
+		StudentOperations s=new StudentOperations();
 		if(languagename!=null ){
 			s.addlanguage(languagename);
 		}
