@@ -5,6 +5,7 @@ import java.net.URLEncoder;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -98,11 +99,15 @@ public class StudentRegistrationServlet extends HttpServlet {
 				o.insertaddressdetail(s, studentid);
 				o.insertlocalguardiandetail1(s, studentid);
 				o.insertlocalguardiandetail2(s, studentid);
-			response.getOutputStream().println("<script>alert('REGISTRATION SUCCESSFUL!');window.location.href = 'profile#!/registration';</script>");
+				request.setAttribute("msg", "Successful!");
+				RequestDispatcher rd=request.getRequestDispatcher("studentregistrationjsp");
+				rd.forward(request,response);
 		}
 		else
 		{
-			response.getOutputStream().println("<script>alert('REGISTRATION UNSUCCESSFUL!');window.location.href = 'profile#!/registration';</script>");
+			request.setAttribute("msg", "Unsuccessful!");
+			RequestDispatcher rd=request.getRequestDispatcher("studentregistrationjsp");
+			rd.forward(request,response);
 		}
 		}catch(Exception e){
 		

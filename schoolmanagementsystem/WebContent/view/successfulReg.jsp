@@ -1,1 +1,0 @@
-<div class="alert alert-info"><center><h3>Registration Successful !</h3></center></div>

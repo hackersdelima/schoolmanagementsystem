@@ -169,7 +169,7 @@ public class StudentOperations {
 	}
 	public ResultSet studentDetails(){
 		ResultSet rs=null;
-		String query="select *,sfatherdetailtbl.*,smotherdetailtbl.*,sbirthcertificatetbl.*,saddresstbl.* from studentinfo join sfatherdetailtbl on studentinfo.studentid=sfatherdetailtbl.studentid JOIN smotherdetailtbl on studentinfo.studentid=smotherdetailtbl.studentid JOIN  sbirthcertificatetbl on studentinfo.studentid=sbirthcertificatetbl.studentid JOIN saddresstbl on studentinfo.studentid=saddresstbl.studentid;";
+		String query="select * from studentinfo;";
 		try{
 			if(conn!=null){
 				stmt=conn.createStatement();
@@ -180,10 +180,14 @@ public class StudentOperations {
 			}
 		}
 		catch(Exception e){
-			System.out.println("StudentOperatins.studentDetails error"+e);
+			System.out.println("StudentOperations.studentDetails error"+e);
 		}
 		return rs;
 		
+	}
+	public boolean deletelanguage(String id) {
+		boolean status = false;
+		return status;
 	}
 	public ResultSet registeredstudentdetail(String studentid){
 		String query="select *,sfatherdetailtbl.*,smotherdetailtbl.*,sbirthcertificatetbl.*,saddresstbl.* from studentinfo join sfatherdetailtbl on studentinfo.studentid=sfatherdetailtbl.studentid JOIN smotherdetailtbl on studentinfo.studentid=smotherdetailtbl.studentid JOIN  sbirthcertificatetbl on studentinfo.studentid=sbirthcertificatetbl.studentid JOIN saddresstbl on studentinfo.studentid=saddresstbl.studentid where studentinfo.studentid='"+studentid+"'";

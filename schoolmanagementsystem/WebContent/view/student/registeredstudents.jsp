@@ -3,6 +3,8 @@
 <%@page import="java.sql.*" %>
 <% if((session.getAttribute("userdetail"))!=null){
 	ResultSet userdetail=(ResultSet)session.getAttribute("userdetail");%>
+<link rel="import" href="include.jsp">
+<div class="background">
 <div class="breadcrumb-line">
 	<nav aria-label="breadcrumb" role="navigation">
 	  <ol class="breadcrumb">
@@ -12,12 +14,12 @@
 	  </ol>
 	</nav>
 </div>
-<div class=" row container">
+<div class="row">
 <div class="col-sm-2">
 <div class="panel panel-default" style="width:100%;">
 	<div class="panel-heading"><h4 class="panel-title"><strong>Specific Search</strong></h4></div>
 	<div class="panel-body">
-		<table cellpadding="3" cellspacing="0" border="0" style=" margin: 0 auto 2em auto;">
+		<table cellpadding="3" cellspacing="0" border="0" >
 	        <tbody>
 	            <tr id="filter_col2" data-column="1">
 	                <td align="center"><input type="text" class="column_filter form-control" placeholder="Student Name..." id="col1_filter"><br></td>
@@ -34,7 +36,7 @@
 </div>
 </div>
 <div class="col-sm-10">
-<div class="panel panel-default" style="width:95%;margin:auto;">
+<div class="panel panel-default" style="width:100%;">
 	<div class="panel-heading"><h4 class="panel-title"><strong>Student List</strong></h4>
 	</div>
 	<div class="panel-body">
@@ -81,6 +83,7 @@
 				</tbody>
 			</table>
 	</div>
+</div>
 </div>
 </div>
 </div>

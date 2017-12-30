@@ -2,8 +2,56 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>schoolmanagementsystem</display-name>
   <welcome-file-list>
-    <welcome-file>view/index.jsp</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+ <servlet>
+    <servlet-name>studentregistrationjsp</servlet-name>
+    <jsp-file>/view/student/studentRegistration.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>studentregistrationjsp</servlet-name>
+    <url-pattern>/studentregistrationjsp</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>studentslistjsp</servlet-name>
+    <jsp-file>/view/student/registeredstudents.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>studentslistjsp</servlet-name>
+    <url-pattern>/studentslistjsp</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>initialdetailsjsp</servlet-name>
+    <jsp-file>/view/initialdetail/initialdetails.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>initialdetailsjsp</servlet-name>
+    <url-pattern>/initialdetailsjsp</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>subjectsjsp</servlet-name>
+    <jsp-file>/view/academics/subjects/subjects.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>subjectsjsp</servlet-name>
+    <url-pattern>/subjectsjsp</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>assignsubjectsjsp</servlet-name>
+    <jsp-file>/view/academics/subjects/assignsubjects.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>assignsubjectsjsp</servlet-name>
+    <url-pattern>/subjectassign</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>examjsp</servlet-name>
+    <jsp-file>/view/academics/exam.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>examjsp</servlet-name>
+    <url-pattern>/examjsp</url-pattern>
+  </servlet-mapping>
   <servlet>
     <servlet-name>header</servlet-name>
     <jsp-file>/view/header.jsp</jsp-file>
@@ -70,7 +118,6 @@
     <servlet-name>DeleteController</servlet-name>
     <url-pattern>*.del</url-pattern>
   </servlet-mapping>
- 
   <servlet>
     <description></description>
     <display-name>AddController</display-name>
@@ -80,5 +127,16 @@
   <servlet-mapping>
     <servlet-name>AddController</servlet-name>
     <url-pattern>*.add</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>NavigationController</display-name>
+    <servlet-name>NavigationController</servlet-name>
+    <servlet-class>com.controller.NavigationController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NavigationController</servlet-name>
+    <url-pattern>*.click</url-pattern>
   </servlet-mapping>
 </web-app>

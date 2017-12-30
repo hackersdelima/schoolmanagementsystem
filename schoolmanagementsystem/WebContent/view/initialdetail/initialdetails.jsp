@@ -9,6 +9,8 @@ ResultSet housegroup=s.gethousegroup();ResultSet caste=s.getcaste();
 ResultSet specialinterest=s.getspecialinterest();
 ResultSet classlist=s.selectclass();
 ResultSet examtype=s.selectexamtype();%>
+<link rel="import" href="include.jsp">
+<div class="background">
 <div class="breadcrumb-line">
 	<nav aria-label="breadcrumb" role="navigation">
 	  <ol class="breadcrumb">
@@ -21,11 +23,6 @@ ResultSet examtype=s.selectexamtype();%>
 <div class="panel panel-default" >
   		<div class="panel-heading">
   		<h4><strong>Add/Edit Initial Registration Form Details</strong></h4>
-  		<%if(request.getAttribute("msg")!=null) {%>
-  		<div class="alert alert-info">
-  			<h6>Action Successful!</h6>
-  		</div>
-  		<%} %>
   		</div>
   		<div class="panel-body">
   			<ul class="nav nav-tabs ">
@@ -189,7 +186,23 @@ ResultSet examtype=s.selectexamtype();%>
 			</div>
   		</div>
 </div>
+</div>
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-body">
+          <p>${msg}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
 <script>
+<%if(request.getAttribute("msg")!=null){%>
+$('#myModal').modal('show');
+<%}%>
 	$('.form').submit(function() {
 	    return confirm('CONFIRM SUBMIT?'); 
 	});

@@ -6,6 +6,8 @@
 	StudentOperations s=new StudentOperations(ud.getString("companydb"));
 	ResultSet exam=s.selectexam();
 	ResultSet examtype=s.selectexamtype();%>
+<link rel="import" href="include.jsp">
+<div class="background">
 <div class="breadcrumb-line">
 	<nav aria-label="breadcrumb" role="navigation">
 	  <ol class="breadcrumb">
@@ -17,8 +19,8 @@
 	</nav>
 </div>
 <br>
-<div class="row container">
-	<div class="col-sm-3">
+<div class="row ">
+	<div class="col-sm-4">
 		<form method="post" action="exam.add" id="form"></form>
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -44,8 +46,8 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-sm-9">
-		<div class="panel panel-default" style="width:90%;margin:auto;">
+	<div class="col-sm-8" style="margin-top:15px;">
+		<div class="panel panel-default" style="width:100%;">
 			<div class="panel panel-heading">
 				<h4 class="panel-title"><strong>EXAMS LIST</strong></h4>
 			</div>
@@ -79,8 +81,24 @@
 	</div>
 
 </div>
+</div>
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-body">
+          <p>${msg}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
 <script>
 $(document).ready(function() {
+	<%if(request.getAttribute("msg")!=null){%>
+	   $('#myModal').modal('show');
+	   <%}%>
 	 $('#table').DataTable( {
 	        scrollY:        '50vh',
 	        scrollCollapse: true,

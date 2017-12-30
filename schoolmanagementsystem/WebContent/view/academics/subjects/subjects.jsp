@@ -5,6 +5,8 @@
 	ResultSet ud=(ResultSet)session.getAttribute("userdetail");
 	StudentOperations s=new StudentOperations(ud.getString("companydb"));
 	ResultSet subjects=s.selectsubject();%>
+<link rel="import" href="include.jsp">
+<div class="background">
 <div class="breadcrumb-line">
 	<nav aria-label="breadcrumb" role="navigation">
 	  <ol class="breadcrumb">
@@ -16,7 +18,7 @@
 	</nav>
 </div>
 <br>
-<div class="row container">
+<div class="row ">
 	<div class="col-sm-4">
 		<form method="post" action="addsubject" id="form"></form>
 		<div class="panel panel-default">
@@ -40,7 +42,7 @@
 		</div>
 	</div>
 	<div class="col-sm-8">
-		<div class="panel panel-default" style="width:90%;margin:auto;">
+		<div class="panel panel-default" style="margin-top:15px;">
 			<div class="panel panel-heading">
 				<h4 class="panel-title"><strong>SUBJECTS LIST</strong></h4>
 			</div>
@@ -72,8 +74,24 @@
 	</div>
 
 </div>
+</div>
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-body">
+          <p>${msg}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
 <script>
 $(document).ready(function() {
+	<%if(request.getAttribute("msg")!=null){%>
+	   $('#myModal').modal('show');
+	   <%}%>
 	 $('#table').DataTable( {
 	        scrollY:        '50vh',
 	        scrollCollapse: true,

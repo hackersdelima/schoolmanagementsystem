@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,7 +40,9 @@ public class AddController extends HttpServlet {
 				examtypename=request.getParameter("examtypename");
 				description=request.getParameter("description");
 				s.addexamtype(examtypename, description);
-				response.sendRedirect("profile#!/initialdetails");
+				request.setAttribute("msg", "Successful!");
+				RequestDispatcher rd=request.getRequestDispatcher("initialdetailsjsp");
+				rd.forward(request,response);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -52,11 +55,13 @@ public class AddController extends HttpServlet {
 			try {
 				status=s.createnewexam(m);
 				if(status){
-				response.getOutputStream().println("<script>alert('SUCCESSFUL!');window.location.href = 'profile#!/createexam';</script>");
-				}
+					request.setAttribute("msg", "Successful!");
+					RequestDispatcher rd=request.getRequestDispatcher("examjsp");
+					rd.forward(request,response);				}
 				else{
-					response.getOutputStream().println("<script>alert('UNSUCCESSFUL!');window.location.href = 'profile#!/createexam';</script>");
-
+					request.setAttribute("msg", "Unsuccessful!");
+					RequestDispatcher rd=request.getRequestDispatcher("examjsp");
+					rd.forward(request,response);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -72,11 +77,14 @@ public class AddController extends HttpServlet {
 						e.printStackTrace();
 					}
 					if(statuslist.contains(false)) {
-						response.getOutputStream().println("<script>alert('UNSUCCESSFUL!');window.location.href = 'profile#!/assignsubjects';</script>");
-					}
+						request.setAttribute("msg", "Successful!");
+						RequestDispatcher rd=request.getRequestDispatcher("subjectassign");
+						rd.forward(request,response);					}
 					else{
-						response.getOutputStream().println("<script>alert('SUCCESSFUL!');window.location.href = 'profile#!/assignsubjects';</script>");
-					}
+						request.setAttribute("msg", "Unsuccessful!");
+						RequestDispatcher rd=request.getRequestDispatcher("subjectassign");
+						rd.forward(request,response);					
+						}
 		}
 	
 	}

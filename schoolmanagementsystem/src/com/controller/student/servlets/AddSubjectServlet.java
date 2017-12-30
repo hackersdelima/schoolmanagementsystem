@@ -2,6 +2,7 @@ package com.controller.student.servlets;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,10 +26,12 @@ public class AddSubjectServlet extends HttpServlet {
 		StudentOperations s=new StudentOperations(companydb);
 		status=s.addsubject(subjectname,subjecttype);
 		if(status){
-		response.getOutputStream().println("<script>alert('SUCCESSFUL!');window.location.href = 'profile#!/createsubject';</script>");
-		}
+			request.setAttribute("msg", "Successful!");
+			RequestDispatcher rd=request.getRequestDispatcher("subjectsjsp");
+			rd.forward(request,response);		}
 		else{
-		response.getOutputStream().println("<script>alert('UNSUCCESSFUL!');window.location.href = 'profile#!/createsubject';</script>");
-		}
+			request.setAttribute("msg", "Unsuccessful!");
+			RequestDispatcher rd=request.getRequestDispatcher("subjectsjsp");
+			rd.forward(request,response);		}
 	}
 }

@@ -1,6 +1,7 @@
 package com.controller.student.servlets;
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,7 +43,8 @@ public class InitialdetailaddServlet extends HttpServlet {
 		else if(classname!=null){
 			s.addclass(classname);
 		}
-		response.sendRedirect("profile#!/initialdetails");
-	}
+		request.setAttribute("msg", "Successful!");
+		RequestDispatcher rd=request.getRequestDispatcher("initialdetailsjsp");
+		rd.forward(request,response);		}
 
 }

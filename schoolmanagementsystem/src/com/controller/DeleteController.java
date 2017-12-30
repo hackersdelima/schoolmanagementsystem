@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,13 +37,15 @@ public class DeleteController extends HttpServlet {
 		{
 			status=s.deletesubject(id);
 			if(status){
-			response.getOutputStream().println("<script>alert('SUCCESSFUL!');window.location.href = 'profile#!/createsubject';</script>");
-			}
+				request.setAttribute("msg", "Successful!");
+				RequestDispatcher rd=request.getRequestDispatcher("subjectsjsp");
+				rd.forward(request,response);			}
 			else{
-			response.getOutputStream().println("<script>alert('UNSUCCESSFUL!');window.location.href = 'profile#!/createsubject';</script>");
-			}
+				request.setAttribute("msg", "Unuccessful!");
+				RequestDispatcher rd=request.getRequestDispatcher("subjectsjsp");
+				rd.forward(request,response);			}
 		}
-		if(uri.endsWith("exam.del"))
+		else if(uri.endsWith("exam.del"))
 		{
 			try {
 				status=s.deleteexam(id);
@@ -50,13 +53,29 @@ public class DeleteController extends HttpServlet {
 				e.printStackTrace();
 			}
 			if(status){
-			response.getOutputStream().println("<script>alert('SUCCESSFUL!');window.location.href = 'profile#!/createexam';</script>");
-			}
+				request.setAttribute("msg", "Successful!");
+				RequestDispatcher rd=request.getRequestDispatcher("examjsp");
+				rd.forward(request,response);			}
 			else{
-				response.getOutputStream().println("<script>alert('UNSUCCESSFUL!');window.location.href = 'profile#!/createexam';</script>");
-			}
+				request.setAttribute("msg", "Unsuccessful!");
+				RequestDispatcher rd=request.getRequestDispatcher("examjsp");
+				rd.forward(request,response);			}
 		}
+		else if(uri.endsWith("language.del")){
+			
+				status=s.deletelanguage(id);
+			if(status){
+				request.setAttribute("msg", "Successful!");
+				RequestDispatcher rd=request.getRequestDispatcher("examjsp");
+				rd.forward(request,response);			}
+			else{
+				request.setAttribute("msg", "Unsuccessful!");
+				RequestDispatcher rd=request.getRequestDispatcher("examjsp");
+				rd.forward(request,response);			
+			}
 		
-	}
+		
+		}
 
+	}
 }
