@@ -1,7 +1,7 @@
  <%@page import="com.controller.student.classes.StudentOperations" %>
-  <%@page import='java.sql.*' %>
-<%ResultSet userdetail=(ResultSet)session.getAttribute("userdetail");
-StudentOperations s=new StudentOperations(userdetail.getString("companydb"));
+  <%@page import='com.school.model.UserModel'%>
+<%UserModel userdetail=(UserModel)session.getAttribute("userdetail");
+StudentOperations s=new StudentOperations();
 String totalstd=s.totalstudents(); %>
 <link rel="import" href="../include.jsp">
 <link rel="import" href="include.jsp">
@@ -28,7 +28,7 @@ String totalstd=s.totalstudents(); %>
 				</span>
 				<div class="info-box-content">
 					<span class="info-box-text">Your Detail</span>
-					<span class="info-box-number">Username</span>
+					<span class="info-box-number"><%=userdetail.getUsername() %></span>
 				</div>
 			</div>
 		</div>
