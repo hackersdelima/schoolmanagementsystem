@@ -2,6 +2,7 @@ package com.school.daoImpl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -45,5 +46,32 @@ public class AcademicsSettingsAddDaoImpl implements AcademicsSettingsAddDao {
 	}
 	public List<ClassModel> getclasslist(HttpServletRequest request, HttpServletResponse response)
 	{
+		List<ClassModel> list=null;
+		ClassModel model=null;
+		con=DbConnection.getConnection();
+		ResultSet rs=null;
+		String query="select * from classlist";
+		try {
+			ps=con.prepareStatement(query);
+			rs=ps.executeQuery();
+			
+			while(rs.next())
+			{
+				model=new ClassModel();
+				model.setClassid(rs.getString("classid"));
+				model.setClassname(rs.getString("classsname"));
+				list.add(model);
+			}
+			
+			if(list.size()>0)
+			{
+				return list;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+
 	}
 }

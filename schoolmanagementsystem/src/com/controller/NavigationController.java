@@ -70,7 +70,7 @@ public class NavigationController extends HttpServlet {
 			 list=dao.getclasslist(request,response);
 			
 				
-			
+			request.setAttribute("classlist", list);
 			RequestDispatcher rd=request.getRequestDispatcher("view/academics/assigncourse.jsp");
 			rd.forward(request, response);
 		}
