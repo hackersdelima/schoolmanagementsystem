@@ -26,7 +26,7 @@
 
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>Specific Search</h2>
+					<h2>SPECIFIC SEARCH</h2>
 					<ul class="nav navbar-right panel_toolbox">
 						<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 						</li>
@@ -59,7 +59,7 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>Registered Students</h2>
+					<h2>REGISTERED STUDENTS</h2>
 					<ul class="nav navbar-right panel_toolbox">
 						<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 						</li>
@@ -68,7 +68,7 @@
 				</div>
 				<div class="x_content">
 				
-					<table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%" style="font-size:95%;'">
+					<table id="datatable-buttons" class="table jambo_table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%" style="font-size:95%;'">
 						<thead>
 							<tr class="headings">
 								<th>S No.</th>
@@ -120,15 +120,15 @@
 
 <%if(request.getAttribute("msg")!=null){%>
 $('#myModal').modal('show');
-<%}%>
-/* function filterColumn ( i ) {
-    $('#datatable-responsive').DataTable().column( i ).search(
+<%}%> 
+function filterColumn ( i ) {
+    $('#datatable-buttons').DataTable().column( i ).search(
         $('#col'+i+'_filter').val(),
         $('#col'+i+'_regex').prop('checked'),
         $('#col'+i+'_smart').prop('checked')
     ).draw();
 }
- */
+ 
 $(document).ready(function() {
     $('input.global_filter').on( 'keyup click', function () {
         filterGlobal();

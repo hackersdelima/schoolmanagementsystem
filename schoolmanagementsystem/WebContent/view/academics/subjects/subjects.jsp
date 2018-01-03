@@ -24,28 +24,38 @@
 
 		<div class="x_panel">
 			<div class="x_title">
-				<h2>Add New Subject</h2>
+				<h2>ADD NEW SUBJECT</h2>
 				<ul class="nav navbar-right panel_toolbox">
 					<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 					</li>
 				</ul>
+				
 				<div class="clearfix"></div>
+				
 			</div>
 			<div class="x_content">
-				<form method="post" action="addsubject" id="form" style="width:40%">
-					<h5>Subject Name *</h5>
+			<form method="post" action="addsubject" id="form" >
+			<button type="submit" class="btn btn-success" form="form">
+						<i class="fa fa-check"></i> Save
+					</button>
+				
+				<table class="table">
+					<tbody>
+						<tr>
+							<td><h6>Subject Name *</h6>
 					<input type="text" class="form-control" name="subjectname"
-						form="form" required> <br>
-					<h5>Subject Type *</h5>
+						form="form" required></td>
+							<td><h6>Subject Type *</h6>
 					<select class="form-control" name="subjecttype" form="form"
 						required>
 						<option value="" selected>Select subject type</option>
 						<option value="common">Common</option>
 						<option value="optional">Optional</option>
-					</select> <br>
-					<button type="submit" class="btn btn-success" form="form">
-						<i class="fa fa-check"></i> Save
-					</button>
+					</select></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
 				</form>
 			</div>
 		</div>
@@ -54,7 +64,7 @@
 
 		<div class="x_panel">
 			<div class="x_title">
-				<h2>Available Subjects List</h2>
+				<h2>AVAILABLE SUBJECTS LIST</h2>
 				<ul class="nav navbar-right panel_toolbox">
 					<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 					</li>
@@ -63,14 +73,14 @@
 				<div class="clearfix"></div>
 			</div>
 			<div class="x_content">
-				<table id="datatable" class="table table-striped table-bordered"
+				<table id="datatable" class="table jambo_table table-striped table-bordered"
 					style="font-size: 95%;">
 						<thead>
-							<tr>
-								<th>S No.</th>
-								<th>Subject Name</th>
-								<th>Subject Type</th>
-								<th><i class="fa fa-cog" aria-hidden="true"></i></th>
+							<tr class="headings">
+								<th >S No.</th>
+								<th >Subject Name</th>
+								<th >Subject Type</th>
+								<th ><i class="fa fa-cog" aria-hidden="true"></i></th>
 							</tr>
 						</thead>
 						<tbody>
