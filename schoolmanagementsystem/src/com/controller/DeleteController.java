@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.controller.action.StudentAction;
 import com.controller.student.classes.StudentOperations;
 
 @WebServlet("/DeleteServlet")
@@ -21,18 +22,14 @@ public class DeleteController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		boolean status=false;
 		String uri=request.getRequestURI();
-		HttpSession session=request.getSession(true);
-		ResultSet rs=(ResultSet)session.getAttribute("userdetail");
-		String companydb ="";
 		String id=request.getParameter("id");
-		try {
-			companydb = rs.getString("companydb");
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		StudentOperations s=new StudentOperations();
 		
+		StudentOperations s=new StudentOperations();
+		if(uri.endsWith("student.del"))
+		{
+			StudentAction action=new StudentAction();
+		action.deleteStudent(request,response);
+		}
 		if(uri.endsWith("subject.del"))
 		{
 			status=s.deletesubject(id);

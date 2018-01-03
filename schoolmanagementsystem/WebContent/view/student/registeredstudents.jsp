@@ -3,6 +3,8 @@
 <%@page import="java.sql.*" %>
 <% if((session.getAttribute("userdetail"))!=null){
 	%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <link rel="import" href="include.jsp">
 <div class="background">
 <div class="breadcrumb-line">
@@ -55,31 +57,29 @@
 										</thead>
 										<tbody id="example">
 			<%
-			StudentOperations s=new StudentOperations();
-			ResultSet rs=s.studentDetails();
 			int sn=1;
-			
-			while(rs.next())
-			{
 			%>
+				<c:forEach items="${slist }" var="s">		
 											<tr>
 												<th scope="row"><%=sn %></th>
-												<td><%if (rs.getString("studentname").equals("null")){out.print("");}else{ %><%=rs.getString("studentname") %><%} %></td>
-												<td><%if (rs.getString("rollno").equals("null")){out.print("");}else{ %><%=rs.getString("rollno") %><%} %></td>
-												<td><%if (rs.getString("admissionclass").equals("null")){out.print("");}else{ %><%=rs.getString("admissionclass") %><%} %></td>
-												<td><%if (rs.getString("section").equals("null")){ out.print("");}else{ %><%=rs.getString("section") %><%} %></td>
-												<td><%if (rs.getString("studentid").equals("null")){ out.print("");}else{ %><%=rs.getString("studentid") %><%} %></td>
-												<td><%=rs.getString("admissiondate") %></td>
+												<td>${s.studentname }</td>
+												<td>${s.rollno }</td>
+												<td>${s.admissionclass }</td>
+												<td>${s.section }</td>
+												<td>${s.studentid }</td>
+												<td>${s.admissiondate }</td>
 												<td><div class="dropdown">
 				    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Action
 				    <span class="caret"></span></button>
 				    <ul class="dropdown-menu">
 				      <li><a href="<%-- studentdetail?id=<%=rs.getInt("studentid") %>&db=<%=userdetail.getString("companydb") %> --%>">See Detail</a></li>
+				      <li><a href="student.del?id=${s.studentid }">Remove</a></li>
 				    </ul>
 				  </div></td>
 												
 												</tr>
-											<%sn++;}%>
+											<%sn++;%>
+											</c:forEach>
 				</tbody>
 			</table>
 	</div>
@@ -87,9 +87,12 @@
 </div>
 </div>
 </div>
+<jsp:include page="/msgmodal"></jsp:include>
 <script>
 
- 
+<%if(request.getAttribute("msg")!=null){%>
+$('#myModal').modal('show');
+<%}%>
 function filterColumn ( i ) {
     $('#table').DataTable().column( i ).search(
         $('#col'+i+'_filter').val(),
@@ -97,7 +100,7 @@ function filterColumn ( i ) {
         $('#col'+i+'_smart').prop('checked')
     ).draw();
 }
- 
+
 $(document).ready(function() {
 	 
     $('#table').DataTable();

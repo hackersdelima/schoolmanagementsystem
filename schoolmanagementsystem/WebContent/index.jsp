@@ -1,35 +1,91 @@
-<!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Meta, title, CSS, favicons, etc. -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta charset="UTF-8">
+<title>Digi Nepal | Araniko</title>
 
-  <title>DigiNepal Sahakari Login</title>
+<!-- Bootstrap -->
+<link href="template/css/bootstrap.min.css" rel="stylesheet">
+<!-- Font Awesome -->
+<link href="template/css/font-awesome.min.css" rel="stylesheet">
+<!-- NProgress -->
+<link href="template/css/nprogress.css" rel="stylesheet">
+<!-- Animate.css -->
+<link href="template/css/animate.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="assets/css/style.css" media="screen" type="text/css" />
-
+<!-- Custom Theme Style -->
+<link href="template/css/custom.min.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="login">
+	<div>
+		<a class="hiddenanchor" id="signup"></a> <a class="hiddenanchor"
+			id="signin"></a>
+		
+		<div class="login_wrapper">
+			<div class="animate form login_form">
+				<section class="login_content">
+					<form method="post" action="login">
+						<h1>Login Form</h1>
+						<div>
+							<input type="password" name="username" class="form-control"
+								placeholder="Username" required="" />
+						</div>
+						<div>
+							<input type="password" name="password" class="form-control"
+								placeholder="Password" required="" />
+						</div>
 
-  <span href="#" class="button" id="toggle-login">Log in</span>
+						<div>
+							<button class="btn btn-default submit">Log in</button>
+							<a class="reset_pass" href="#">Lost your password?</a>
+						</div>
+					</form>
+					<div class="clearfix"></div>
 
-<div id="login">
-  <div id="triangle"></div>
-  <h1>Digi Nepal</h1>
-  <h1>Login</h1>
-  <form method="post" action="login">
-    <input type="password" name="username" placeholder="Email" />
-    <input type="password" name="password" placeholder="Password" />
-    <input type="submit" value="Log in" />
-  </form>
-</div>
+					<div class="separator">
+						<p class="change_link">
+							New to site? <a href="#signup" class="to_register"> Create
+								Account </a>
+						</p>
 
-  <script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
+						<div class="clearfix"></div>
+						<br />
 
-  <script src="js/index.js"></script>
+						<div>
+							<h1>
+								Digi Nepal.
+							</h1>
+							<p>Copyright 2018 All Rights Reserved.</p>
+						</div>
+					</div>
 
+				</section>
+			</div>
+
+			<div id="register" class="animate form registration_form">
+				<section class="login_content">
+					<form>
+						<h1>Create Account</h1>
+						
+						<p>Contact us for the new account.</p>
+
+						<div class="clearfix"></div>
+
+						<div class="separator">
+							<p class="change_link">
+								Already a member ? <a href="#signin" class="to_register">
+									Log in </a>
+							</p>
+						</div>
+					</form>
+				</section>
+			</div>
+		</div>
+	</div>
 </body>
-
 </html>

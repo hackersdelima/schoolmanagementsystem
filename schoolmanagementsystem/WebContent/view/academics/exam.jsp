@@ -2,8 +2,7 @@
 <%@page import="java.util.*" %>
 <%@page import="java.sql.*" %>
 <%if((session.getAttribute("userdetail"))!=null){
-	ResultSet ud=(ResultSet)session.getAttribute("userdetail");
-	StudentOperations s=new StudentOperations(ud.getString("companydb"));
+	StudentOperations s=new StudentOperations();
 	ResultSet exam=s.selectexam();
 	ResultSet examtype=s.selectexamtype();%>
 <link rel="import" href="include.jsp">
@@ -27,7 +26,6 @@
 				<h4 class="panel-title"><strong>CREATE NEW EXAM</strong></h4>
 			</div>
 			<div class="panel-body">
-				<input type="hidden" name="companydb" value="<%=ud.getString("companydb")%>" form="form">
 				<h5>Exam Name *</h5>
 			   	<input type="text" class="form-control" name="examname" form="form" required>
 			   	<br>

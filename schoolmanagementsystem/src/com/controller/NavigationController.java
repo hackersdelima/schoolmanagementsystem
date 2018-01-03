@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -9,6 +10,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.controller.student.classes.StudentOperations;
+import com.school.model.StudentModel;
 
 /**
  * Servlet implementation class NavigationController
@@ -34,6 +38,9 @@ public class NavigationController extends HttpServlet {
 			rd.forward(request, response);
 		}
 		else if(uri.endsWith("studentslist.click")){
+			StudentOperations s=new StudentOperations();
+			List<StudentModel> list=s.studentDetails();
+			request.setAttribute("slist", list);
 			RequestDispatcher rd=request.getRequestDispatcher("studentslistjsp");
 			rd.forward(request, response);
 		}

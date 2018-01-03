@@ -2,16 +2,14 @@
 <%@page import="java.util.*" %>
 <%@page import="java.sql.*" %>
 <%if((session.getAttribute("userdetail"))!=null){
-	ResultSet ud=(ResultSet)session.getAttribute("userdetail");
 	String studentid=request.getParameter("id");%>
-<%StudentOperations s=new StudentOperations(ud.getString("companydb"));
+<%StudentOperations s=new StudentOperations();
 ResultSet sd=s.registeredstudentdetail(studentid);ResultSet districts=s.districts();ResultSet disablelist=s.disabletypelist();
 ResultSet language=s.getlanguage(); ResultSet caste=s.getcaste();ResultSet section=s.getsection();ResultSet housegroup=s.gethousegroup();ResultSet specialinterest=s.getspecialinterest();
 if(sd.next()){
 %>
    		<div class="panel panel-default" >
   		<div class="panel-heading"><h4><strong>View/Update Student Detail</strong></h4>
-		<input type="hidden" value="<%=ud.getString("companydb") %>" name="database" form="form">
 		<button type="submit" class="btn btn-success "  form="form"><i class="fa fa-check"></i> UPDATE</button>
   		<form method="post" action="studentregistration" id="form"></form>
 
