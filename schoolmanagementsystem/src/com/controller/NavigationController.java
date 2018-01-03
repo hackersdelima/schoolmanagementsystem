@@ -68,9 +68,13 @@ public class NavigationController extends HttpServlet {
 			AcademicsSettingsAddDao dao=new AcademicsSettingsAddDaoImpl();
 			List<ClassModel> list=new ArrayList<ClassModel>();
 			 list=dao.getclasslist(request,response);
+			 
+			 List<ClassModel> sublist=new ArrayList<ClassModel>();
+			 sublist=dao.getsublist(request,response);
 			
 				
 			request.setAttribute("classlist", list);
+			request.setAttribute("sublist", sublist);
 			RequestDispatcher rd=request.getRequestDispatcher("view/academics/assigncourse.jsp");
 			rd.forward(request, response);
 		}

@@ -1,10 +1,7 @@
 <%@page import="com.controller.student.classes.StudentOperations" %>
+ <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <%@page import="java.util.*" %>
 <%@page import="java.sql.*" %>
-<%if((session.getAttribute("userdetail"))!=null){
-	ResultSet ud=(ResultSet)session.getAttribute("userdetail");
-	StudentOperations s=new StudentOperations(ud.getString("companydb"));
-	ResultSet subjects=s.selectsubject();%>
 <link rel="import" href="include.jsp">
 <div class="background">
 <div class="breadcrumb-line">
@@ -29,17 +26,22 @@
 			
 			   	<h5>Subject Class</h5>
 			   	<select class="form-control" name="subjecttype" form="form" required>
+			   	<c:forEach items="${list}" var="list" >
 			   		<option value="" selected>Select subject type</option>
-			   		<option value="common">Common</option>
-			   		<option value="optional">Optional</option>
+			   		<option value="common">${list.classid }</option>
+			   		<option value="optional">${list.classname }</option>
+			   		</c:forEach>
 			   	</select>
+			   	
 			   	<br>
 			   	
 			   		<h5>Select Courses</h5>
 			   	<select class="form-control" name="subjecttype" form="form" required>
+			   			<c:forEach items="${sublist}" var="sublist" >
 			   		<option value="" selected>Select subject type</option>
-			   		<option value="common">Common</option>
-			   		<option value="optional">Optional</option>
+			   		<option value="common">${sublist }</option>
+			   		<option value="optional">${sublist }</option>
+			   			</c:forEach>
 			   	</select>
 			   	<br>
 			   	<button type="submit" class="btn btn-success" form="form"><i class="fa fa-check"></i> Assign</button>
@@ -61,18 +63,7 @@
 							<th><i class="fa fa-cog" aria-hidden="true"></i></th>
 						</tr>
 					</thead>
-					<tbody>
-						<%int sno=1; while (subjects.next()){ %>
-						<tr>
-							<td><%=sno %></td>
-							<td><%=subjects.getString("subjectname") %></td>
-							<td><%=subjects.getString("subjecttype") %></td>
-							<td>
-							 <a href=""><i class="fa fa-pencil-square-o" aria-hidden="true" style="color:blue;"></i></a>&nbsp;&nbsp;&nbsp;<a href="subject.del?id=<%=subjects.getString("subjectid")%>" class="delete"><i class="fa fa-trash" aria-hidden="true" style="color:red;"></i></a>
-							</td>
-						</tr>
-					<%sno++;} %>
-					</tbody>
+				
 				</table>
 			</div>
 		</div>
@@ -110,4 +101,3 @@ $('.delete').click(function() {
     return confirm('CONFIRM SUBJECT DELETE?'); 
 });
 </script>
-<%}%>

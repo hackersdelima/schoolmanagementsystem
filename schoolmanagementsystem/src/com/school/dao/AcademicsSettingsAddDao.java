@@ -16,4 +16,6 @@ public interface AcademicsSettingsAddDao {
 	public void assigncourse(HttpServletRequest request, HttpServletResponse response);
 
 	public List<ClassModel> getclasslist(HttpServletRequest request, HttpServletResponse response);
+
+	public List<ClassModel> getsublist(HttpServletRequest request, HttpServletResponse response);
 }

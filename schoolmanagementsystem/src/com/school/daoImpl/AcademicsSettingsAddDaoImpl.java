@@ -59,7 +59,7 @@ public class AcademicsSettingsAddDaoImpl implements AcademicsSettingsAddDao {
 			{
 				model=new ClassModel();
 				model.setClassid(rs.getString("classid"));
-				model.setClassname(rs.getString("classsname"));
+				model.setClassname(rs.getString("classname"));
 				list.add(model);
 			}
 			
@@ -74,4 +74,36 @@ public class AcademicsSettingsAddDaoImpl implements AcademicsSettingsAddDao {
 		return null;
 
 	}
+	public List<ClassModel> getsublist(HttpServletRequest request, HttpServletResponse response)
+	{
+		List<ClassModel> list=null;
+		ClassModel model=null;
+		con=DbConnection.getConnection();
+		ResultSet rs=null;
+		String query="select * from subjectlist";
+		try {
+			ps=con.prepareStatement(query);
+			rs=ps.executeQuery();
+			
+			while(rs.next())
+			{
+				model=new ClassModel();
+				model.setSubjectid(rs.getString("subjectid"));
+				model.setSubjectname(rs.getString("subjectname"));
+				model.setSubjecttype(rs.getString("subjecttype"));
+				list.add(model);
+			}
+			
+			if(list.size()>0)
+			{
+				return list;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
+
 }
