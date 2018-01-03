@@ -8,8 +8,10 @@ ResultSet housegroup=s.gethousegroup();ResultSet caste=s.getcaste();
 ResultSet specialinterest=s.getspecialinterest();
 ResultSet classlist=s.selectclass();
 ResultSet examtype=s.selectexamtype();%>
-<link rel="import" href="include.jsp">
-<div class="background">
+<link rel="import" href="include1.jsp">
+<html>
+	<head></head>
+	<body class="background">
 <div class="breadcrumb-line">
 	<nav aria-label="breadcrumb" role="navigation">
 	  <ol class="breadcrumb">
@@ -178,19 +180,7 @@ ResultSet examtype=s.selectexamtype();%>
 			</div>
   		</div>
 </div>
-</div>
-<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-body">
-          <p>${msg}</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-</div>
+<jsp:include page="/msgmodal"></jsp:include>
 <script>
 <%if(request.getAttribute("msg")!=null){%>
 $('#myModal').modal('show');
@@ -200,4 +190,6 @@ $('#myModal').modal('show');
 	});
 	$('[data-toggle="tooltip"]').tooltip();   
 	</script>
+</body>
+</html>
 <%}%>

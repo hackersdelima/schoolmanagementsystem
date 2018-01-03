@@ -8,9 +8,12 @@ ResultSet language=s.getlanguage(); ResultSet caste=s.getcaste();
 ResultSet section=s.getsection();ResultSet housegroup=s.gethousegroup();
 ResultSet specialinterest=s.getspecialinterest();
 ResultSet classlist=s.selectclass();%>
-
-<div class="background">
-   		<div class="breadcrumb-line">
+<link rel="import" href="include1.jsp">
+<html>
+	<head>
+	</head>
+	<body class="background">
+		<div class="breadcrumb-line">
 			<nav aria-label="breadcrumb" role="navigation">
 			  <ol class="breadcrumb">
 			    <li class="breadcrumb-item"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;<a href="#">Home</a></li>
@@ -20,7 +23,7 @@ ResultSet classlist=s.selectclass();%>
 			</nav>
 		</div>
 
-	<div class="panel panel-default" style="width:90%; margin:auto;" >
+	<div class="panel panel-default" style="width:90%;margin:auto">
   		<div class="panel-heading"><h4><strong>Student Admission</strong></h4>
   		<form method="post" action="studentregistration" id="form"></form>
 		<button type="submit" class="btn btn-success "  form="form"><i class="fa fa-check"></i> SUBMIT</button>
@@ -636,19 +639,8 @@ ResultSet classlist=s.selectclass();%>
 			</div>
   		</div>
 	</div>
-</div>
-<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-body">
-          <p>${msg}</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-</div>
+
+<jsp:include page="/msgmodal"></jsp:include>
 	<script>
 	<%if(request.getAttribute("msg")!=null){%>
 	   $('#myModal').modal('show');
@@ -658,5 +650,8 @@ ResultSet classlist=s.selectclass();%>
 	    return confirm('CONFIRM REGISTRATION?'); // return false to cancel form action
 	});
 	</script>
+	</body>
+</html>
+   		
 	
 	<%}%>

@@ -5,8 +5,11 @@
 	%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<link rel="import" href="include.jsp">
-<div class="background">
+<link rel="import" href="include1.jsp">
+<html >
+<head></head>
+
+<body class="background" >
 <div class="breadcrumb-line">
 	<nav aria-label="breadcrumb" role="navigation">
 	  <ol class="breadcrumb">
@@ -18,7 +21,7 @@
 </div>
 <div class="row">
 <div class="col-sm-2">
-<div class="panel panel-default" style="width:100%;">
+<div class="panel panel-default" >
 	<div class="panel-heading"><h4 class="panel-title"><strong>Specific Search</strong></h4></div>
 	<div class="panel-body">
 		<table cellpadding="3" cellspacing="0" border="0" >
@@ -38,7 +41,7 @@
 </div>
 </div>
 <div class="col-sm-10">
-<div class="panel panel-default" style="width:100%;">
+<div class="panel panel-default" >
 	<div class="panel-heading"><h4 class="panel-title"><strong>Student List</strong></h4>
 	</div>
 	<div class="panel-body">
@@ -86,7 +89,6 @@
 </div>
 </div>
 </div>
-</div>
 <jsp:include page="/msgmodal"></jsp:include>
 <script>
 
@@ -114,4 +116,6 @@ $(document).ready(function() {
     } );
 } );
 </script>
+</body>
+</html>
 <%}%>

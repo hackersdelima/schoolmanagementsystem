@@ -4,8 +4,9 @@
 <%if((session.getAttribute("userdetail"))!=null){
 	StudentOperations s=new StudentOperations();
 	ResultSet subjects=s.selectsubject();%>
-<link rel="import" href="include.jsp">
-<div class="background">
+<link rel="import" href="include1.jsp">
+<body class="background">
+
 <div class="breadcrumb-line">
 	<nav aria-label="breadcrumb" role="navigation">
 	  <ol class="breadcrumb">
@@ -72,19 +73,7 @@
 	</div>
 
 </div>
-</div>
-<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-body">
-          <p>${msg}</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-</div>
+<jsp:include page="/msgmodal"></jsp:include>
 <script>
 $(document).ready(function() {
 	<%if(request.getAttribute("msg")!=null){%>

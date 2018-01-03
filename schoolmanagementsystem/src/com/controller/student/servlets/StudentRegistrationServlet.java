@@ -96,7 +96,7 @@ public class StudentRegistrationServlet extends HttpServlet {
 				o.insertlocalguardiandetail1(s, studentid);
 				o.insertlocalguardiandetail2(s, studentid);
 				request.setAttribute("msg", "Successful!");
-				RequestDispatcher rd=request.getRequestDispatcher("studentregistrationjsp");
+				RequestDispatcher rd=request.getRequestDispatcher("studentadmission.click");
 				rd.forward(request,response);
 		}
 		else
