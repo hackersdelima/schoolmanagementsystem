@@ -1,10 +1,12 @@
 <%@page import="com.controller.student.classes.StudentOperations" %>
 <%@page import="java.util.*" %>
 <%@page import="java.sql.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%if((session.getAttribute("userdetail"))!=null){
 	StudentOperations s=new StudentOperations();
 	ResultSet subjects=s.selectsubject();
 	ResultSet section=s.getsection();%>
+
 <link rel="import" href="include1.jsp">
 <body class="background">
 <div class="breadcrumb-line">
@@ -52,6 +54,7 @@
 				<table class="table table-striped table-bordered table-hover display" cellspacing="0" width="100%" id="table" >
 										<thead>
 											<tr>
+												<th>S.no</th>
 												<th>NAME</th>
 												<th>ROLL NO</th>
 												<th>CLASS</th>
@@ -62,19 +65,20 @@
 										</thead>
 										<tbody id="example">
 			<%
-			ResultSet rs=s.studentDetails();
-			while(rs.next())
-			{
+			int sn=1;
 			%>
+											<c:forEach items="${slist }" var="s">		
 											<tr>
-												<td><%=rs.getString("studentname") %></td>
-												<td><%=rs.getString("rollno") %></td>
-												<td><%=rs.getString("admissionclass") %></td>
-												<td><%=rs.getString("section") %></td>
-												<td><%=rs.getString("studentid") %></td>
+												<th scope="row"><%=sn %></th>
+												<td>${s.studentname }</td>
+												<td>${s.rollno }</td>
+												<td>${s.admissionclass }</td>
+												<td>${s.section }</td>
+												<td>${s.studentid }</td>
 												<td></td>
 											</tr>
-											<%} %>
+											<%sn++; %>
+											</c:forEach>
 										</tbody>
 				</table>
 			</div>

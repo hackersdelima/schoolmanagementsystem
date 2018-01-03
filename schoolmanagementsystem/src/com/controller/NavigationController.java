@@ -53,6 +53,9 @@ public class NavigationController extends HttpServlet {
 			rd.forward(request, response);
 		}
 		else if(uri.endsWith("subjectassign.click")){
+			StudentOperations s=new StudentOperations();
+			List<StudentModel> list=s.studentDetails();
+			request.setAttribute("slist", list);
 			RequestDispatcher rd=request.getRequestDispatcher("subjectassign");
 			rd.forward(request, response);
 		}

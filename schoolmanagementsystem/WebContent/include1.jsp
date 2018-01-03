@@ -7,6 +7,13 @@
 <title>Insert title here</title>
 <!-- Bootstrap -->
     <link href="template/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Datatables -->
+    <link href="template/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="template/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="template/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="template/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="template/css/scroller.bootstrap.min.css" rel="stylesheet">
+    
     <!-- Font Awesome -->
     <link href="template/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
@@ -24,6 +31,22 @@
     <script src="template/js/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="template/js/bootstrap.min.js"></script>
+     <!-- Datatables -->
+    <script src="template/js/jquery.dataTables.min.js"></script>
+    <script src="template/js/dataTables.bootstrap.min.js"></script>
+    <script src="template/js/dataTables.buttons.min.js"></script>
+    <script src="template/js/buttons.bootstrap.min.js"></script>
+    <script src="template/js/buttons.flash.min.js"></script>
+    <script src="template/js/buttons.html5.min.js"></script>
+    <script src="template/js/buttons.print.min.js"></script>
+    <script src="template/js/dataTables.fixedHeader.min.js"></script>
+    <script src="template/js/dataTables.keyTable.min.js"></script>
+    <script src="template/js/dataTables.responsive.min.js"></script>
+    <script src="template/js/responsive.bootstrap.js"></script>
+    <script src="template/js/dataTables.scroller.min.js"></script>
+    <script src="template/js/jszip.min.js"></script>
+    <script src="template/js/pdfmake.min.js"></script>
+    <script src="template/js/vfs_fonts.js"></script>
     <!-- FastClick -->
     <script src="template/js/fastclick.js"></script>
     <!-- NProgress -->
