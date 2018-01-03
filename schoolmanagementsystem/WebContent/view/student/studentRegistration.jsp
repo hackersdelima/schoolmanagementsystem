@@ -8,7 +8,6 @@ ResultSet language=s.getlanguage(); ResultSet caste=s.getcaste();
 ResultSet section=s.getsection();ResultSet housegroup=s.gethousegroup();
 ResultSet specialinterest=s.getspecialinterest();
 ResultSet classlist=s.selectclass();%>
-<link rel="import" href="include.jsp">
 
 <div class="background">
    		<div class="breadcrumb-line">

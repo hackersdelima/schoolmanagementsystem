@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@page import='java.sql.*' %>
@@ -5,242 +6,178 @@
 <%if((session.getAttribute("userdetail"))!=null){
 	UserModel userdetail=(UserModel)session.getAttribute("userdetail");
 	%>
-<!DOCTYPE html>
-<html lang="en-US" ng-app="myApp">
-<head>
-	<link rel="import" href="include.jsp">
-</head>
-	<body   class="hold-transition skin-blue sidebar-mini" >
-	<div class="wrapper"  >
-	  <header class="main-header">
-	    <!-- Logo -->
-	    <a href="index2.html" class="logo">
-	      <!-- mini logo for sidebar mini 50x50 pixels -->
-	      <span class="logo-mini"><b>DN</b></span>
-	      <!-- logo for regular state and mobile devices -->
-	      <span class="logo-lg"><b><%=userdetail.getUsername()%></b>&nbsp;Digi-Nepal</span>
-	    </a>
-	    <!-- Header Navbar: style can be found in header.less -->
-	    <nav class="navbar navbar-static-top">
-	      <!-- Sidebar toggle button-->
-	      <a  class="sidebar-toggle" data-toggle="push-menu" role="button">
-	        <span class="sr-only">Toggle navigation</span>
-	      </a>
-	      <span class="navbar-text bg-info"><strong>Academic year (2017)</strong></span>
-	      <div class="navbar-custom-menu">
-	        <ul class="nav navbar-nav">
-	          <!-- Messages: style can be found in dropdown.less-->
-	          <li class="dropdown messages-menu">
-	            <a class="dropdown-toggle clickable" data-toggle="dropdown">
-	              <i class="fa fa-envelope-o"></i>
-	              <span class="label label-success">1</span>
-	            </a>
-	            <ul class="dropdown-menu">
-	              <li class="header">You have 1 messages</li>
-	              <li>
-	                <!-- inner menu: contains the actual data -->
-	                <ul class="menu">
-	                  <li>
-	                    <a>
-	                      <div class="pull-left">
-	                        <a href="#"><i class="fa fa-user"></i> Shishir Karki</a>
-	                      </div>
-	                     
-	                    </a>
-	                  </li>
-	                </ul>
-	              </li>
-	              <li class="footer"><a href="#">See All Messages</a></li>
-	            </ul>
-	          </li>
-	          <!-- Notifications: style can be found in dropdown.less -->
-	          <li class="dropdown notifications-menu">
-	            <a class="dropdown-toggle clickable" data-toggle="dropdown">
-	              <i class="fa fa-bell-o"></i>
-	              <span class="label label-warning">1</span>
-	            </a>
-	            <ul class="dropdown-menu">
-	              <li class="header">You have 1 notifications</li>
-	              <li>
-	                <!-- inner menu: contains the actual data -->
-	                <ul class="menu">
-	                  <li>
-	                    <a href="#">
-	                      <i class="fa fa-users text-aqua"></i> 5 new students added today
-	                    </a>
-	                  </li>
-	                  
-	                </ul>
-	              </li>
-	              <li class="footer"><a class="clickable">View all</a></li>
-	            </ul>
-	          </li>
-	          <!-- Tasks: style can be found in dropdown.less -->
-	          
-	          <!-- User Account: style can be found in dropdown.less -->
-	          <li class="dropdown user user-menu">
-	            <a class="dropdown-toggle clickable" data-toggle="dropdown">
-	              <i class="fa fa-user"></i>
-	              <span class="hidden-xs"><%=userdetail.getUsername() %></span>
-	            </a>
-	            <ul class="dropdown-menu">
-	              <!-- Menu Body -->
-	              <li class="user-body">
-	                <div class="row">
-	                  <div class="col-xs-4 text-center">
-	                    <a class="clickable">Setting1</a>
-	                  </div>
-	                  <div class="col-xs-4 text-center">
-	                    <a class="clickable">Setting2</a>
-	                  </div>
-	                  <div class="col-xs-4 text-center">
-	                    <a class="clickable">Setting3</a>
-	                  </div>
-	                </div>
-	                <!-- /.row -->
-	              </li>
-	              <!-- Menu Footer-->
-	              <li class="user-footer">
-	                <div class="pull-left">
-	                  <a  class="btn btn-default btn-flat">Profile</a>
-	                </div>
-	                <div class="pull-right">
-	                  <a href="logout" class="btn btn-default btn-flat">Sign out</a>
-	                </div>
-	              </li>
-	            </ul>
-	          </li>
-	        </ul>
-	      </div>
-	    </nav>
-	  </header>
-	  
-	  <!-- Left side column. contains the logo and sidebar -->
-	  <aside class="main-sidebar">
-	    <!-- sidebar: style can be found in sidebar.less -->
-	    <section class="sidebar">
-	      <!-- Sidebar user panel -->
-	      <div class="user-panel">
-	        <div class="pull-left image">
-	        <h4><i class="fa fa-user"></i></h4>
-	        </div>
-	        <div class="pull-left info">
-	          <p><%=userdetail.getUsername() %></p>
-	          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-	        </div>
-	      </div>
-	      <!-- search form -->
-	      <form action="" method="get" class="sidebar-form">
-	        <div class="input-group">
-	          <input type="text" name="q" class="form-control" placeholder="Search...">
-	          <span class="input-group-btn">
-	                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-	                </button>
-	              </span>
-	        </div>
-	      </form>
-	      <!-- /.search form -->
-	      <!-- sidebar menu: : style can be found in sidebar.less -->
-	      <ul class="sidebar-menu" data-widget="tree">
-	        <li class="header">MAIN NAVIGATION</li>
-	        <li class="treeview">
-	          <a href="#">
-	            <i class="fa fa-home"></i>
-	            <span>Dashboard</span>
-	            <span class="pull-right-container">
-	              <i class="fa fa-angle-left pull-right"></i>
-	            </span>
-	          </a>
-	          <ul class="treeview-menu">
-				 <li class="header"><a href="dashboard.click" target="iframe_a"><i class="fa fa-circle-o"></i> Dashboard</a></li>            
-	          </ul>
-	        </li>
-	        <li class="treeview">
-	          <a href="#">
-	            <i class="fa fa-user"></i>
-	            <span>Student</span>
-	            <span class="pull-right-container">
-	              <i class="fa fa-angle-left pull-right"></i>
-	            </span>
-	          </a>
-	          <ul class="treeview-menu">
-	            <li><a href="studentadmission.click" target="iframe_a"><i class="fa fa-circle-o"></i> Student Admission</a></li>
-	            <li><a href="studentslist.click" target="iframe_a"><i class="fa fa-circle-o"></i>Students List</a></li>
-	            
-	          </ul>
-	        </li>
-	        <li class="treeview">
-	          <a href="#">
-	            <i class="fa fa-cogs"></i>
-	            <span>Settings</span>
-	            <span class="pull-right-container">
-	              <i class="fa fa-angle-left pull-right"></i>
-	            </span>
-	          </a>
-	          <ul class="treeview-menu">
-	          	<li class="treeview">
-	          		<a href="#">
-				        <i class="fa fa-home"></i> <span>Academic</span>
-				          <span class="pull-right-container">
-				        <i class="fa fa-angle-left pull-right"></i>
-				          </span>
-	         		</a>
-	          		<ul class="treeview-menu">
-	          			 	<li><a href="subjects.click" target="iframe_a"><i class="fa fa-circle-o"></i>Subjects</a></li>
-	               	 		<li><a href="subjectassign.click" target="iframe_a"><i class="fa fa-circle-o"></i> Assign Subjects</a></li>
-	               	 		<li><a href="createexam.click" target="iframe_a"><i class="fa fa-circle-o"></i>Create Exam</a></li>
-	          		 </ul>
-	          	</li>
-	            <li><a href="initialdetails.click" target="iframe_a"><i class="fa fa-circle-o"></i> Add/Edit Initial Details</a></li>
-	            
-	          </ul>
-	        </li>
-	        
-	        <li class="treeview">
-	          <a href="#">
-	            <i class="fa fa-share"></i> <span>Multilevel</span>
-	            <span class="pull-right-container">
-	              <i class="fa fa-angle-left pull-right"></i>
-	            </span>
-	          </a>
-	          <ul class="treeview-menu">
-	            <li class="treeview">
-	              <a href="#"><i class="fa fa-circle-o"></i> Level One
-	                <span class="pull-right-container">
-	                  <i class="fa fa-angle-left pull-right"></i>
-	                </span>
-	              </a>
-	              <ul class="treeview-menu">
-	                <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-	                <li class="treeview">
-	                  <a href="#"><i class="fa fa-circle-o"></i> Level Two
-	                    <span class="pull-right-container">
-	                      <i class="fa fa-angle-left pull-right"></i>
-	                    </span>
-	                  </a>
-	                  <ul class="treeview-menu">
-	                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-	                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-	                  </ul>
-	                </li>
-	              </ul>
-	            </li>
-	          </ul>
-	        </li>
-	       
-	       
-	      </ul>
-	    </section>
-	    <!-- /.sidebar -->
-	  </aside>
-	  
-	  <div class="content-wrapper"  style="height:1400px;">
-	  	<aside style="background-color:#ECF0F5"> 
-  		<iframe height="1300px" width="100%" src="view/dashboard.jsp" id="Iframe" name="iframe_a" >
-		</iframe>
-		</aside>
-	  </div>
-	</div>
-</body>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Digi Nepal | Profile</title>
+
+    <!-- Bootstrap -->
+    <link href="template/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="template/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="template/css/nprogress.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="template/css/custom.min.css" rel="stylesheet">
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="" class="site_title"><i class="fa fa-desktop" aria-hidden="true"></i> <span>Digi Nepal</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <div class="profile_pic">
+                <img src="template/images/user.jpg" alt="..." class="img-circle profile_img">
+              </div>
+              <div class="profile_info">
+                <span>Welcome,</span>
+                <h2><%=userdetail.getUsername()%></h2>
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>General</h3>
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="#">Dashboard</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-edit"></i> Student <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a class="studentadmission">Student Admission</a></li>
+                      <li><a href="studentslist.click" >Students List</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="menu_section">
+                <h3>Settings</h3>
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-sitemap"></i> Settings <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a>Academic Settings<span class="fa fa-chevron-down"></span></a>
+                          <ul class="nav child_menu">
+                            <li class="sub_menu"><a href="subjects.click">Subjects</a>
+                            </li>
+                            <li><a href="subjectassign.click">Assign Subjects</a>
+                            </li>
+                            <li><a href="createexam.click">Create Exam</a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a href="initialdetails.click">Set Initial Details</a>
+                        </li>
+                    </ul>
+                  </li>                  
+                </ul>
+              </div>
+
+            </div>
+            <!-- /sidebar menu -->
+
+            <!-- /menu footer buttons -->
+            <div class="sidebar-footer hidden-small">
+              <a data-toggle="tooltip" data-placement="top" title="Settings">
+                <i class="fa fa-cog" aria-hidden="true"></i>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                <i class="fa fa-arrows-alt" aria-hidden="true"></i>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Lock">
+                <i class="fa fa-eye-slash" aria-hidden="true"></i>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="logout">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+              </a>
+            </div>
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="template/images/user.jpg" alt=""><%=userdetail.getUsername()%>
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li><a href="javascript:;"> Profile</a></li>
+                    <li>
+                      <a href="javascript:;">
+                        <span>Settings</span>
+                      </a>
+                    </li>
+                    <li><a href="javascript:;">Help</a></li>
+                    <li><a href="logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col pagecontent" role="main">
+          
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            Copyright 2018 <a href="https://diginepal.com.np">Digi-Nepal</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="template/js/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="template/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="template/js/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="template/js/nprogress.js"></script>
+    
+    <!-- Custom Theme Scripts -->
+    <script src="template/js/custom.min.js"></script>
+    <script type="text/javascript">
+    $(".studentadmission").click(function(){
+        $(".pagecontent").load("studentadmission.click");
+    });
+    </script>
+  </body>
 </html>
 <%}else{out.println("No User Session Found!");} %>

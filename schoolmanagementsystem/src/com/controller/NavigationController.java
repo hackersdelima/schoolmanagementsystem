@@ -34,7 +34,7 @@ public class NavigationController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String uri=request.getRequestURI();
 		if(uri.endsWith("studentadmission.click")){
-			RequestDispatcher rd=request.getRequestDispatcher("studentregistrationjsp");
+			RequestDispatcher rd=request.getRequestDispatcher("view/student/studentRegistration.jsp");
 			rd.forward(request, response);
 		}
 		else if(uri.endsWith("studentslist.click")){
