@@ -1,7 +1,10 @@
 package com.controller;
 
 import java.io.IOException;
+<<<<<<< HEAD
 import java.util.ArrayList;
+=======
+>>>>>>> branch 'master' of https://github.com/hackersdelima/schoolmanagementsystem.git
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -12,9 +15,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+<<<<<<< HEAD
 import com.school.academic.model.ClassModel;
 import com.school.dao.AcademicsSettingsAddDao;
 import com.school.daoImpl.AcademicsSettingsAddDaoImpl;
+=======
+import com.controller.student.classes.StudentOperations;
+import com.school.model.StudentModel;
+>>>>>>> branch 'master' of https://github.com/hackersdelima/schoolmanagementsystem.git
 
 /**
  * Servlet implementation class NavigationController
@@ -36,10 +44,13 @@ public class NavigationController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String uri=request.getRequestURI();
 		if(uri.endsWith("studentadmission.click")){
-			RequestDispatcher rd=request.getRequestDispatcher("studentregistrationjsp");
+			RequestDispatcher rd=request.getRequestDispatcher("view/student/studentRegistration.jsp");
 			rd.forward(request, response);
 		}
 		else if(uri.endsWith("studentslist.click")){
+			StudentOperations s=new StudentOperations();
+			List<StudentModel> list=s.studentDetails();
+			request.setAttribute("slist", list);
 			RequestDispatcher rd=request.getRequestDispatcher("studentslistjsp");
 			rd.forward(request, response);
 		}

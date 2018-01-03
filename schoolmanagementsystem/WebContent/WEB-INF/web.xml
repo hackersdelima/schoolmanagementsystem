@@ -4,7 +4,15 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
- <servlet>
+  <servlet>
+    <servlet-name>msgmodal</servlet-name>
+    <jsp-file>/view/msgmodal.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>msgmodal</servlet-name>
+    <url-pattern>/msgmodal</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>studentregistrationjsp</servlet-name>
     <jsp-file>/view/student/studentRegistration.jsp</jsp-file>
   </servlet>
@@ -128,7 +136,6 @@
     <servlet-name>AddController</servlet-name>
     <url-pattern>*.add</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>NavigationController</display-name>

@@ -1,6 +1,12 @@
 package com.controller.student.classes;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.school.model.StudentModel;
 import com.school.dbconnection.DbConnection;
 //import com.controller.dbconnect.Dbconnect;
 public class StudentOperations {
@@ -163,23 +169,41 @@ public class StudentOperations {
 		
 		return rs;
 	}
-	public ResultSet studentDetails(){
-		ResultSet rs=null;
+	public List<StudentModel> studentDetails(){
+		List<StudentModel> list=new ArrayList<StudentModel>();
+		StudentModel sm=null;
 		String query="select * from studentinfo;";
 		try{
 			conn=DbConnection.getConnection();
 			if(conn!=null){
-				stmt=conn.createStatement();
-				rs=stmt.executeQuery(query);
+				ps=conn.prepareStatement(query);
+				r=ps.executeQuery(query);
+				while(r.next()){
+					sm=new StudentModel();
+					sm.setAdmissionclass(r.getString("admissionclass"));
+					sm.setAdmissiondate(r.getString("admissiondate"));
+					sm.setRollno(r.getString("rollno"));
+					sm.setSection(r.getString("section"));
+					sm.setStudentid(r.getString("studentid"));
+					sm.setStudentname(r.getString("studentname"));
+					list.add(sm);
+				}
+				if(list.size()>0){
+					conn.close();
+					ps=null;
+					r=null;
+					return list;
+				}
 			}
 			else{
 				System.out.println("connection is null");
 			}
+			
 		}
 		catch(Exception e){
 			System.out.println("StudentOperations.studentDetails error"+e);
 		}
-		return rs;
+		return null;
 		
 	}
 	public boolean deletelanguage(String id) {
@@ -507,4 +531,30 @@ public class StudentOperations {
 		}
 		return status;
 	}
+	public boolean deleteStudent(String studentid) {
+		
+		try{
+			String query1="delete from studentinfo where studentid='"+studentid+"'",
+			query2="delete from sbirthcertificatetbl where studentid='"+studentid+"'",
+			query3="delete from sfatherdetailtbl where studentid='"+studentid+"'",
+			query4="delete from slocalguardiantbl where studentid='"+studentid+"'",
+			query5="delete from smotherdetailtbl where studentid='"+studentid+"'";
+			conn=DbConnection.getConnection();
+			stmt=conn.createStatement();
+			stmt.addBatch(query1);
+			stmt.addBatch(query2);
+			stmt.addBatch(query3);
+			stmt.addBatch(query4);
+			stmt.addBatch(query5);
+			int i[]=stmt.executeBatch();
+			if(i.length==5){
+				conn.close();
+				ps=null;
+				return true;
+			}
+		}
+		catch(Exception e){}
+		return false;
+	}
+	
 }

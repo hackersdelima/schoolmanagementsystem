@@ -2,8 +2,7 @@
 <%@page import="java.util.*" %>
 <%@page import="java.sql.*" %>
 <%if((session.getAttribute("userdetail"))!=null){
-	ResultSet ud=(ResultSet)session.getAttribute("userdetail");
-	StudentOperations s=new StudentOperations(ud.getString("companydb"));
+	StudentOperations s=new StudentOperations();
 	ResultSet subjects=s.selectsubject();%>
 <link rel="import" href="include.jsp">
 <div class="background">
@@ -26,7 +25,6 @@
 				<h4 class="panel-title"><strong>ADD SUBJECTS</strong></h4>
 			</div>
 			<div class="panel-body">
-				<input type="hidden" name="companydb" value="<%=ud.getString("companydb")%>" form="form">
 				<h5>Subject Name *</h5>
 			   	<input type="text" class="form-control" name="subjectname" form="form" required>
 			   	<br>
