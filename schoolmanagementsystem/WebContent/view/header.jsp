@@ -65,8 +65,8 @@
                   </li>
                   <li><a><i class="fa fa-edit"></i> Student <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a class="studentadmission">Student Admission</a></li>
-                      <li><a href="studentslist.click" >Students List</a></li>
+                      <li><a href="studentadmission.click" target="iframe_a">Student Admission</a></li>
+                      <li><a href="studentslist.click" target="iframe_a">Students List</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -78,15 +78,15 @@
                     <ul class="nav child_menu">
                         <li><a>Academic Settings<span class="fa fa-chevron-down"></span></a>
                           <ul class="nav child_menu">
-                            <li class="sub_menu"><a href="subjects.click">Subjects</a>
+                            <li ><a href="subjects.click" target="iframe_a">Subjects</a>
                             </li>
-                            <li><a href="subjectassign.click">Assign Subjects</a>
+                            <li><a href="subjectassign.click" target="iframe_a">Assign Subjects</a>
                             </li>
-                            <li><a href="createexam.click">Create Exam</a>
+                            <li><a href="createexam.click" target="iframe_a">Create Exam</a>
                             </li>
                           </ul>
                         </li>
-                        <li><a href="initialdetails.click">Set Initial Details</a>
+                        <li><a href="initialdetails.click" target="iframe_a">Set Initial Details</a>
                         </li>
                     </ul>
                   </li>                  
@@ -101,7 +101,7 @@
               <a data-toggle="tooltip" data-placement="top" title="Settings">
                 <i class="fa fa-cog" aria-hidden="true"></i>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen" id="fullscreen">
                 <i class="fa fa-arrows-alt" aria-hidden="true"></i>
               </a>
               <a data-toggle="tooltip" data-placement="top" title="Lock">
@@ -147,9 +147,10 @@
         <!-- /top navigation -->
 
         <!-- page content -->
-        <div class="right_col pagecontent" role="main">
-          
-        </div>
+     <div class="right_col" role="main">
+          <iframe    height="1400px" width="100%" src="" id="Iframe" name="iframe_a"  style="border:none;" >
+		</iframe>
+     </div>
         <!-- /page content -->
 
         <!-- footer content -->
@@ -174,11 +175,7 @@
     
     <!-- Custom Theme Scripts -->
     <script src="template/js/custom.min.js"></script>
-    <script type="text/javascript">
-    $(".studentadmission").click(function(){
-        $(".pagecontent").load("studentadmission.click");
-    });
-    </script>
+    
   </body>
 </html>
 <%}else{out.println("No User Session Found!");} %>
