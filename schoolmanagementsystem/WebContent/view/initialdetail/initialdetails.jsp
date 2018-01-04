@@ -32,7 +32,7 @@
 
 		<div class="x_panel">
 			<div class="x_title">
-				<h2>Insert Initial Details</h2>
+				<h2>ADD INITIAL DETAILS</h2>
 				<ul class="nav navbar-right panel_toolbox">
 					<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 					</li>
@@ -166,7 +166,7 @@
 
 		<div class="x_panel">
 			<div class="x_title">
-				<h2>Existing Initial Details</h2>
+				<h2>AVAILABLE INITIAL DETAILS</h2>
 				<ul class="nav navbar-right panel_toolbox">
 					<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 					</li>
@@ -175,7 +175,7 @@
 				<div class="clearfix"></div>
 			</div>
 			<div class="x_content">
-				<table id="datatable" class="table table-striped table-bordered"
+				<table class="table jambo_table table-striped table-bordered"
 					style="font-size: 95%;">
 					<thead>
 						<tr>
