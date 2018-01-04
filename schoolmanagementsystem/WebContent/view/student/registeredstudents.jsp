@@ -64,7 +64,7 @@
 					<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 					</li>
 				</ul>
-				<button class="pull-right btn btn-primary">Add Student</button>
+				<a type="button" class="btn btn-info btn-sm pull-right" href="studentadmission.click">Add Student</a>
 				<div class="clearfix"></div>
 			</div>
 			<div class="x_content">
@@ -97,7 +97,9 @@
 								<td>${s.section }</td>
 								<td>${s.studentid }</td>
 								<td>${s.admissiondate }</td>
-								<td><a href=""><i class="fa fa-pencil-square-o"
+								<td>
+								<a data-value="${s.studentid }" class="viewdetail"><i class="fa fa-eye" aria-hidden="true" style="color:blue"></i></a>&nbsp;&nbsp;&nbsp;
+								<a href=""><i class="fa fa-pencil-square-o"
 										aria-hidden="true" style="color: blue;"></i></a>&nbsp;&nbsp;&nbsp;<a
 									href="student.del?id=${s.studentid }"><i
 										class="fa fa-trash" aria-hidden="true" style="color: red;"></i></a>
@@ -110,7 +112,15 @@
 			</div>
 		</div>
 	</div>
+<div class="modal fade bs-example-modal-lg" id="studentDetailModal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content studentdetail">
 
+                        
+
+                      </div>
+                    </div>
+                  </div>
 	<jsp:include page="/msgmodal"></jsp:include>
 	<script>
 
@@ -134,6 +144,24 @@ $(document).ready(function() {
         filterColumn( $(this).parents('tr').attr('data-column') );
     } );
 } );
+
+$(".viewdetail").click(function()
+		{
+		var id=$(this).data("value");
+		var dataString = 'id='+ id;
+		$.ajax
+		({
+		type: "POST",
+		url: "view/modals/studentdetailmodal.jsp",
+		data: dataString,
+		cache: false,
+		success: function(html)
+		{
+		$(".studentdetail").html(html);
+		$('#studentDetailModal').modal('show');
+		} 
+		});
+});
 </script>
 </body>
 </html>
