@@ -80,6 +80,7 @@ tfoot input {
 					class="table jambo_table table-striped table-bordered dt-responsive nowrap display"
 					cellspacing="0" width="100%" style="font-size: 95%;'">
 					<thead>
+					
 						<tr class="headings">
 							<th>S No.</th>
 							<th>STUDENT NAME</th>
@@ -101,7 +102,6 @@ tfoot input {
                 <th>Admission No</th>
                 <th>Admission Date</th>
                 <th></th>
-              
             </tr>
         </tfoot>
 					<tbody>
@@ -152,6 +152,7 @@ $('#myModal').modal('show');
 
 $(document).ready(function() {
     // Setup - add a text input to each footer cell
+    $("tfoot").css({"display":"table-header-group"});
     $('#datatable-buttons tfoot th').each( function () {
         var title = $(this).text();
         $(this).html( '<input type="text"  placeholder="Search '+title+'" />' );
