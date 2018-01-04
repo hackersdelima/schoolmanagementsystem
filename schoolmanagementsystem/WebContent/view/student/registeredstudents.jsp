@@ -97,20 +97,11 @@
 								<td>${s.section }</td>
 								<td>${s.studentid }</td>
 								<td>${s.admissiondate }</td>
-								<td>
-									<div class="btn-group">
-										<button data-toggle="dropdown"
-											class="btn btn-success dropdown-toggle btn-xs" type="button">
-											Action <span class="caret"></span>
-										</button>
-										<ul role="menu" class="dropdown-menu">
-											<li><a href="">Edit</a></li>
-											<li><a href="student.del?id=${s.studentid }">Remove</a></li>
-
-										</ul>
-									</div>
+								<td><a href=""><i class="fa fa-pencil-square-o"
+										aria-hidden="true" style="color: blue;"></i></a>&nbsp;&nbsp;&nbsp;<a
+									href="student.del?id=${s.studentid }"><i
+										class="fa fa-trash" aria-hidden="true" style="color: red;"></i></a>
 								</td>
-
 							</tr>
 							<%sn++;%>
 						</c:forEach>

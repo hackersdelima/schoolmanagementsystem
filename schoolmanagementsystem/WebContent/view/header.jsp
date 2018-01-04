@@ -59,7 +59,7 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="#">Dashboard</a></li>
+                      <li><a href="view/dashboard.jsp" target="iframe_a">Dashboard</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-edit"></i> Student <span class="fa fa-chevron-down"></span></a>
@@ -147,7 +147,7 @@
 
         <!-- page content -->
      <div class="right_col" role="main">
-          <iframe    height="1400px" width="100%" src="" id="Iframe" name="iframe_a"  style="border:none;" >
+          <iframe    height="1400px" width="100%" src="view/dashboard.jsp" id="Iframe" name="iframe_a"  style="border:none;" >
 		</iframe>
      </div>
         <!-- /page content -->
