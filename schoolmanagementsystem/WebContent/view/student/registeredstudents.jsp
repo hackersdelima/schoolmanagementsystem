@@ -7,7 +7,14 @@
 
 <link rel="import" href="include1.jsp">
 <html>
-<head></head>
+<head>
+<style type="text/css">
+tfoot input {
+        width: 100%;
+        padding: 3px;
+        box-sizing: border-box;
+    }
+    </style></head>
 
 <body class="background">
 	<div class="breadcrumb-line">
@@ -22,7 +29,7 @@
 		</nav>
 	</div>
 
-	<div class="col-md-12 col-sm-12 col-xs-12">
+	<!-- <div class="col-md-12 col-sm-12 col-xs-12">
 
 		<div class="x_panel">
 			<div class="x_title">
@@ -55,7 +62,7 @@
 				</table>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<div class="x_panel">
 			<div class="x_title">
@@ -70,7 +77,7 @@
 			<div class="x_content">
 
 				<table id="datatable-buttons"
-					class="table jambo_table table-striped table-bordered dt-responsive nowrap"
+					class="table jambo_table table-striped table-bordered dt-responsive nowrap display"
 					cellspacing="0" width="100%" style="font-size: 95%;'">
 					<thead>
 						<tr class="headings">
@@ -84,6 +91,18 @@
 							<th><i class="fa fa-cog" aria-hidden="true"></i></th>
 						</tr>
 					</thead>
+					 <tfoot>
+            <tr>
+                <th>S No.</th>
+                <th>Student Name</th>
+                <th>Roll No</th>
+                <th>Class</th>
+                <th>Section</th>
+                <th>Admission No</th>
+                <th>Admission Date</th>
+                <th></th>
+            </tr>
+        </tfoot>
 					<tbody>
 						<%
 			int sn=1;
@@ -122,29 +141,37 @@
                     </div>
                   </div>
 	<jsp:include page="/msgmodal"></jsp:include>
+	
+	
 	<script>
 
 <%if(request.getAttribute("msg")!=null){%>
 $('#myModal').modal('show');
 <%}%> 
-function filterColumn ( i ) {
-    $('#datatable-buttons').DataTable().column( i ).search(
-        $('#col'+i+'_filter').val(),
-        $('#col'+i+'_regex').prop('checked'),
-        $('#col'+i+'_smart').prop('checked')
-    ).draw();
-}
- 
+
 $(document).ready(function() {
-    $('input.global_filter').on( 'keyup click', function () {
-        filterGlobal();
+    // Setup - add a text input to each footer cell
+    $('#datatable-buttons tfoot th').each( function () {
+        var title = $(this).text();
+        $(this).html( '<input type="text"  placeholder="Search '+title+'" />' );
     } );
  
-    $('input.column_filter').on( 'keyup click', function () {
-        filterColumn( $(this).parents('tr').attr('data-column') );
+    // DataTable
+    var table = $('#datatable-buttons').DataTable();
+ 
+    // Apply the search
+    table.columns().every( function () {
+        var that = this;
+ 
+        $( 'input', this.footer() ).on( 'keyup change', function () {
+            if ( that.search() !== this.value ) {
+                that
+                    .search( this.value )
+                    .draw();
+            }
+        } );
     } );
 } );
-
 $(".viewdetail").click(function()
 		{
 		var id=$(this).data("value");
