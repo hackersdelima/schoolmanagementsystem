@@ -100,6 +100,7 @@ tfoot input {
                 <th>Section</th>
                 <th>Admission No</th>
                 <th>Admission Date</th>
+                <th></th>
               
             </tr>
         </tfoot>
