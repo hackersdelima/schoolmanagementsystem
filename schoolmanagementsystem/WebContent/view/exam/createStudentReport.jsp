@@ -34,7 +34,7 @@
 								<h6>
 									<strong>Class</strong>
 								</h6>
-								<select class="form-control" name="class" id="class" required>
+								<select class="form-control" name="classid" id="class" required>
 									<option value="">Select Class</option>
 									<%
 										while (classlist.next()) {
@@ -49,7 +49,7 @@
 								<h6>
 									<strong>Section</strong>
 								</h6>
-								<select class="form-control" name="section" required>
+								<select class="form-control" name="sectionid" required>
 									<option value="">Select Section</option>
 									<%
 										while (section.next()) {

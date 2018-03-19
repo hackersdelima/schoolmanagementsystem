@@ -1,6 +1,8 @@
 package com.controller.action;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -11,6 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.controller.student.classes.StudentOperations;
+import com.school.dao.StudentDao;
+import com.school.daoImpl.StudentDaoImpl;
+import com.school.model.StudentModel;
 import com.school.model.Subjects;
 
 /**
@@ -54,27 +59,56 @@ public class StudentAction extends HttpServlet {
 
 	// exam management system
 	public void insertStudentMarks(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("reached");
 		Subjects s = new Subjects();
-		String classid = request.getParameter("classid"), sectionid = request.getParameter("sectionid"),
-				studentid = request.getParameter("studentid");
+		StudentDao dao=new StudentDaoImpl();
+		
+		String classid = request.getParameter("classid"), sectionid = request.getParameter("sectionid");
+		String rollno=request.getParameter("rollno");
 
 		String[] thmarks = request.getParameterValues("thmarks"), prmarks = request.getParameterValues("prmarks"),
 				totalmarks = request.getParameterValues("totalmarks"),
-				subjecttype = request.getParameterValues("subtype"), subid = request.getParameterValues("subid");
+				subjecttype = request.getParameterValues("subtype"), subid = request.getParameterValues("subid"),
+				remarks=request.getParameterValues("remarks"),examtype=request.getParameterValues("examtypeid"),
+				totalgrade=request.getParameterValues("totalgrade");
+		
+	
+		
 		s.setClassid(classid);
 		s.setSectionid(sectionid);
-		s.setStudentid(studentid);
-
+	
+		
+		StudentModel student=dao.getStudentId(classid,sectionid,rollno);
+		s.setStudentid(student.getStudentid());
+		boolean status=false;
+		
+			List<String> statuslist=new ArrayList<String>();
 		for (int i = 0; i < subid.length; i++) {
 			s.setSubjectid(subid[i]);
 			s.setSubjecttype(subjecttype[i]);
 			s.setThmarks(thmarks[i]);
 			s.setPrmarks(prmarks[i]);
 			s.setTotalmarks(totalmarks[i]);
-			
-			System.out.println(subid[i]);
+			s.setExamtype(examtype[i]);
+			s.setRemarks(remarks[i]);
+			s.setTotalgrade(totalgrade[i]);
+			//query
+		
+			status=dao.insertStudentMarks(s);
+			//statuslist.add(status.toString());
+			if(status){
+				statuslist.add("true");
+			}
+			else{
+				statuslist.add("false");
+			}
 		}
+		if(statuslist.contains("false")){
+			request.setAttribute("msg", "Unsuccessful");
+		}
+		else{
+			request.setAttribute("msg", "successful");
+		}
+		//dispatcher
 	}
 
 }
