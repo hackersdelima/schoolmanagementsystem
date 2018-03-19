@@ -1,7 +1,63 @@
 package com.school.model;
 
 public class Subjects {
-private String subjectid, subjectname, subjecttype, subjectcode;
+private String subjectid, subjectname, subjecttype, subjectcode, classid, sectionid, studentid, subjecttypeid, thmarks, prmarks, totalmarks;
+
+public String getClassid() {
+	return classid;
+}
+
+public void setClassid(String classid) {
+	this.classid = classid;
+}
+
+public String getSectionid() {
+	return sectionid;
+}
+
+public void setSectionid(String sectionid) {
+	this.sectionid = sectionid;
+}
+
+public String getStudentid() {
+	return studentid;
+}
+
+public void setStudentid(String studentid) {
+	this.studentid = studentid;
+}
+
+public String getSubjecttypeid() {
+	return subjecttypeid;
+}
+
+public void setSubjecttypeid(String subjecttypeid) {
+	this.subjecttypeid = subjecttypeid;
+}
+
+public String getThmarks() {
+	return thmarks;
+}
+
+public void setThmarks(String thmarks) {
+	this.thmarks = thmarks;
+}
+
+public String getPrmarks() {
+	return prmarks;
+}
+
+public void setPrmarks(String prmarks) {
+	this.prmarks = prmarks;
+}
+
+public String getTotalmarks() {
+	return totalmarks;
+}
+
+public void setTotalmarks(String totalmarks) {
+	this.totalmarks = totalmarks;
+}
 
 public String getSubjectcode() {
 	return subjectcode;

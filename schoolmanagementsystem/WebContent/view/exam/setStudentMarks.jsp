@@ -15,11 +15,11 @@
 	<tbody>
 	<c:forEach items="${subjectslist }" var="sublist">
 		<tr>
-			<td>${sublist.subjectname }</td>
-			<td>${sublist.subjecttype }</td>
-			<td><input type="text" name="" class="form-control" /></td>
-			<td><input type="text" name="" class="form-control" /></td>
-			<td><input type="text" name="" class="form-control" /></td>
+			<td><input type="text" name="subid" value="${sublist.subjectid }" hidden>${sublist.subjectname }</td>
+			<td><input type="text" name="subtype" value="${sublist.subjecttype }" hidden>${sublist.subjecttype }</td>
+			<td><input type="text" name="thmarks" class="form-control" /></td>
+			<td><input type="text" name="prmarks" class="form-control" /></td>
+			<td><input type="text" name="totalmarks" class="form-control" /></td>
 		</tr>
 	</c:forEach>
 	</tbody>
