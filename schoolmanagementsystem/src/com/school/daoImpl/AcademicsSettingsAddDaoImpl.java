@@ -28,9 +28,11 @@ public class AcademicsSettingsAddDaoImpl implements AcademicsSettingsAddDao {
 		int a;
 		boolean status=false;
 		con=DbConnection.getConnection();
-		String query="insert into course (subjectid,studentid) values('"+m.getSubjectid()+"','"+m.getStudentid()+"')";
+		String query="insert into coursetbl (subjectid,gradeid) values(?,?)";
 		try{
 			ps=con.prepareStatement(query);
+			ps.setString(1, m.getSubjectid());
+			ps.setString(2, m.getClassid());
 			a=ps.executeUpdate();
 			if(a>0){
 				status=true;

@@ -1,7 +1,15 @@
 package com.controller.student.classes;
 
 public class Model {
-	String examname, examtype,startdate, studentid,subjectid,companydb;
+	String examname, examtype,startdate, studentid,subjectid,companydb,classid;
+
+	public String getClassid() {
+		return classid;
+	}
+
+	public void setClassid(String classid) {
+		this.classid = classid;
+	}
 
 	public String getCompanydb() {
 		return companydb;

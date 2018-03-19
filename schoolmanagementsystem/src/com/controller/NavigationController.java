@@ -1,9 +1,8 @@
 package com.controller;
 
 import java.io.IOException;
-
+import java.sql.ResultSet;
 import java.util.ArrayList;
-
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -14,11 +13,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.controller.student.classes.StudentOperations;
 import com.school.academic.model.ClassModel;
 import com.school.dao.AcademicsSettingsAddDao;
+import com.school.dao.DisplayDao;
 import com.school.daoImpl.AcademicsSettingsAddDaoImpl;
-import com.controller.student.classes.StudentOperations;
+import com.school.daoImpl.DisplayDaoImpl;
 import com.school.model.StudentModel;
+import com.school.model.Subjects;
 
 /**
  * Servlet implementation class NavigationController
@@ -86,6 +88,29 @@ public class NavigationController extends HttpServlet {
 			request.setAttribute("classlist", list);
 			request.setAttribute("sublist", sublist);
 			RequestDispatcher rd=request.getRequestDispatcher("view/academics/assigncourse.jsp");
+			rd.forward(request, response);
+		}
+		
+		//examination
+		else if(uri.endsWith("createexam.click")){
+			RequestDispatcher rd=request.getRequestDispatcher("examjsp");
+			rd.forward(request, response);
+		}
+		else if(uri.endsWith("createStudentReport.click")){
+			StudentOperations s = new StudentOperations();
+			ResultSet sectionlist=s.getsection();
+			ResultSet classlist = s.selectclass();
+			request.setAttribute("sectionlist", sectionlist);
+			request.setAttribute("classlist", classlist);
+			RequestDispatcher rd=request.getRequestDispatcher("view/exam/createStudentReport.jsp");
+			rd.forward(request, response);
+		}
+		else if(uri.endsWith("getMarksInputTable.click")){
+			String classid=request.getParameter("id");
+			DisplayDao d=new DisplayDaoImpl();
+			List<Subjects> subjectslist=d.getClassSubjects(classid);
+			request.setAttribute("subjectslist", subjectslist);
+			RequestDispatcher rd=request.getRequestDispatcher("view/exam/setStudentMarks.jsp");
 			rd.forward(request, response);
 		}
 	}

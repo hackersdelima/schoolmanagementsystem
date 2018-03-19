@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 30, 2017 at 08:39 AM
+-- Generation Time: Mar 19, 2018 at 07:11 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -42,14 +42,16 @@ CREATE TABLE IF NOT EXISTS `attendance` (
 CREATE TABLE IF NOT EXISTS `castetbl` (
   `casteid` int(11) NOT NULL,
   `castename` varchar(25) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `castetbl`
 --
 
 INSERT INTO `castetbl` (`casteid`, `castename`) VALUES
-(1, 'Eccccc');
+(1, 'Eccccc'),
+(2, 'hello'),
+(3, 'a');
 
 -- --------------------------------------------------------
 
@@ -76,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `classadmission` (
 CREATE TABLE IF NOT EXISTS `classlist` (
   `classid` bigint(20) NOT NULL,
   `classname` varchar(15) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `classlist`
@@ -84,7 +86,8 @@ CREATE TABLE IF NOT EXISTS `classlist` (
 
 INSERT INTO `classlist` (`classid`, `classname`) VALUES
 (1, 'Class 1'),
-(2, 'final');
+(2, 'final'),
+(3, 'fddd');
 
 -- --------------------------------------------------------
 
@@ -132,6 +135,27 @@ INSERT INTO `course` (`courseid`, `subjectid`, `studentid`) VALUES
 (2, 5, 15),
 (3, 4, 15),
 (4, 5, 15);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `coursetbl`
+--
+
+CREATE TABLE IF NOT EXISTS `coursetbl` (
+  `coursetblid` bigint(20) NOT NULL,
+  `subjectid` bigint(20) DEFAULT NULL,
+  `gradeid` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `coursetbl`
+--
+
+INSERT INTO `coursetbl` (`coursetblid`, `subjectid`, `gradeid`) VALUES
+(1, 5, 2),
+(2, 4, 1),
+(3, 7, 2);
 
 -- --------------------------------------------------------
 
@@ -226,14 +250,16 @@ CREATE TABLE IF NOT EXISTS `feetype` (
 CREATE TABLE IF NOT EXISTS `housegrouptbl` (
   `housegroupid` int(11) NOT NULL,
   `housegroupname` varchar(25) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `housegrouptbl`
 --
 
 INSERT INTO `housegrouptbl` (`housegroupid`, `housegroupname`) VALUES
-(1, 'Hello house');
+(1, 'Hello house'),
+(2, 'House group group'),
+(3, 'a');
 
 -- --------------------------------------------------------
 
@@ -244,7 +270,7 @@ INSERT INTO `housegrouptbl` (`housegroupid`, `housegroupname`) VALUES
 CREATE TABLE IF NOT EXISTS `languagetbl` (
   `languageid` int(11) NOT NULL,
   `languagename` varchar(25) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `languagetbl`
@@ -254,7 +280,8 @@ INSERT INTO `languagetbl` (`languageid`, `languagename`) VALUES
 (1, 'Hindi'),
 (2, 'Hindi'),
 (3, 'Hindiiiiii'),
-(4, 'Hindiiiiiiii');
+(4, 'Hindiiiiiiii'),
+(5, 'Maithili');
 
 -- --------------------------------------------------------
 
@@ -270,7 +297,7 @@ CREATE TABLE IF NOT EXISTS `saddresstbl` (
   `WardNo` int(2) DEFAULT NULL,
   `tole` varchar(30) DEFAULT NULL,
   `tempaddress` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `saddresstbl`
@@ -305,7 +332,14 @@ INSERT INTO `saddresstbl` (`saddressid`, `studentid`, `District`, `VdcMun`, `War
 (26, 28, '', '', 0, '', ''),
 (27, 29, '', '', 0, '', ''),
 (28, 30, '', '', 0, '', ''),
-(29, 31, '', '', 0, '', '');
+(29, 31, '', '', 0, '', ''),
+(30, 32, '', '', 0, '', ''),
+(31, 33, '', '', 0, '', ''),
+(32, 34, '', '', 0, '', ''),
+(33, 35, '', '', 0, '', ''),
+(34, 36, '', '', 0, '', ''),
+(35, 37, '', '', 0, '', ''),
+(36, 38, '', '', 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -320,17 +354,13 @@ CREATE TABLE IF NOT EXISTS `sbirthcertificatetbl` (
   `sbirthcertificateissuedby` varchar(50) DEFAULT NULL,
   `sbirthcertificateissueddate` varchar(10) DEFAULT NULL,
   `sbirthcertificateissueddateen` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sbirthcertificatetbl`
 --
 
 INSERT INTO `sbirthcertificatetbl` (`sbirthcertificateid`, `studentid`, `sbirthcertificateno`, `sbirthcertificateissuedby`, `sbirthcertificateissueddate`, `sbirthcertificateissueddateen`) VALUES
-(1, 1, 'aaaa', '', '', ''),
-(2, 2, '', '', '', ''),
-(3, 3, '', '', '', ''),
-(4, 4, '', '', '', ''),
 (5, 5, '', '', '', ''),
 (6, 6, '', '', '', ''),
 (7, 7, '', '', '', ''),
@@ -357,7 +387,14 @@ INSERT INTO `sbirthcertificatetbl` (`sbirthcertificateid`, `studentid`, `sbirthc
 (28, 28, '', '', '', ''),
 (29, 29, '', '', '2015', ''),
 (30, 30, '', '', '', ''),
-(31, 31, '', '', '', '');
+(31, 31, '', '', '', ''),
+(32, 32, '', '', '', ''),
+(33, 33, '', '', '', ''),
+(34, 34, '', '', '', ''),
+(35, 35, '1', '', '', ''),
+(36, 36, '', '', '', ''),
+(37, 37, '', '', '', ''),
+(38, 38, '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -368,7 +405,7 @@ INSERT INTO `sbirthcertificatetbl` (`sbirthcertificateid`, `studentid`, `sbirthc
 CREATE TABLE IF NOT EXISTS `sectiontbl` (
   `sectionid` int(11) NOT NULL,
   `sectionname` varchar(25) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sectiontbl`
@@ -377,7 +414,9 @@ CREATE TABLE IF NOT EXISTS `sectiontbl` (
 INSERT INTO `sectiontbl` (`sectionid`, `sectionname`) VALUES
 (1, 'fdf'),
 (2, 'fsfs'),
-(3, 'Section Z');
+(3, 'Section Z'),
+(4, 'Section Shishir'),
+(5, 'a');
 
 -- --------------------------------------------------------
 
@@ -431,15 +470,13 @@ CREATE TABLE IF NOT EXISTS `sfatherdetailtbl` (
   `fpassportissuedby` varchar(50) DEFAULT NULL,
   `fpassportissueddate` varchar(10) DEFAULT NULL,
   `fpassportissueddateen` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sfatherdetailtbl`
 --
 
 INSERT INTO `sfatherdetailtbl` (`sfatherdetailid`, `studentid`, `fathername`, `faddress`, `foffice`, `fposition`, `fincome`, `fmobile`, `ftelephone`, `femail`, `fephone`, `fcitizenshipno`, `fcitizenshipissuedby`, `fcitizenshipissueddate`, `fcitizenshipissueddateen`, `flicenseno`, `flicenseissuedby`, `flicenseissueddate`, `flicenseissueddateen`, `fofficialidno`, `fofficialidissuedby`, `fofficialidissueddate`, `fofficialidissueddateen`, `fvoteridno`, `fvoteridissuedby`, `fvoteridissueddate`, `fvoteridissueddateen`, `fpassportno`, `fpassportissuedby`, `fpassportissueddate`, `fpassportissueddateen`) VALUES
-(1, 3, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null'),
-(2, 4, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null'),
 (3, 5, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null'),
 (4, 6, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null'),
 (5, 7, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null'),
@@ -466,7 +503,14 @@ INSERT INTO `sfatherdetailtbl` (`sfatherdetailid`, `studentid`, `fathername`, `f
 (26, 28, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null'),
 (27, 29, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null'),
 (28, 30, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null'),
-(29, 31, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null');
+(29, 31, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null'),
+(30, 32, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null'),
+(31, 33, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null'),
+(32, 34, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null'),
+(33, 35, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null'),
+(34, 36, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null'),
+(35, 37, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null'),
+(36, 38, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null');
 
 -- --------------------------------------------------------
 
@@ -481,17 +525,13 @@ CREATE TABLE IF NOT EXISTS `slocalguardiantbl` (
   `localadd` varchar(50) DEFAULT NULL,
   `relationtype` varchar(20) DEFAULT NULL,
   `localmob` int(10) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `slocalguardiantbl`
 --
 
 INSERT INTO `slocalguardiantbl` (`slocalguardianid`, `studentid`, `localguardianname`, `localadd`, `relationtype`, `localmob`) VALUES
-(1, 3, '', '', '', 0),
-(2, 3, '', 'null', '', 0),
-(3, 4, '', '', '', 0),
-(4, 4, '', 'null', '', 0),
 (5, 5, '', '', '', 0),
 (6, 5, '', 'null', '', 0),
 (7, 6, '', '', '', 0),
@@ -545,7 +585,21 @@ INSERT INTO `slocalguardiantbl` (`slocalguardianid`, `studentid`, `localguardian
 (55, 30, '', '', '', 0),
 (56, 30, '', 'null', '', 0),
 (57, 31, '', '', '', 0),
-(58, 31, '', 'null', '', 0);
+(58, 31, '', 'null', '', 0),
+(59, 32, '', '', '', 0),
+(60, 32, '', 'null', '', 0),
+(61, 33, '', '', '', 0),
+(62, 33, '', 'null', '', 0),
+(63, 34, '', '', '', 0),
+(64, 34, '', 'null', '', 0),
+(65, 35, '', '', '', 0),
+(66, 35, '', 'null', '', 0),
+(67, 36, '', '', '', 0),
+(68, 36, '', 'null', '', 0),
+(69, 37, '', '', '', 0),
+(70, 37, '', 'null', '', 0),
+(71, 38, '', '', '', 0),
+(72, 38, '', 'null', '', 0);
 
 -- --------------------------------------------------------
 
@@ -585,15 +639,13 @@ CREATE TABLE IF NOT EXISTS `smotherdetailtbl` (
   `mpassportissuedby` varchar(50) DEFAULT NULL,
   `mpassportissueddate` varchar(10) DEFAULT NULL,
   `mpassportissueddateen` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `smotherdetailtbl`
 --
 
 INSERT INTO `smotherdetailtbl` (`smotherdetailid`, `studentid`, `mothername`, `maddress`, `moffice`, `mposition`, `mincome`, `mmobile`, `mtelephone`, `memail`, `mephone`, `mcitizenshipno`, `mcitizenshipissuedby`, `mcitizenshipissueddate`, `mcitizenshipissueddateen`, `mlicenseno`, `mlicenseissuedby`, `mlicenseissueddate`, `mlicenseissueddateen`, `mofficialidno`, `mofficialidissuedby`, `mofficialidissueddate`, `mofficialidissueddateen`, `mvoteridno`, `mvoteridissuedby`, `mvoteridissueddate`, `mvoteridissueddateen`, `mpassportno`, `mpassportissuedby`, `mpassportissueddate`, `mpassportissueddateen`) VALUES
-(1, 3, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null'),
-(2, 4, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null'),
 (3, 5, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null'),
 (4, 6, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null'),
 (5, 7, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null'),
@@ -620,7 +672,14 @@ INSERT INTO `smotherdetailtbl` (`smotherdetailid`, `studentid`, `mothername`, `m
 (26, 28, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null'),
 (27, 29, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null'),
 (28, 30, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null'),
-(29, 31, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null');
+(29, 31, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null'),
+(30, 32, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null'),
+(31, 33, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null'),
+(32, 34, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null'),
+(33, 35, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null'),
+(34, 36, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null'),
+(35, 37, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null'),
+(36, 38, '', '', '', '', 0, 0, 0, '', 0, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null');
 
 -- --------------------------------------------------------
 
@@ -631,7 +690,7 @@ INSERT INTO `smotherdetailtbl` (`smotherdetailid`, `studentid`, `mothername`, `m
 CREATE TABLE IF NOT EXISTS `specialinteresttbl` (
   `specialinterestid` int(11) NOT NULL,
   `specialinterestname` varchar(25) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `specialinteresttbl`
@@ -639,7 +698,8 @@ CREATE TABLE IF NOT EXISTS `specialinteresttbl` (
 
 INSERT INTO `specialinteresttbl` (`specialinterestid`, `specialinterestname`) VALUES
 (1, 'Singing'),
-(2, 'Special');
+(2, 'Special'),
+(3, 'fd');
 
 -- --------------------------------------------------------
 
@@ -671,15 +731,13 @@ CREATE TABLE IF NOT EXISTS `studentinfo` (
   `entrydate` datetime DEFAULT NULL,
   `admissiondate` varchar(10) DEFAULT NULL,
   `admissiondateen` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `studentinfo`
 --
 
 INSERT INTO `studentinfo` (`studentid`, `LegacyId`, `studentname`, `sex`, `smotherlanguage`, `sethinicgroup`, `sreligion`, `dob`, `doben`, `differentlyabledYN`, `differentlyabledtype`, `admissionclass`, `section`, `rollno`, `housegroup`, `oldschool`, `reasonleav`, `hobby`, `specialinterest`, `inputter`, `entrydate`, `admissiondate`, `admissiondateen`) VALUES
-(1, '', 'shishir', '', '', '', '', '', '', 'n', '', '3', '', '', '', '', '', '', '', 'araniko', '2017-10-16 00:00:00', NULL, NULL),
-(2, '', 'check', '', '', '', '', '', '', 'n', '', '4', '', '', '', '', '', '', '', 'araniko', '2017-10-16 00:00:00', NULL, NULL),
 (3, '', 'check1', 'f', 'Hindi', '', '', '', '', 'n', '', '8', '', '', '', '', '', '', '', 'araniko', '2017-10-16 00:00:00', NULL, NULL),
 (4, '', 'shishir', '', '', '', '', '', '', 'n', '', '3', '', '', '', '', '', '', '', 'araniko', '2017-10-19 00:00:00', NULL, NULL),
 (5, '', 'ch', '', '', '', '', '', '', 'n', '', '3', '', '', '', '', '', '', '', 'araniko', '2017-10-19 00:00:00', NULL, NULL),
@@ -708,7 +766,14 @@ INSERT INTO `studentinfo` (`studentid`, `LegacyId`, `studentname`, `sex`, `smoth
 (28, '', 'jkj', '', '', '', '', '', '', 'n', '', 'Class 1', '', '', '', '', '', '', '', 'araniko', '2017-11-03 00:00:00', '121', '1212'),
 (29, '', 'fsdafas', '', '', '', '', '', '', 'n', '', 'Class 1', '', '', '', '', '', '', '', 'araniko', '2017-11-03 00:00:00', '2015', '2015'),
 (30, '', 'hello brother', '', '', '', '', '', '', 'n', '', 'Class 1', '', '', '', '', '', '', '', 'araniko', '2017-11-03 00:00:00', '2015', '2015'),
-(31, '', 'Shishir Karki Hello Brother', '', '', '', '', '', '', 'n', '', 'Class 1', 'Section Z', '', '', '', '', '', '', 'araniko', '2017-11-21 00:00:00', '2051-11-11', '1995-02-23');
+(31, '', 'Shishir Karki Hello Brother', '', '', '', '', '', '', 'n', '', 'Class 1', 'Section Z', '', '', '', '', '', '', 'araniko', '2017-11-21 00:00:00', '2051-11-11', '1995-02-23'),
+(32, '123', 'shishir karki', '', '', '', '', '', '', 'n', '', 'Class 1', 'fdf', '123', '', '', '', '', '', 'admin', '2017-12-30 00:00:00', '2015-11-11', '1959-02-22'),
+(33, '', '123', '', '', '', '', '', '', 'n', '', 'Class 1', '', '', '', '', '', '', '', 'admin', '2018-01-03 00:00:00', '2015-11-11', '2016-11-11'),
+(34, '123', '12', '', '', '', '', '', '', 'n', '', 'Class 1', 'fdf', '', '', '', '', '', '', 'admin', '2018-01-03 00:00:00', '2015-11-11', '2015-16-12'),
+(35, '11', '11', '', '', '', '', '', '', 'n', '', 'Class 1', 'fsfs', '', '', '', '', '', '', 'admin', '2018-01-03 00:00:00', '12', '12'),
+(36, '111', '222', '', '', '', '', '', '', 'n', '', 'final', 'fdf', '', '', '', '', '', '', 'admin', '2018-01-03 00:00:00', '23', '23'),
+(37, '12', '12', 'f', '', '', '', '', '', 'n', '', 'Class 1', 'Section Z', '', '', '', '', '', '', 'admin', '2018-01-03 00:00:00', '12', '12'),
+(38, '12', '12', '', '', '', '', '', '', 'n', '', 'Class 1', 'fsfs', '', '', '', '', '', '', 'admin', '2018-01-03 00:00:00', '12', '12');
 
 -- --------------------------------------------------------
 
@@ -720,7 +785,7 @@ CREATE TABLE IF NOT EXISTS `subjectlist` (
   `subjectid` bigint(20) NOT NULL,
   `subjectname` varchar(20) NOT NULL,
   `subjecttype` varchar(20) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `subjectlist`
@@ -729,7 +794,7 @@ CREATE TABLE IF NOT EXISTS `subjectlist` (
 INSERT INTO `subjectlist` (`subjectid`, `subjectname`, `subjecttype`) VALUES
 (4, 'English', 'common'),
 (5, 'Nepali', 'common'),
-(6, 'Mathematics', 'common');
+(7, 'Mathematics', 'common');
 
 -- --------------------------------------------------------
 
@@ -3077,6 +3142,32 @@ INSERT INTO `tbluser` (`UserName`, `Password`, `Role`, `StaffName`, `Status`) VA
 ('admin', 'admin', 'admin', 'Administrator', 0),
 ('arniko', 'arniko', 'admin', 'Administrator', NULL);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `usertbl`
+--
+
+CREATE TABLE IF NOT EXISTS `usertbl` (
+  `userid` bigint(20) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `status` varchar(1) NOT NULL,
+  `givenrole` varchar(500) DEFAULT NULL,
+  `reserved1` varchar(30) DEFAULT NULL,
+  `reserved2` varchar(30) DEFAULT NULL,
+  `reserved3` varchar(30) DEFAULT NULL,
+  `reserved4` varchar(30) DEFAULT NULL,
+  `reserved5` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `usertbl`
+--
+
+INSERT INTO `usertbl` (`userid`, `username`, `password`, `status`, `givenrole`, `reserved1`, `reserved2`, `reserved3`, `reserved4`, `reserved5`) VALUES
+(1, 'admin', 'admin', '1', NULL, NULL, NULL, NULL, NULL, NULL);
+
 --
 -- Indexes for dumped tables
 --
@@ -3122,6 +3213,12 @@ ALTER TABLE `classroom_student`
 --
 ALTER TABLE `course`
   ADD PRIMARY KEY (`courseid`), ADD KEY `fk_course_subjectid` (`subjectid`), ADD KEY `fk_course_studentid` (`studentid`);
+
+--
+-- Indexes for table `coursetbl`
+--
+ALTER TABLE `coursetbl`
+  ADD PRIMARY KEY (`coursetblid`), ADD KEY `fk_coursetbl_gradeid` (`gradeid`), ADD KEY `fk_coursetbl_subjectid` (`subjectid`);
 
 --
 -- Indexes for table `exam`
@@ -3214,6 +3311,12 @@ ALTER TABLE `subjectlist`
   ADD PRIMARY KEY (`subjectid`);
 
 --
+-- Indexes for table `usertbl`
+--
+ALTER TABLE `usertbl`
+  ADD PRIMARY KEY (`userid`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -3221,12 +3324,12 @@ ALTER TABLE `subjectlist`
 -- AUTO_INCREMENT for table `castetbl`
 --
 ALTER TABLE `castetbl`
-  MODIFY `casteid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `casteid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `classlist`
 --
 ALTER TABLE `classlist`
-  MODIFY `classid` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `classid` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `classroom`
 --
@@ -3237,6 +3340,11 @@ ALTER TABLE `classroom`
 --
 ALTER TABLE `course`
   MODIFY `courseid` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `coursetbl`
+--
+ALTER TABLE `coursetbl`
+  MODIFY `coursetblid` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `exam`
 --
@@ -3251,57 +3359,62 @@ ALTER TABLE `exam_type`
 -- AUTO_INCREMENT for table `housegrouptbl`
 --
 ALTER TABLE `housegrouptbl`
-  MODIFY `housegroupid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `housegroupid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `languagetbl`
 --
 ALTER TABLE `languagetbl`
-  MODIFY `languageid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `languageid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `saddresstbl`
 --
 ALTER TABLE `saddresstbl`
-  MODIFY `saddressid` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
+  MODIFY `saddressid` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT for table `sbirthcertificatetbl`
 --
 ALTER TABLE `sbirthcertificatetbl`
-  MODIFY `sbirthcertificateid` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=32;
+  MODIFY `sbirthcertificateid` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT for table `sectiontbl`
 --
 ALTER TABLE `sectiontbl`
-  MODIFY `sectionid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `sectionid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `sfatherdetailtbl`
 --
 ALTER TABLE `sfatherdetailtbl`
-  MODIFY `sfatherdetailid` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
+  MODIFY `sfatherdetailid` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT for table `slocalguardiantbl`
 --
 ALTER TABLE `slocalguardiantbl`
-  MODIFY `slocalguardianid` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=59;
+  MODIFY `slocalguardianid` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT for table `smotherdetailtbl`
 --
 ALTER TABLE `smotherdetailtbl`
-  MODIFY `smotherdetailid` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
+  MODIFY `smotherdetailid` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT for table `specialinteresttbl`
 --
 ALTER TABLE `specialinteresttbl`
-  MODIFY `specialinterestid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `specialinterestid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `studentinfo`
 --
 ALTER TABLE `studentinfo`
-  MODIFY `studentid` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=32;
+  MODIFY `studentid` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT for table `subjectlist`
 --
 ALTER TABLE `subjectlist`
-  MODIFY `subjectid` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `subjectid` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `usertbl`
+--
+ALTER TABLE `usertbl`
+  MODIFY `userid` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- Constraints for dumped tables
 --
@@ -3332,6 +3445,13 @@ ADD CONSTRAINT `fk_classroom_student_studentid` FOREIGN KEY (`studentid`) REFERE
 ALTER TABLE `course`
 ADD CONSTRAINT `fk_course_studentid` FOREIGN KEY (`studentid`) REFERENCES `studentinfo` (`studentid`) ON UPDATE CASCADE,
 ADD CONSTRAINT `fk_course_subjectid` FOREIGN KEY (`subjectid`) REFERENCES `subjectlist` (`subjectid`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `coursetbl`
+--
+ALTER TABLE `coursetbl`
+ADD CONSTRAINT `fk_coursetbl_gradeid` FOREIGN KEY (`gradeid`) REFERENCES `classlist` (`classid`) ON UPDATE CASCADE,
+ADD CONSTRAINT `fk_coursetbl_subjectid` FOREIGN KEY (`subjectid`) REFERENCES `subjectlist` (`subjectid`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `exam`

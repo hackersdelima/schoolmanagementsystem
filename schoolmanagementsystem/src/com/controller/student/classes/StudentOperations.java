@@ -557,4 +557,19 @@ public class StudentOperations {
 		return false;
 	}
 	
+	//examination 
+	public ResultSet getClassSubjects(){
+		ResultSet rs=null;
+		String query="select * from coursetbl where gradeid=?";
+		try{
+			conn=DbConnection.getConnection();
+			ps=conn.prepareStatement(query);
+			rs=ps.executeQuery();
+		}
+		catch(Exception e){
+			System.out.println("selectclass error"+e);
+		}
+		return rs;
+	}
+	
 }
