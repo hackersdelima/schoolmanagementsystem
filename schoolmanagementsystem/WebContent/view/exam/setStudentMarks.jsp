@@ -10,6 +10,8 @@
 			<th>TH. MARKS</th>
 			<th>PR. MARKS</th>
 			<th>TOTAL MARKS</th>
+			<th>TOTAL GRADE</th>
+			<th>REMARKS</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -20,6 +22,9 @@
 			<td><input type="text" name="thmarks" class="form-control" /></td>
 			<td><input type="text" name="prmarks" class="form-control" /></td>
 			<td><input type="text" name="totalmarks" class="form-control" /></td>
+			<td><input type="text" name="totalgrade" class="form-control" /></td>
+			<td><input type="text" name="remarks" class="form-control" /></td>
+			
 		</tr>
 	</c:forEach>
 	</tbody>

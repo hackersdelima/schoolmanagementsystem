@@ -823,7 +823,7 @@
 												<%
 													while (classlist.next()) {
 												%>
-												<option value="<%=classlist.getString("classname")%>"><%=classlist.getString("classname")%></option>
+												<option value="<%=classlist.getString("classid")%>"><%=classlist.getString("classname")%></option>
 												<%
 													}
 												%>
@@ -837,7 +837,7 @@
 												<%
 													while (section.next()) {
 												%>
-												<option value="<%=section.getString(2)%>"><%=section.getString(2)%></option>
+												<option value="<%=section.getString(1)%>"><%=section.getString(2)%></option>
 												<%
 													}
 												%>
