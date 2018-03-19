@@ -64,17 +64,19 @@ public class StudentAction extends HttpServlet {
 		
 		String classid = request.getParameter("classid"), sectionid = request.getParameter("sectionid");
 		String rollno=request.getParameter("rollno");
+		String examtype=request.getParameter("examtype");
 
 		String[] thmarks = request.getParameterValues("thmarks"), prmarks = request.getParameterValues("prmarks"),
 				totalmarks = request.getParameterValues("totalmarks"),
 				subjecttype = request.getParameterValues("subtype"), subid = request.getParameterValues("subid"),
-				remarks=request.getParameterValues("remarks"),examtype=request.getParameterValues("examtypeid"),
+				remarks=request.getParameterValues("remarks"),
 				totalgrade=request.getParameterValues("totalgrade");
 		
 	
 		
 		s.setClassid(classid);
 		s.setSectionid(sectionid);
+		s.setExamtype(examtype);
 	
 		
 		StudentModel student=dao.getStudentId(classid,sectionid,rollno);
@@ -88,7 +90,7 @@ public class StudentAction extends HttpServlet {
 			s.setThmarks(thmarks[i]);
 			s.setPrmarks(prmarks[i]);
 			s.setTotalmarks(totalmarks[i]);
-			s.setExamtype(examtype[i]);
+			
 			s.setRemarks(remarks[i]);
 			s.setTotalgrade(totalgrade[i]);
 			//query
