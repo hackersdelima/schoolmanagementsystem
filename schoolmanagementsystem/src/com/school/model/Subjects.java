@@ -1,7 +1,15 @@
 package com.school.model;
 
 public class Subjects {
-private String subjectid, subjectname, subjecttype;
+private String subjectid, subjectname, subjecttype, subjectcode;
+
+public String getSubjectcode() {
+	return subjectcode;
+}
+
+public void setSubjectcode(String subjectcode) {
+	this.subjectcode = subjectcode;
+}
 
 public String getSubjecttype() {
 	return subjecttype;

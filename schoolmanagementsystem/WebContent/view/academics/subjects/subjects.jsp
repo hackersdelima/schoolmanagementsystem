@@ -29,33 +29,33 @@
 					<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 					</li>
 				</ul>
-				
+
 				<div class="clearfix"></div>
-				
+
 			</div>
 			<div class="x_content">
-			<form method="post" action="addsubject" id="form" >
-			<button type="submit" class="btn btn-success" form="form">
+				<form method="post" action="addsubject" id="form">
+					<button type="submit" class="btn btn-success" form="form">
 						<i class="fa fa-check"></i> Save
 					</button>
-				
-				<table class="table">
-					<tbody>
-						<tr>
-							<td><h6>Subject Name *</h6>
-					<input type="text" class="form-control" name="subjectname"
-						form="form" required></td>
-							<td><h6>Subject Type *</h6>
-					<select class="form-control" name="subjecttype" form="form"
-						required>
-						<option value="" selected>Select subject type</option>
-						<option value="common">Common</option>
-						<option value="optional">Optional</option>
-					</select></td>
-							<td></td>
-						</tr>
-					</tbody>
-				</table>
+
+					<table class="table">
+						<tbody>
+							<tr>
+								<td><h6>Subject Code *</h6> <input type="text"
+									class="form-control" name="subjectcode" form="form" required></td>
+								<td><h6>Subject Name *</h6> <input type="text"
+									class="form-control" name="subjectname" form="form" required></td>
+								<td><h6>Subject Type *</h6> <select class="form-control"
+									name="subjecttype" form="form" required>
+										<option value="" selected>Select subject type</option>
+										<option value="common">Common</option>
+										<option value="optional">Optional</option>
+								</select></td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
 				</form>
 			</div>
 		</div>
@@ -73,42 +73,43 @@
 				<div class="clearfix"></div>
 			</div>
 			<div class="x_content">
-				<table id="datatable" class="table jambo_table table-striped table-bordered"
+				<table id="datatable"
+					class="table jambo_table table-striped table-bordered"
 					style="font-size: 95%;">
-						<thead>
-							<tr class="headings">
-								<th >S No.</th>
-								<th >Subject Name</th>
-								<th >Subject Type</th>
-								<th ><i class="fa fa-cog" aria-hidden="true"></i></th>
-							</tr>
-						</thead>
-						<tbody>
-							<%
+					<thead>
+						<tr class="headings">
+							<th>S No.</th>
+							<th>Subject Name</th>
+							<th>Subject Type</th>
+							<th><i class="fa fa-cog" aria-hidden="true"></i></th>
+						</tr>
+					</thead>
+					<tbody>
+						<%
 								int sno = 1;
 									while (subjects.next()) {
 							%>
-							<tr>
-								<td><%=sno%></td>
-								<td><%=subjects.getString("subjectname")%></td>
-								<td><%=subjects.getString("subjecttype")%></td>
-								<td><a href=""><i class="fa fa-pencil-square-o"
-										aria-hidden="true" style="color: blue;"></i></a>&nbsp;&nbsp;&nbsp;<a
-									href="subject.del?id=<%=subjects.getString("subjectid")%>"
-									class="delete"><i class="fa fa-trash" aria-hidden="true"
-										style="color: red;"></i></a></td>
-							</tr>
-							<%
+						<tr>
+							<td><%=sno%></td>
+							<td><%=subjects.getString("subjectname")%></td>
+							<td><%=subjects.getString("subjecttype")%></td>
+							<td><a href=""><i class="fa fa-pencil-square-o"
+									aria-hidden="true" style="color: blue;"></i></a>&nbsp;&nbsp;&nbsp;<a
+								href="subject.del?id=<%=subjects.getString("subjectid")%>"
+								class="delete"><i class="fa fa-trash" aria-hidden="true"
+									style="color: red;"></i></a></td>
+						</tr>
+						<%
 								sno++;
 									}
 							%>
-						</tbody>
-					</table>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
 
-	
+
 	<jsp:include page="/msgmodal"></jsp:include>
 	<script>
 		$(document).ready(function() {

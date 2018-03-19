@@ -1,13 +1,15 @@
 package com.controller.student.classes;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import com.school.model.StudentModel;
 import com.school.dbconnection.DbConnection;
+import com.school.model.StudentModel;
+import com.school.model.Subjects;
 //import com.controller.dbconnect.Dbconnect;
 public class StudentOperations {
 	Connection conn=null;
@@ -363,14 +365,17 @@ public class StudentOperations {
 			}
 		}
 	}
-	public boolean addsubject(String subjectname,String subjecttype){
+	public boolean addsubject(Subjects sub){
 		boolean status=false;
 		int a;
-		String query="insert into subjectlist(subjectname,subjecttype) values ('"+subjectname+"','"+subjecttype+"')";
+		String query="insert into subjectlist(subjectname,subjecttype, subjectCode) values (?,?,?)";
 		try{
 			conn=DbConnection.getConnection();
-			Statement stmt=conn.createStatement();
-			a=stmt.executeUpdate(query);
+			ps=conn.prepareStatement(query);
+			ps.setString(1, sub.getSubjectname() );
+			ps.setString(2, sub.getSubjecttype());
+			ps.setString(3, sub.getSubjectcode());
+			a=ps.executeUpdate();
 			if(a>0){
 				status=true;
 			}

@@ -25,15 +25,7 @@ public class AddController extends HttpServlet {
 			throws ServletException, IOException {
 		boolean status = false;
 		String uri = request.getRequestURI();
-		HttpSession session = request.getSession(true);
-		ResultSet rs = (ResultSet) session.getAttribute("userdetail");
-		String companydb = "";
-		try {
-			companydb = rs.getString("companydb");
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+	
 		Model m = new Model();
 		StudentOperations s = new StudentOperations();
 		if (uri.endsWith("examtype.add")) {
