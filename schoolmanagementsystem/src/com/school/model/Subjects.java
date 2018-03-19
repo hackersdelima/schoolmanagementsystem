@@ -1,7 +1,7 @@
 package com.school.model;
 
 public class Subjects {
-private String subjectid, subjectname, subjecttype, subjectcode, classid, sectionid, studentid, subjecttypeid, thmarks, prmarks, totalmarks,examtype,totalgrade,remarks;
+private String subjectid, subjectname, subjecttype, subjectcode, classid, sectionid, studentid, subjecttypeid, thmarks, prmarks, totalmarks,examid,totalgrade,remarks;
 
 public String getRemarks() {
 	return remarks;
@@ -19,16 +19,16 @@ public void setTotalgrade(String totalgrade) {
 	this.totalgrade = totalgrade;
 }
 
-public String getExamtype() {
-	return examtype;
-}
-
-public void setExamtype(String examtype) {
-	this.examtype = examtype;
-}
-
 public String getClassid() {
 	return classid;
+}
+
+public String getExamid() {
+	return examid;
+}
+
+public void setExamid(String examid) {
+	this.examid = examid;
 }
 
 public void setClassid(String classid) {

@@ -100,11 +100,11 @@ public class NavigationController extends HttpServlet {
 			StudentOperations s = new StudentOperations();
 			ResultSet sectionlist=s.getsection();
 			ResultSet classlist = s.selectclass();
-			ResultSet examtypelist=s.selectexamtype();
+			ResultSet examlist=s.selectexam();
 			
 			request.setAttribute("sectionlist", sectionlist);
 			request.setAttribute("classlist", classlist);
-			request.setAttribute("examtypelist", examtypelist);
+			request.setAttribute("examlist", examlist);
 			RequestDispatcher rd=request.getRequestDispatcher("view/exam/createStudentReport.jsp");
 			rd.forward(request, response);
 		}

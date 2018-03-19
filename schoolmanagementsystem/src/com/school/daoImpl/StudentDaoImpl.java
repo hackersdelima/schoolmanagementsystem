@@ -19,13 +19,13 @@ public class StudentDaoImpl implements StudentDao {
 	}
 
 	public boolean insertStudentMarks(Subjects s){
-		String query="insert into exam_marks_tbl(studentid,examtype,subjectid,prmarks,thmarks,totalmarks,totalgrade,remarks,inputDate) values(?,?,?,?,?,?,?,?,now())";
+		String query="insert into exam_marks_tbl(studentid,examid,subjectid,prmarks,thmarks,totalmarks,totalgrade,remarks,inputDate) values(?,?,?,?,?,?,?,?,now())";
 		int i=0;
 		con=DbConnection.getConnection();
 		try {
 			ps=con.prepareStatement(query);
 			ps.setString(1, s.getStudentid());
-			ps.setString(2, s.getExamtype());
+			ps.setString(2, s.getExamid());
 			ps.setString(3, s.getSubjectid());
 			ps.setString(4, s.getPrmarks());
 			ps.setString(5, s.getThmarks());

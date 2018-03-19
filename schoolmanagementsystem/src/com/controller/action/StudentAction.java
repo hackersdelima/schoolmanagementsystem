@@ -60,57 +60,51 @@ public class StudentAction extends HttpServlet {
 	// exam management system
 	public void insertStudentMarks(HttpServletRequest request, HttpServletResponse response) {
 		Subjects s = new Subjects();
-		StudentDao dao=new StudentDaoImpl();
-		
+		StudentDao dao = new StudentDaoImpl();
+
 		String classid = request.getParameter("classid"), sectionid = request.getParameter("sectionid");
-		String rollno=request.getParameter("rollno");
-		String examtype=request.getParameter("examtype");
+		String rollno = request.getParameter("rollno");
+		String examid = request.getParameter("examid");
 
 		String[] thmarks = request.getParameterValues("thmarks"), prmarks = request.getParameterValues("prmarks"),
 				totalmarks = request.getParameterValues("totalmarks"),
 				subjecttype = request.getParameterValues("subtype"), subid = request.getParameterValues("subid"),
-				remarks=request.getParameterValues("remarks"),
-				totalgrade=request.getParameterValues("totalgrade");
-		
-	
-		
+				remarks = request.getParameterValues("remarks"), totalgrade = request.getParameterValues("totalgrade");
+
 		s.setClassid(classid);
 		s.setSectionid(sectionid);
-		s.setExamtype(examtype);
-	
-		
-		StudentModel student=dao.getStudentId(classid,sectionid,rollno);
+		s.setExamid(examid);
+
+		StudentModel student = dao.getStudentId(classid, sectionid, rollno);
 		s.setStudentid(student.getStudentid());
-		boolean status=false;
-		
-			List<String> statuslist=new ArrayList<String>();
+		boolean status = false;
+
+		List<String> statuslist = new ArrayList<String>();
 		for (int i = 0; i < subid.length; i++) {
 			s.setSubjectid(subid[i]);
 			s.setSubjecttype(subjecttype[i]);
 			s.setThmarks(thmarks[i]);
 			s.setPrmarks(prmarks[i]);
 			s.setTotalmarks(totalmarks[i]);
-			
+
 			s.setRemarks(remarks[i]);
 			s.setTotalgrade(totalgrade[i]);
-			//query
-		
-			status=dao.insertStudentMarks(s);
-			//statuslist.add(status.toString());
-			if(status){
+			// query
+
+			status = dao.insertStudentMarks(s);
+			// statuslist.add(status.toString());
+			if (status) {
 				statuslist.add("true");
-			}
-			else{
+			} else {
 				statuslist.add("false");
 			}
 		}
-		if(statuslist.contains("false")){
+		if (statuslist.contains("false")) {
 			request.setAttribute("msg", "Unsuccessful");
-		}
-		else{
+		} else {
 			request.setAttribute("msg", "successful");
 		}
-		//dispatcher
+		// dispatcher
 	}
 
 }

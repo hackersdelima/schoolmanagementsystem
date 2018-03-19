@@ -4,7 +4,7 @@
 <%
 	ResultSet section = (ResultSet) request.getAttribute("sectionlist");
 	ResultSet classlist = (ResultSet) request.getAttribute("classlist");
-	ResultSet examtypelist = (ResultSet) request.getAttribute("examtypelist");
+	ResultSet examlist = (ResultSet) request.getAttribute("examlist");
 %>
 <link rel="import" href="include1.jsp">
 <html>
@@ -33,14 +33,14 @@
 						<div class="col-md-12">
 						<div class="col-md-3">
 								<h6>
-									<strong>Exam Type*</strong>
+									<strong>Exam*</strong>
 								</h6>
-								<select class="form-control" name="examtype" required>
-									<option value="">Select Exam Type</option>
+								<select class="form-control" name="examid" required>
+									<option value="">Select Exam</option>
 									<%
-										while (examtypelist.next()) {
+										while (examlist.next()) {
 									%>
-									<option value="<%=examtypelist.getString("examtypeid")%>"><%=examtypelist.getString("examtypename")%></option>
+									<option value="<%=examlist.getString("examid")%>"><%=examlist.getString("examname")%></option>
 									<%
 										}
 									%>
