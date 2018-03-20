@@ -13,11 +13,9 @@
 		<nav aria-label="breadcrumb" role="navigation">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><i class="fa fa-home"
-					aria-hidden="true"></i>&nbsp;<a href="#">Home</a></li>
-				<li class="breadcrumb-item active" aria-current="page">Settings</li>
-				<li class="breadcrumb-item active" aria-current="page">Academic</li>
-				<li class="breadcrumb-item active" aria-current="page">Create
-					Exam</li>
+					aria-hidden="true"></i>&nbsp;<a href="#">General</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Exam</li>
+				<li class="breadcrumb-item active" aria-current="page">Create Exam</li>
 			</ol>
 		</nav>
 	</div>

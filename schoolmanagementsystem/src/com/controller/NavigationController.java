@@ -116,6 +116,13 @@ public class NavigationController extends HttpServlet {
 			RequestDispatcher rd=request.getRequestDispatcher("view/exam/setStudentMarks.jsp");
 			rd.forward(request, response);
 		}
+		else if(uri.endsWith("reportsearchbox.click")){
+			StudentOperations s = new StudentOperations();
+			ResultSet examlist=s.selectexam();
+			request.setAttribute("examlist", examlist);
+			RequestDispatcher rd=request.getRequestDispatcher("view/exam/marksSearchBox.jsp");
+			rd.forward(request, response);
+		}
 	}
 
 }

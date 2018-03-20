@@ -71,7 +71,11 @@
                   </li>
                    <li><a><i class="fa fa-edit"></i> Exam <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="createStudentReport.click" target="iframe_a">Create Report</a></li>
+                    	 <li><a href="createexam.click" target="iframe_a">Create Exam</a>
+                            </li>
+                      <li><a href="createStudentReport.click" target="iframe_a">Create Marks Report</a></li>
+                       <li><a href="reportsearchbox.click" target="iframe_a">Search Report</a>
+                            </li>
                     </ul>
                   </li>
                 </ul>
@@ -86,8 +90,6 @@
                             <li ><a href="subjects.click" target="iframe_a">Subjects</a>
                             </li>
                             <li><a href="subjectassign.click" target="iframe_a">Assign Subjects</a>
-                            </li>
-                            <li><a href="createexam.click" target="iframe_a">Create Exam</a>
                             </li>
                           </ul>
                         </li>

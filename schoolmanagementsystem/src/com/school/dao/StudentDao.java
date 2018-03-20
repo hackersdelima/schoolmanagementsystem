@@ -9,4 +9,6 @@ public interface StudentDao {
 	public boolean insertStudentMarks(Subjects s);
 
 	public StudentModel getStudentId(String classid, String sectionid, String rollno);
+
+	
 }

@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.controller.student.classes.StudentOperations;
+import com.school.dao.DisplayDao;
 import com.school.dao.StudentDao;
+import com.school.daoImpl.DisplayDaoImpl;
 import com.school.daoImpl.StudentDaoImpl;
 import com.school.model.StudentModel;
 import com.school.model.Subjects;
@@ -105,6 +107,39 @@ public class StudentAction extends HttpServlet {
 			request.setAttribute("msg", "successful");
 		}
 		// dispatcher
+	}
+
+	//student exam report
+	public void getSpecificStudentReport(HttpServletRequest request, HttpServletResponse response) {
+		Subjects s=new Subjects();
+		String examid=request.getParameter("examid"),studentid=request.getParameter("studentid");
+		RequestDispatcher rd=null;
+		
+		s.setStudentid(studentid);
+		s.setExamid(examid);
+		List<Subjects> reportlist=new ArrayList<Subjects>();
+		DisplayDao dao=new DisplayDaoImpl();
+		
+		reportlist=dao.getSpecificStudentReport(s);
+		
+		if(reportlist!=null){
+			StudentModel stdDetail=dao.getSpecificStudentDetails(studentid);
+			request.setAttribute("stdDetail", stdDetail);
+			request.setAttribute("reportlist", reportlist);
+			 rd=request.getRequestDispatcher("examreport.view");
+		}
+		
+		else{
+			request.setAttribute("msg", "Report Not Found!");
+			 rd=request.getRequestDispatcher("reportsearchbox.click");
+			
+		}
+		try {
+			rd.forward(request, response);
+		} catch (ServletException | IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

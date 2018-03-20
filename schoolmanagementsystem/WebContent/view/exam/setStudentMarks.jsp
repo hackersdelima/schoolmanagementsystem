@@ -28,16 +28,5 @@
 		</tr>
 	</c:forEach>
 	</tbody>
-	<tfoot>
-		<tr>
-			<th>SUBJECT NAME</th>
-			<th>SUBJECT TYPE</th>
-			<th>TH. MARKS</th>
-			<th>PR. MARKS</th>
-			<th>TOTAL MARKS</th>
-		</tr>
-	</tfoot>
-	<tbody>
-
-	</tbody>
+	
 </table>
