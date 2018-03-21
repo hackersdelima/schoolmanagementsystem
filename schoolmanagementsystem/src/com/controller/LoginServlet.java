@@ -1,6 +1,8 @@
 package com.controller;
+
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,36 +14,38 @@ import javax.servlet.http.HttpSession;
 
 import com.school.model.UserModel;
 
-import java.sql.*;
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter out=response.getWriter();
-		String username=request.getParameter("username");
-		String password=request.getParameter("password");
-		MainClass m=new MainClass();
-		if(m.checkuser(username, password)==true){
-			HttpSession session=request.getSession(true);
-			UserModel userdetail=(UserModel)m.userdetails(username, password);
-			if(userdetail.getStatus().equals("1")){
-			session.setAttribute("userdetail", userdetail);
-			
-			RequestDispatcher rs=request.getRequestDispatcher("view/header.jsp");
-			rs.forward(request,response);
-			}
-			else{
-				String errormsg="Invalid login credentials!";
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		UserModel user = new UserModel();
+		MainClass m = new MainClass();
+		if (m.checkuser(username, password) == true) {
+			HttpSession session = request.getSession(true);
+			UserModel userdetail = (UserModel) m.userdetails(username, password);
+			if (userdetail.getStatus().equals("1")) {
+				List<UserModel> systemdetail = m.getSystemDetails(user);
+				
+				session.setAttribute("userdetail", userdetail);
+				session.setAttribute("systemdetail", systemdetail);
+				RequestDispatcher rs = request.getRequestDispatcher("view/header.jsp");
+				rs.forward(request, response);
+			} else {
+				String errormsg = "Invalid login credentials!";
 				request.setAttribute("errormsg", errormsg);
-				RequestDispatcher rs=request.getRequestDispatcher("index.jsp");
-				rs.forward(request,response);
+				RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
+				rs.forward(request, response);
 			}
-		}
-		else{
-			String errormsg="Invalid login credentials!";
+		} else {
+			String errormsg = "Invalid login credentials!";
 			request.setAttribute("errormsg", errormsg);
-			RequestDispatcher rs=request.getRequestDispatcher("index.jsp");
-			rs.forward(request,response);
+			RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
+			rs.forward(request, response);
 		}
 	}
 

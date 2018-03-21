@@ -576,5 +576,24 @@ public class StudentOperations {
 		}
 		return rs;
 	}
+	public String selectSpecificExam(String examid) {
+		String query="select * from exam where examid=?";
+		String examname="";
+		try{
+			conn=DbConnection.getConnection();
+			ps=conn.prepareStatement(query);
+			ps.setString(1, examid);
+			r=ps.executeQuery();
+			if(r.next()){
+				examname=r.getString("examname");
+				return examname;
+			}
+		}
+		catch(Exception e){
+			System.out.println("selectclass error"+e);
+		}
+		
+		return null;
+	}
 	
 }

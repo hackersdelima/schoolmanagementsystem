@@ -85,6 +85,7 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-sitemap"></i> Settings <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
+                    <li ><a href="generalSet.click" target="iframe_a">General Settings</a>
                         <li><a>Academic Settings<span class="fa fa-chevron-down"></span></a>
                           <ul class="nav child_menu">
                             <li ><a href="subjects.click" target="iframe_a">Subjects</a>

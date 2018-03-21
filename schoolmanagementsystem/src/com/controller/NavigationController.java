@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.controller.student.classes.StudentOperations;
 import com.school.academic.model.ClassModel;
@@ -21,6 +22,7 @@ import com.school.daoImpl.AcademicsSettingsAddDaoImpl;
 import com.school.daoImpl.DisplayDaoImpl;
 import com.school.model.StudentModel;
 import com.school.model.Subjects;
+import com.school.model.UserModel;
 
 /**
  * Servlet implementation class NavigationController
@@ -122,6 +124,14 @@ public class NavigationController extends HttpServlet {
 			request.setAttribute("examlist", examlist);
 			RequestDispatcher rd=request.getRequestDispatcher("view/exam/marksSearchBox.jsp");
 			rd.forward(request, response);
+		}
+		
+		//Settings
+		else if(uri.endsWith("generalSet.click")){
+			
+			RequestDispatcher rd=request.getRequestDispatcher("view/settings/generalSettings.jsp");
+			rd.forward(request, response);
+			
 		}
 	}
 

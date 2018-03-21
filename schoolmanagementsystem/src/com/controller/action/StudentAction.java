@@ -1,6 +1,8 @@
 package com.controller.action;
 
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -124,6 +126,9 @@ public class StudentAction extends HttpServlet {
 		
 		if(reportlist!=null){
 			StudentModel stdDetail=dao.getSpecificStudentDetails(studentid);
+			StudentOperations exam=new StudentOperations();
+			String examname=exam.selectSpecificExam(examid);
+			request.setAttribute("examname", examname);
 			request.setAttribute("stdDetail", stdDetail);
 			request.setAttribute("reportlist", reportlist);
 			 rd=request.getRequestDispatcher("examreport.view");

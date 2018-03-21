@@ -1,11 +1,19 @@
 package com.controller;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.school.dbconnection.DbConnection;
 import com.school.model.UserModel;
 public class MainClass {
 	static Connection conn=null;
 	Statement stmt=null;
+	PreparedStatement ps=null;
+	ResultSet rs=null;
 	
 	public boolean checkuser(String username, String password){
 		boolean status=false;
@@ -52,5 +60,28 @@ public class MainClass {
 		return null;
 	}
 	
+	//system details
+	public List<UserModel> getSystemDetails(UserModel u){
+		String query="select * from generalsettings";
+		UserModel user=null;
+		List<UserModel> list=new ArrayList<UserModel>();
+		conn=DbConnection.getConnection();
+		try {
+			ps=conn.prepareStatement(query);
+			rs=ps.executeQuery();
+			while(rs.next()){
+				user=new UserModel();
+				user.setSettingsid(rs.getString("settings_id"));
+				user.setSettingstype(rs.getString("type"));
+				user.setSettingsdescription(rs.getString("description"));
+				list.add(user);
+			}
+			return list;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 	
 }

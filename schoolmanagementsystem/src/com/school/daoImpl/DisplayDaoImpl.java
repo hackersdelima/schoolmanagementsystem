@@ -72,17 +72,26 @@ public class DisplayDaoImpl implements DisplayDao{
 	}
 	public List<Subjects> getSpecificStudentReport(Subjects s){
 		List<Subjects> list=new ArrayList<Subjects>();
-		String query="select * from exam_marks_tbl where studentid=?";
+		String query="select *, subjectlist.* from exam_marks_tbl join subjectlist on exam_marks_tbl.subjectid=subjectlist.subjectid join exam on exam_marks_tbl.examid=exam.examid  where exam_marks_tbl.studentid=? and exam_marks_tbl.examid=?";
 		
 		Subjects sub=null;
 		con=DbConnection.getConnection();
 		try {
 			ps=con.prepareStatement(query);
 			ps.setString(1, s.getStudentid());
+			ps.setString(2, s.getExamid());
 			rs=ps.executeQuery();
 			while(rs.next()){
 				sub=new Subjects();
+				sub.setSubjectcode(rs.getString("subjectCode"));
+				sub.setSubjectname(rs.getString("subjectname"));
+				sub.setSubjecttype(rs.getString("subjecttype"));
+				sub.setPrmarks(rs.getString("prmarks"));
+				sub.setThmarks(rs.getString("thmarks"));
+				sub.setTotalmarks(rs.getString("totalmarks"));
+				sub.setTotalgrade(rs.getString("totalgrade"));
 				sub.setRemarks(rs.getString("remarks"));
+				
 				list.add(sub);
 				
 			}

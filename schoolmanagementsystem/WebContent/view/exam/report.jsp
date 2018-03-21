@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="import" href="include1.jsp">
 <html>
 <head>
@@ -14,10 +15,10 @@
 	<div>
 		<table class="table">
 			<caption style="text-align: center">
-				<h2>BRITISH MODAL COLLEGE</h2>
-				<h4>Thapathali, Kathmandu (9856477854)</h4>
+				<h2>${sessionScope.systemdetail[0].settingsdescription }</h2>
+				<h4>${sessionScope.systemdetail[2].settingsdescription } (${sessionScope.systemdetail[3].settingsdescription })</h4>
 				<h4>
-					<strong>1st Term Examination (2018)</strong>
+					<strong>${examname }(${sessionScope.systemdetail[5].settingsdescription })</strong>
 				</h4>
 			</caption>
 			<tbody>
@@ -41,24 +42,32 @@
 
 		<table class="table table-striped table-bordered borderless">
 			<thead>
+
 				<tr>
 					<th>Subject Name</th>
 					<th>Subject Code</th>
+					<th>Subject Type</th>
 					<th>Th. Marks</th>
 					<th>Pr. Marks</th>
 					<th>Total Marks</th>
 					<th>Grade</th>
+					<th>Remarks</th>
 				</tr>
+
 			</thead>
 			<tbody>
-				<tr>
-					<td>English</td>
-					<td>EN1001</td>
-					<td>60/75</td>
-					<td>10/25</td>
-					<td>70/100</td>
-					<td>B+</td>
-				</tr>
+				<c:forEach items="${reportlist }" var="rep">
+					<tr>
+						<td>${rep.subjectname }</td>
+						<td>${rep.subjectcode }</td>
+						<td>${rep.subjecttype }</td>
+						<td>${rep.thmarks }/75</td>
+						<td>${rep.prmarks }/25</td>
+						<td>${rep.totalmarks }/100</td>
+						<td>${rep.totalgrade }</td>
+						<td>${rep.remarks }</td>
+					</tr>
+				</c:forEach>
 			</tbody>
 			<tfoot>
 				<tr>
