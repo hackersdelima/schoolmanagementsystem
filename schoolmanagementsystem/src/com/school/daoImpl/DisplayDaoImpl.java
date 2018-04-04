@@ -91,6 +91,8 @@ public class DisplayDaoImpl implements DisplayDao{
 				sub.setTotalmarks(rs.getString("totalmarks"));
 				sub.setTotalgrade(rs.getString("totalgrade"));
 				sub.setRemarks(rs.getString("remarks"));
+				sub.setFullmarks(rs.getString("fullmarks"));
+				sub.setPassmarks(rs.getString("passmarks"));
 				
 				list.add(sub);
 				

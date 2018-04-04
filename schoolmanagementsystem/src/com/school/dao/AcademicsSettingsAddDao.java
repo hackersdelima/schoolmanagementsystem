@@ -18,4 +18,6 @@ public interface AcademicsSettingsAddDao {
 	public List<ClassModel> getclasslist(HttpServletRequest request, HttpServletResponse response);
 
 	public List<ClassModel> getsublist(HttpServletRequest request, HttpServletResponse response);
+
+	public boolean updateGeneralSetting(Model m);
 }

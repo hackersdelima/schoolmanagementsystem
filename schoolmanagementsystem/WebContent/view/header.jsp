@@ -58,6 +58,7 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
+                <li><a id="printf">Print Content</a></li>
                   <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="view/dashboard.jsp" target="iframe_a">Dashboard</a></li>
@@ -213,6 +214,11 @@
     
     <!-- Custom Theme Scripts -->
     <script src="template/js/custom.min.js"></script>
+    <script>
+    	$("#printf").click(function(){
+    	document.getElementById("Iframe").contentWindow.print();
+    	})
+    </script>
     
   </body>
 </html>

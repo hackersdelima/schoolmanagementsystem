@@ -33,8 +33,8 @@
 						<div class="form-group">
 							<label class="control-label col-md-2 col-sm-2 col-xs-12">${sysdetail.settingstype }</label>
 							<div class="col-md-4 col-sm-4 col-xs-12">
-								<input type="text" class="form-control" name="type" value="${sysdetail.settingsdescription }"
-									placeholder="" value="">
+							<input type="hidden" name="settings_id" value="${sysdetail.settingsid}">
+								<input type="text" class="form-control" name="description" value="${sysdetail.settingsdescription }">
 							</div>
 						</div>
 					</c:forEach>

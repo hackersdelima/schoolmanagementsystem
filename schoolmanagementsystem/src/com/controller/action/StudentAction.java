@@ -1,9 +1,10 @@
 package com.controller.action;
 
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -73,7 +74,8 @@ public class StudentAction extends HttpServlet {
 		String[] thmarks = request.getParameterValues("thmarks"), prmarks = request.getParameterValues("prmarks"),
 				totalmarks = request.getParameterValues("totalmarks"),
 				subjecttype = request.getParameterValues("subtype"), subid = request.getParameterValues("subid"),
-				remarks = request.getParameterValues("remarks"), totalgrade = request.getParameterValues("totalgrade");
+				remarks = request.getParameterValues("remarks"), totalgrade = request.getParameterValues("totalgrade"),
+				fullmarks=request.getParameterValues("fullmarks"),passmarks=request.getParameterValues("passmarks");
 
 		s.setClassid(classid);
 		s.setSectionid(sectionid);
@@ -89,6 +91,8 @@ public class StudentAction extends HttpServlet {
 			s.setSubjecttype(subjecttype[i]);
 			s.setThmarks(thmarks[i]);
 			s.setPrmarks(prmarks[i]);
+			s.setFullmarks(fullmarks[i]);
+			s.setPassmarks(passmarks[i]);
 			s.setTotalmarks(totalmarks[i]);
 
 			s.setRemarks(remarks[i]);
@@ -113,6 +117,8 @@ public class StudentAction extends HttpServlet {
 
 	//student exam report
 	public void getSpecificStudentReport(HttpServletRequest request, HttpServletResponse response) {
+		 DecimalFormat decimal = new DecimalFormat("##.00");
+		 
 		Subjects s=new Subjects();
 		String examid=request.getParameter("examid"),studentid=request.getParameter("studentid");
 		RequestDispatcher rd=null;
@@ -127,10 +133,11 @@ public class StudentAction extends HttpServlet {
 		if(reportlist!=null){
 			StudentModel stdDetail=dao.getSpecificStudentDetails(studentid);
 			StudentOperations exam=new StudentOperations();
-			String examname=exam.selectSpecificExam(examid);
-			request.setAttribute("examname", examname);
+			Subjects examSummary=exam.selectSpecificExam(examid, studentid);
+					request.setAttribute("examSummary", examSummary);
 			request.setAttribute("stdDetail", stdDetail);
 			request.setAttribute("reportlist", reportlist);
+			
 			 rd=request.getRequestDispatcher("examreport.view");
 		}
 		

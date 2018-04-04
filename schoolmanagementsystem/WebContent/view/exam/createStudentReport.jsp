@@ -9,6 +9,12 @@
 <link rel="import" href="include1.jsp">
 <html>
 <head>
+<style>
+.workform input{
+	border:none;
+	width: 100%;
+	}
+	</style>
 </head>
 <body class="background">
 	<div class="col-md-12 col-sm-12 col-xs-12">

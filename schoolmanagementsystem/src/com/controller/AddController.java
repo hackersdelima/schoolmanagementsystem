@@ -83,7 +83,8 @@ public class AddController extends HttpServlet {
 			action.insertStudentMarks(request,response);
 		}
 		else if(uri.endsWith("generalSettings.add")){
-			
+			AcademicsSettingsAction a=new AcademicsSettingsAction();
+			a.updateGeneralSettings(request,response);
 		}
 
 	}

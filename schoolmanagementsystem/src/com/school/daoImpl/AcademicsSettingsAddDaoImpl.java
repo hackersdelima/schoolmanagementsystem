@@ -108,4 +108,25 @@ public class AcademicsSettingsAddDaoImpl implements AcademicsSettingsAddDao {
 		
 	}
 
+	public boolean updateGeneralSetting(Model m){
+		String query="update generalsettings set description=? where settings_id=?";
+		try{
+			con=DbConnection.getConnection();
+			ps=con.prepareStatement(query);
+			ps.setString(1, m.getDescription());
+			ps.setString(2, m.getSettings_id());
+			int i=ps.executeUpdate();
+			if(i>0){
+				con.close();
+				ps.close();
+				return true;
+			}
+		}
+		catch(Exception e){
+			System.out.println(e);
+		}
+		
+		return false;
+	}
+
 }

@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link rel="import" href="include1.jsp">
+
+<!DOCTYPE html>
+<jsp:include page="../../include1.jsp" />
 <html>
 <head>
-
+<title>Digi Nepal</title>
 <style>
 .borderless tfoot tr td {
 	border: none
@@ -15,11 +17,11 @@
 	<div>
 		<table class="table">
 			<caption style="text-align: center">
-				<h2>${sessionScope.systemdetail[0].settingsdescription }</h2>
-				<h4>${sessionScope.systemdetail[2].settingsdescription } (${sessionScope.systemdetail[3].settingsdescription })</h4>
-				<h4>
-					<strong>${examname }(${sessionScope.systemdetail[5].settingsdescription })</strong>
-				</h4>
+				<h3>${sessionScope.systemdetail[0].settingsdescription }</h3>
+				<h3>${sessionScope.systemdetail[2].settingsdescription } (${sessionScope.systemdetail[3].settingsdescription })</h3>
+				
+				<h5>	<strong>${examSummary.examname }(${sessionScope.systemdetail[5].settingsdescription })</strong></h5>
+			
 			</caption>
 			<tbody>
 				<tr>
@@ -49,7 +51,10 @@
 					<th>Subject Type</th>
 					<th>Th. Marks</th>
 					<th>Pr. Marks</th>
+					
 					<th>Total Marks</th>
+					<th>Full Marks</th>
+					<th>Pass Marks</th>
 					<th>Grade</th>
 					<th>Remarks</th>
 				</tr>
@@ -61,9 +66,11 @@
 						<td>${rep.subjectname }</td>
 						<td>${rep.subjectcode }</td>
 						<td>${rep.subjecttype }</td>
-						<td>${rep.thmarks }/75</td>
-						<td>${rep.prmarks }/25</td>
-						<td>${rep.totalmarks }/100</td>
+						<td>${rep.thmarks }</td>
+						<td>${rep.prmarks }</td>
+						<td>${rep.totalmarks }</td>
+						<td>${rep.fullmarks }</td>
+						<td>${rep.passmarks }</td>
 						<td>${rep.totalgrade }</td>
 						<td>${rep.remarks }</td>
 					</tr>
@@ -72,14 +79,14 @@
 			<tfoot>
 				<tr>
 					<td>Result : <strong>Pass</strong></td>
-					<td>Total: <strong>500/1000</strong></td>
+					<td>Total: <strong>${examSummary.totalmarks}</strong></td>
 				</tr>
 				<tr>
-					<td>Percentage : <strong>50.32%</strong></td>
+					<td>Percentage : <strong>${examSummary.percentage }%</strong></td>
 					<td>Rank: <strong>NA</strong></td>
 				</tr>
 				<tr>
-					<td>Date of Issue : <strong>2018-11-01</strong></td>
+					<td>Date of Issue : <strong>${examSummary.curdate }</strong></td>
 				</tr>
 			</tfoot>
 		</table>

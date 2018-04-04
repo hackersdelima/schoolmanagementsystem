@@ -1,7 +1,31 @@
 package com.controller.student.classes;
 
 public class Model {
-	String examname, examtype,startdate, studentid,subjectid,companydb,classid;
+	String examname, examtype,startdate, studentid,subjectid,companydb,classid,settings_id, type, description;
+
+	public String getSettings_id() {
+		return settings_id;
+	}
+
+	public void setSettings_id(String settings_id) {
+		this.settings_id = settings_id;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 	public String getClassid() {
 		return classid;
