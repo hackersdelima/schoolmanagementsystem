@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +19,10 @@ import com.controller.student.classes.StudentOperations;
 import com.school.academic.model.ClassModel;
 import com.school.dao.AcademicsSettingsAddDao;
 import com.school.dao.DisplayDao;
+import com.school.dao.StudentDao;
 import com.school.daoImpl.AcademicsSettingsAddDaoImpl;
 import com.school.daoImpl.DisplayDaoImpl;
+import com.school.daoImpl.StudentDaoImpl;
 import com.school.model.StudentModel;
 import com.school.model.Subjects;
 import com.school.model.UserModel;
@@ -70,6 +73,11 @@ public class NavigationController extends HttpServlet {
 			rd.forward(request, response);
 		}
 		else if(uri.endsWith("createexam.click")){
+			HttpSession session=request.getSession(true);
+			List<UserModel> systemdetail =(List<UserModel>)session.getAttribute("systemdetail");
+			String class_session=systemdetail.get(5).getSettingsdescription();
+			
+			request.setAttribute("examcode", class_session);
 			RequestDispatcher rd=request.getRequestDispatcher("examjsp");
 			rd.forward(request, response);
 		}
@@ -111,17 +119,23 @@ public class NavigationController extends HttpServlet {
 			rd.forward(request, response);
 		}
 		else if(uri.endsWith("getMarksInputTable.click")){
-			String classid=request.getParameter("id");
+			String[] classid=request.getParameter("id").split(",");;
+			
 			DisplayDao d=new DisplayDaoImpl();
-			List<Subjects> subjectslist=d.getClassSubjects(classid);
+			List<Subjects> subjectslist=d.getClassSubjects(classid[0]);
 			request.setAttribute("subjectslist", subjectslist);
 			RequestDispatcher rd=request.getRequestDispatcher("view/exam/setStudentMarks.jsp");
 			rd.forward(request, response);
 		}
 		else if(uri.endsWith("reportsearchbox.click")){
 			StudentOperations s = new StudentOperations();
+			ResultSet sectionlist=s.getsection();
+			ResultSet classlist = s.selectclass();
 			ResultSet examlist=s.selectexam();
+			
 			request.setAttribute("examlist", examlist);
+			request.setAttribute("sectionlist", sectionlist);
+			request.setAttribute("classlist", classlist);
 			RequestDispatcher rd=request.getRequestDispatcher("view/exam/marksSearchBox.jsp");
 			rd.forward(request, response);
 		}
@@ -131,6 +145,47 @@ public class NavigationController extends HttpServlet {
 			
 			RequestDispatcher rd=request.getRequestDispatcher("view/settings/generalSettings.jsp");
 			rd.forward(request, response);
+			
+		}
+		else if(uri.endsWith("getstudentname.click")){
+			System.out.println("reached");
+		PrintWriter out=response.getWriter();
+			String[] classname=request.getParameter("classname").split(",");
+			String section=request.getParameter("section");
+			String rollno=request.getParameter("rollno");
+			System.out.println("fasdfdsf"+section);
+			StudentDao dao = new StudentDaoImpl();
+			StudentModel student = dao.getStudentId(classname[1], section, rollno);
+			
+			if(rollno.equals("")){
+				out.println("Roll No not Found");
+			}
+			else{
+				
+				System.out.println("fdsfasdfasd"+student.getStudentname());
+				out.println(student.getStudentname());
+			}
+			
+			
+		}
+		else if (uri.endsWith("nepaliToEnglish.click")) {
+			PrintWriter out = response.getWriter();
+			String nepalidate = request.getParameter("nepalidate");
+		
+			String convertedEnglishDate = dateConverter.DateConverter.nepaliToEnglish(nepalidate);
+			out.println(convertedEnglishDate);
+		} else if (uri.endsWith("englishToNepali.click")) {
+			PrintWriter out = response.getWriter();
+			String englishdate = request.getParameter("englishdate");
+			String convertedNepaliDate = dateConverter.DateConverter.englishToNepali(englishdate);
+			out.println(convertedNepaliDate);
+		}
+		else if (uri.endsWith("teststdname.click")) {
+			System.out.println("reached");
+			String[] stdname=request.getParameterValues("stdname");
+			for(int i=0;i<stdname.length;i++){
+			System.out.println(stdname[i]);
+			}
 			
 		}
 	}

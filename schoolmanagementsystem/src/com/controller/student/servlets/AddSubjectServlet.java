@@ -26,10 +26,15 @@ public class AddSubjectServlet extends HttpServlet {
 		String subjectcode = request.getParameter("subjectcode");
 		String subjectname = request.getParameter("subjectname");
 		String subjecttype = request.getParameter("subjecttype");
+		String fullmarks=request.getParameter("fullmarks");
+		String passmarks=request.getParameter("passmarks");
 		
 		sub.setSubjectcode(subjectcode);
 		sub.setSubjectname(subjectname);
 		sub.setSubjecttype(subjecttype);
+		sub.setFullmarks(fullmarks);
+		sub.setPassmarks(passmarks);
+		
 
 		StudentOperations s = new StudentOperations();
 		status = s.addsubject(sub);

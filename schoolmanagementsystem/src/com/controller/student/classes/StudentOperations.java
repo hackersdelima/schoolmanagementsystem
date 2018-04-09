@@ -406,13 +406,15 @@ public class StudentOperations {
 	public boolean addsubject(Subjects sub) {
 		boolean status = false;
 		int a;
-		String query = "insert into subjectlist(subjectname,subjecttype, subjectCode) values (?,?,?)";
+		String query = "insert into subjectlist(subjectname,subjecttype, subjectCode, fullmarks, passmarks) values (?,?,?,?,?)";
 		try {
 			conn = DbConnection.getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setString(1, sub.getSubjectname());
 			ps.setString(2, sub.getSubjecttype());
 			ps.setString(3, sub.getSubjectcode());
+			ps.setString(4, sub.getFullmarks());
+			ps.setString(5, sub.getPassmarks());
 			a = ps.executeUpdate();
 			if (a > 0) {
 				status = true;
@@ -547,8 +549,8 @@ public class StudentOperations {
 	public boolean createnewexam(Model m) throws SQLException {
 		int a;
 		boolean status = false;
-		String query = "insert into exam (examtypeid,examname,startdate) values('" + m.getExamtype() + "','"
-				+ m.getExamname() + "','" + m.getStartdate() + "')";
+		String query = "insert into exam (examtypeid,examname,startdate,examcode) values('" + m.getExamtype() + "','"
+				+ m.getExamname() + "','" + m.getStartdate() + "','"+m.getExamcode()+"')";
 		try {
 			conn = DbConnection.getConnection();
 			stmt = conn.createStatement();

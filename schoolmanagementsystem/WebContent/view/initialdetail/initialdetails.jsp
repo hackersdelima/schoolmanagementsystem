@@ -1,4 +1,5 @@
-<%@page import="com.controller.student.classes.StudentOperations"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%><%@page import="com.controller.student.classes.StudentOperations"%>
 <%@page import="java.sql.*"%>
 <%
 	if (session.getAttribute("userdetail") != null) {
@@ -13,7 +14,7 @@
 		ResultSet classlist = s.selectclass();
 		ResultSet examtype = s.selectexamtype();
 %>
-<link rel="import" href="include1.jsp">
+<jsp:include page="/includefile"></jsp:include>
 <html>
 <head></head>
 <body class="background">

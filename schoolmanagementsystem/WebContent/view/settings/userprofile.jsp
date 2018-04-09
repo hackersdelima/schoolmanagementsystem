@@ -1,10 +1,11 @@
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%><%@page import="com.controller.student.classes.StudentOperations"%>
 <%@page import='com.school.model.UserModel'%>
 <%
 	if ((session.getAttribute("userdetail")) != null) {
 		UserModel userdetail=(UserModel)session.getAttribute("userdetail");
 %>
-<link rel="import" href="../../include1.jsp">
+<jsp:include page="/includefile"></jsp:include>
 <html>
 <head>
 </head>

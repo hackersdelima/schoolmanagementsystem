@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<jsp:include page="../../include1.jsp" />
+<jsp:include page="/includefile"></jsp:include>
 <html>
 <head>
 <title>Digi Nepal</title>
@@ -11,17 +11,23 @@
 .borderless tfoot tr td {
 	border: none
 }
+#reporttbl th{
+	text-align:center}
 </style>
+
 </head>
 <body class="container background">
 	<div>
 		<table class="table">
 			<caption style="text-align: center">
 				<h3>${sessionScope.systemdetail[0].settingsdescription }</h3>
-				<h3>${sessionScope.systemdetail[2].settingsdescription } (${sessionScope.systemdetail[3].settingsdescription })</h3>
-				
-				<h5>	<strong>${examSummary.examname }(${sessionScope.systemdetail[5].settingsdescription })</strong></h5>
-			
+				<h3>${sessionScope.systemdetail[2].settingsdescription }
+					(${sessionScope.systemdetail[3].settingsdescription })</h3>
+
+				<h5>
+					<strong>${examSummary.examname }(${sessionScope.systemdetail[5].settingsdescription })</strong>
+				</h5>
+
 			</caption>
 			<tbody>
 				<tr>
@@ -42,21 +48,31 @@
 
 	<div>
 
-		<table class="table table-striped table-bordered borderless">
+		<table id="reporttbl" class="table table-striped table-bordered borderless">
 			<thead>
-
 				<tr>
-					<th>Subject Name</th>
-					<th>Subject Code</th>
-					<th>Subject Type</th>
+					<th rowspan="2" >SUBJECT</th>
+					<th colspan="2">FULL MARKS</th>
+					<th colspan="2">PASS MARKS</th>
+					<th colspan="4">OBTAINED MARKS</th>
+
+					<th rowspan="2">REMARKS</th>
+				</tr>
+				<tr>
+					
+				<!-- 	<th>Subject Code</th>
+					<th>Subject Type</th> -->
+					
 					<th>Th. Marks</th>
 					<th>Pr. Marks</th>
 					
+					<th>Th. Marks</th>
+					<th>Pr. Marks</th>
+					
+					<th>Th. Marks</th>
+					<th>Pr. Marks</th>
 					<th>Total Marks</th>
-					<th>Full Marks</th>
-					<th>Pass Marks</th>
 					<th>Grade</th>
-					<th>Remarks</th>
 				</tr>
 
 			</thead>
@@ -64,14 +80,20 @@
 				<c:forEach items="${reportlist }" var="rep">
 					<tr>
 						<td>${rep.subjectname }</td>
-						<td>${rep.subjectcode }</td>
+						<%-- <td>${rep.subjectcode }</td>
 						<td>${rep.subjecttype }</td>
+						 --%>
+						<td>${rep.fullmarks }</td>
+						<td>${rep.fullmarks_pr }</td>
+						
+						<td>${rep.passmarks }</td>
+						<td>${rep.passmarks_pr }</td>
+						
 						<td>${rep.thmarks }</td>
 						<td>${rep.prmarks }</td>
 						<td>${rep.totalmarks }</td>
-						<td>${rep.fullmarks }</td>
-						<td>${rep.passmarks }</td>
 						<td>${rep.totalgrade }</td>
+						
 						<td>${rep.remarks }</td>
 					</tr>
 				</c:forEach>

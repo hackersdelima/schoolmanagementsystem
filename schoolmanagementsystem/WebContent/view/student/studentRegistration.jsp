@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@page import="com.controller.student.classes.StudentOperations"%>
 <%@page import="java.util.*"%>
 <%@page import="java.sql.*"%>
@@ -15,7 +17,7 @@
 		ResultSet specialinterest = s.getspecialinterest();
 		ResultSet classlist = s.selectclass();
 %>
-<link rel="import" href="include1.jsp">
+<jsp:include page="/includefile"></jsp:include>
 <html>
 <head>
 </head>
@@ -166,14 +168,14 @@
 										<td>
 											<h6>
 												<strong>DOB(YYYY-MM-DD) B.S.</strong>
-											</h6> <input type="text" class="form-control" name="dob"
-											maxlength="10" id="nepaliDate1" form="form"
+											</h6> <input type="text" class="form-control dob" name="dob"
+											maxlength="10" id="nepaliDate1" onblur="nepaliToEnglish('.dob','.doben')" form="form"
 											placeholder="2051-07-25">
 										</td>
 										<td>
 											<h6>
 												<strong>DOB(YYYY-MM-DD) A.D.</strong>
-											</h6> <input type="text" class="form-control" name="doben"
+											</h6> <input type="text" class="form-control doben" name="doben" onblur="englishToNepali('.dob','.doben')"
 											maxlength="10" form="form" id="englishDate1"
 											placeholder="1994-11-11">
 										</td>
@@ -182,14 +184,14 @@
 										<td>
 											<h6>
 												<strong>Admission Date(YYYY-MM-DD) B.S.</strong>
-											</h6> <input type="text" class="form-control" name="admissiondate"
+											</h6> <input type="text" class="form-control admdate" name="admissiondate" onblur="nepaliToEnglish('.admdate','.admdateen')"
 											maxlength="10" id="nepaliDate14" form="form"
 											placeholder="2051-07-25" required>
 										</td>
 										<td>
 											<h6>
 												<strong>Admission Date(YYYYMMDD) A.D.</strong>
-											</h6> <input type="text" class="form-control"
+											</h6> <input type="text" class="form-control admdateen" onblur="englishToNepali('.admdate','.admdateen')"
 											name="admissiondateen" maxlength="10" form="form"
 											id="englishDate14" placeholder="1994-11-11" required>
 										</td>
@@ -221,14 +223,14 @@
 										<td>
 											<h6>
 												<strong>Issued Date(YYYYMMDD) B.S.</strong>
-											</h6> <input type="text" class="form-control"
+											</h6> <input type="text" class="form-control idate" onblur="nepaliToEnglish('.idate','.idateen')"
 											name="birthcertificateissueddate" maxlength="10"
 											id="nepaliDate2" form="form" placeholder="2051-07-25">
 										</td>
 										<td>
 											<h6>
 												<strong>Issued Date(YYYYMMDD) A.D.</strong>
-											</h6> <input type="text" class="form-control"
+											</h6> <input type="text" class="form-control idateen" onblur="englishToNepali('.idate','.idateen')"
 											name="birthcertificateissueddateen" maxlength="10"
 											form="form" id="englishDate2" placeholder="1994-11-11">
 										</td>
@@ -381,14 +383,14 @@
 										<td>
 											<h6>
 												<strong>Issued Date B.S.</strong>
-											</h6> <input type="text" class="form-control"
+											</h6> <input type="text" class="form-control idatea" onblur="nepaliToEnglish('.idatea','.idateena')"
 											name="fcitizenshipissueddate" maxlength="10" id="nepaliDate3"
 											form="form" placeholder="2051-07-25">
 										</td>
 										<td>
 											<h6>
 												<strong>Issued Date A.D.</strong>
-											</h6> <input type="text" class="form-control"
+											</h6> <input type="text" class="form-control idateena" onblur="englishToNepali('.idatea','.idateena')"
 											name="fcitizenshipissueddateen" maxlength="10" form="form"
 											id="englishDate3" placeholder="1994-11-11">
 										</td>
@@ -409,14 +411,14 @@
 										<td>
 											<h6>
 												<strong>Issued Date B.S.</strong>
-											</h6> <input type="text" class="form-control"
+											</h6> <input type="text" class="form-control  ia" onblur="nepaliToEnglish('.ia','.iea')"
 											name="flicenseissueddate" maxlength="10" id="nepaliDate4"
 											form="form" placeholder="2051-07-25">
 										</td>
 										<td>
 											<h6>
 												<strong>Issued Date A.D.</strong>
-											</h6> <input type="text" class="form-control"
+											</h6> <input type="text" class="form-control  iea" onblur="englishToNepali('.ia','.iea')"
 											name="flicenseissueddateen" maxlength="10" form="form"
 											id="englishDate4" placeholder="1994-11-11">
 										</td>
@@ -437,14 +439,14 @@
 										<td>
 											<h6>
 												<strong>Issued Date B.S.</strong>
-											</h6> <input type="text" class="form-control"
+											</h6> <input type="text" class="form-control issueddate3" onblur="nepaliToEnglish('.issueddate3','.issueddateen3')"
 											name="fofficialidissueddate" maxlength="10" id="nepaliDate5"
 											form="form" placeholder="2051-07-25">
 										</td>
 										<td>
 											<h6>
 												<strong>Issued Date A.D.</strong>
-											</h6> <input type="text" class="form-control"
+											</h6> <input type="text" class="form-control  issueddateen3" onblur="englishToNepali('.issueddate3','.issueddateen3')"
 											name="fofficialidissueddateen" maxlength="10" form="form"
 											id="englishDate5" placeholder="1994-11-11">
 										</td>
@@ -465,14 +467,14 @@
 										<td>
 											<h6>
 												<strong>Issued Date B.S.</strong>
-											</h6> <input type="text" class="form-control"
+											</h6> <input type="text" class="form-control issueddate4" onblur="nepaliToEnglish('.issueddate4','.issueddateen4')"
 											name="fvoteridissueddate" maxlength="10" id="nepaliDate6"
 											form="form" placeholder="2051-07-25">
 										</td>
 										<td>
 											<h6>
 												<strong>Issued Date A.D.</strong>
-											</h6> <input type="text" class="form-control"
+											</h6> <input type="text" class="form-control issueddateen4" onblur="englishToNepali('.issueddate4','.issueddateen4')"
 											name="fvoteridissueddateen" maxlength="10" form="form"
 											id="englishDate6" placeholder="1994-11-11">
 										</td>
@@ -493,14 +495,14 @@
 										<td>
 											<h6>
 												<strong>Issued Date B.S.</strong>
-											</h6> <input type="text" class="form-control"
+											</h6> <input type="text" class="form-control issueddate5" onblur="nepaliToEnglish('.issueddate5','.issueddateen5')"
 											name="fpassportissueddate" maxlength="10" id="nepaliDate7"
 											form="form" placeholder="2051-07-25">
 										</td>
 										<td>
 											<h6>
 												<strong>Issued Date A.D.</strong>
-											</h6> <input type="text" class="form-control"
+											</h6> <input type="text" class="form-control issueddateen5" onblur="englishToNepali('.issueddate5','.issueddateen5')"
 											name="fpassportissueddateen" maxlength="10" form="form"
 											id="englishDate7" placeholder="1994-11-11">
 										</td>
@@ -594,14 +596,14 @@
 									<td>
 										<h6>
 											<strong>Issued Date B.S.</strong>
-										</h6> <input type="text" class="form-control"
+										</h6> <input type="text" class="form-control issueddate6" onblur="nepaliToEnglish('.issueddate6','.issueddateen6')"
 										name="mcitizenshipissueddate" maxlength="10" id="nepaliDate8"
 										form="form" placeholder="2051-07-25">
 									</td>
 									<td>
 										<h6>
 											<strong>Issued Date A.D.</strong>
-										</h6> <input type="text" class="form-control"
+										</h6> <input type="text" class="form-control issueddateen6" onblur="englishToNepali('.issueddate6','.issueddateen6')"
 										name="mcitizenshipissueddateen" maxlength="10" form="form"
 										id="englishDate8" placeholder="1994-11-11">
 									</td>
@@ -622,14 +624,14 @@
 									<td>
 										<h6>
 											<strong>Issued Date B.S.</strong>
-										</h6> <input type="text" class="form-control"
+										</h6> <input type="text" class="form-control issueddate7" onblur="nepaliToEnglish('.issueddate7','.issueddateen7')"
 										name="mlicenseissueddate" maxlength="10" id="nepaliDate9"
 										form="form" placeholder="2051-07-25">
 									</td>
 									<td>
 										<h6>
 											<strong>Issued Date A.D.</strong>
-										</h6> <input type="text" class="form-control"
+										</h6> <input type="text" class="form-control issueddateen7" onblur="englishToNepali('.issueddate7','.issueddateen7')"
 										name="mlicenseissueddateen" maxlength="10" form="form"
 										id="englishDate9" placeholder="1994-11-11">
 									</td>
@@ -650,14 +652,14 @@
 									<td>
 										<h6>
 											<strong>Issued Date B.S.</strong>
-										</h6> <input type="text" class="form-control"
+										</h6> <input type="text" class="form-control issueddate8" onblur="nepaliToEnglish('.issueddate8','.issueddateen8')"
 										name="mofficialidissueddate" maxlength="10" id="nepaliDate10"
 										form="form" placeholder="2051-07-25">
 									</td>
 									<td>
 										<h6>
 											<strong>Issued Date A.D.</strong>
-										</h6> <input type="text" class="form-control"
+										</h6> <input type="text" class="form-control issueddateen8" onblur="englishToNepali('.issueddate8','.issueddateen8')"
 										name="mofficialidissueddateen" maxlength="10" form="form"
 										id="englishDate10" placeholder="1994-11-11">
 									</td>
@@ -678,14 +680,14 @@
 									<td>
 										<h6>
 											<strong>Issued Date B.S.</strong>
-										</h6> <input type="text" class="form-control"
+										</h6> <input type="text" class="form-control issueddate9" onblur="nepaliToEnglish('.issueddate9','.issueddateen9')"
 										name="mvoteridissueddate" maxlength="10" id="nepaliDate11"
 										form="form" placeholder="2051-07-25">
 									</td>
 									<td>
 										<h6>
 											<strong>Issued Date A.D.</strong>
-										</h6> <input type="text" class="form-control"
+										</h6> <input type="text" class="form-control issueddateen9" onblur="englishToNepali('.issueddate9','.issueddateen9')"
 										name="mvoteridissueddateen" maxlength="10" form="form"
 										id="englishDate11" placeholder="1994-11-11">
 									</td>
@@ -706,14 +708,14 @@
 									<td>
 										<h6>
 											<strong>Issued Date B.S.</strong>
-										</h6> <input type="text" class="form-control"
+										</h6> <input type="text" class="form-control issueddate10" onblur="nepaliToEnglish('.issueddate10','.issueddateen10')"
 										name="mpassportissueddate" maxlength="10" id="nepaliDate12"
 										form="form" placeholder="2051-07-25">
 									</td>
 									<td>
 										<h6>
 											<strong>Issued Date A.D.</strong>
-										</h6> <input type="text" class="form-control"
+										</h6> <input type="text" class="form-control issueddateen10" onblur="englishToNepali('.issueddate10','.issueddateen10')"
 										name="mpassportissueddateen" maxlength="10" form="form"
 										id="englishDate12" placeholder="1994-11-11">
 									</td>
@@ -823,7 +825,7 @@
 												<%
 													while (classlist.next()) {
 												%>
-												<option value="<%=classlist.getString("classid")%>"><%=classlist.getString("classname")%></option>
+												<option value="<%=classlist.getString("classname")%>"><%=classlist.getString("classname")%></option>
 												<%
 													}
 												%>
@@ -837,7 +839,7 @@
 												<%
 													while (section.next()) {
 												%>
-												<option value="<%=section.getString(1)%>"><%=section.getString(2)%></option>
+												<option value="<%=section.getString(2)%>"><%=section.getString(2)%></option>
 												<%
 													}
 												%>

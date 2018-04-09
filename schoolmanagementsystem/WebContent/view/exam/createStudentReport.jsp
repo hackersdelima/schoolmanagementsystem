@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
+
 <%@page import="java.sql.*"%>
 <%
 	ResultSet section = (ResultSet) request.getAttribute("sectionlist");
 	ResultSet classlist = (ResultSet) request.getAttribute("classlist");
 	ResultSet examlist = (ResultSet) request.getAttribute("examlist");
 %>
-<link rel="import" href="include1.jsp">
+<jsp:include page="/includefile"></jsp:include>
 <html>
 <head>
 <style>
@@ -26,7 +27,7 @@
 			</div>
 			<div class="x_content">
 				<form action="studentMarks.add" method="post"
-					style="width: 80%; margin-top: 10px;" class="form">
+					style="margin-top: 10px;" class="form">
 					<div role="tabpanel" class="tab-pane" aria-labelledby="profile-tab">
 					<div class="form-group">
 						<div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
@@ -36,6 +37,10 @@
 						</div>
 					</div><br>
 					<div class="ln_solid"></div>
+					<div class="col-md-3">
+								<input type="text" class="form-control" id="studentname"
+									placeholder="Std. Name" readonly> <br>
+							</div>
 						<div class="col-md-12">
 						<div class="col-md-3">
 								<h6>
@@ -61,7 +66,7 @@
 									<%
 										while (classlist.next()) {
 									%>
-									<option value="<%=classlist.getString("classid")%>"><%=classlist.getString("classname")%></option>
+									<option value="<%=classlist.getString("classid")%>,<%=classlist.getString("classname")%>"><%=classlist.getString("classname")%></option>
 									<%
 										}
 									%>
@@ -71,12 +76,12 @@
 								<h6>
 									<strong>Section</strong>
 								</h6>
-								<select class="form-control" name="sectionid" required>
+								<select class="form-control" name="sectionid" id="section">
 									<option value="">Select Section</option>
 									<%
 										while (section.next()) {
 									%>
-									<option value="<%=section.getString("sectionid")%>"><%=section.getString("sectionname")%></option>
+									<option value="<%=section.getString("sectionname")%>"><%=section.getString("sectionname")%></option>
 									<%
 										}
 									%>
@@ -86,11 +91,11 @@
 								<h6>
 									<strong>Roll No</strong>
 								</h6>
-								<input type="text" class="form-control" name="rollno"
-									placeholder="" required> <br>
+								<input type="text" class="form-control" name="rollno" id="rollno"
+									placeholder="" required>
+									<br>
 							</div>
 						</div>
-
 					</div>
 					<div id="markstable"></div>
 				</form>
@@ -102,7 +107,6 @@
 	$('form').submit(function() {
 		return confirm("CONFIRM?");
 	});
-	
 		$("#class").change(function() {
 			var id = $(this).val();
 			var dataString = 'id=' + id;
@@ -116,7 +120,20 @@
 					$("#markstable").html(html);
 				}
 			});
-
+		});
+		$("#validate").click(function() {
+			var classname = $("#class").val();
+			var section = $("#section").val();
+			var rollno = $("#rollno").val();
+			$.ajax({
+				type : "POST",
+				url : "getstudentname.click",
+				data : {"classname": classname, "section": section, "rollno":rollno},
+				cache : false,
+				success : function(html) {
+					$("#studentname").val(html);
+				}
+			});
 		});
 	</script>
 </body>

@@ -66,22 +66,23 @@ public class StudentAction extends HttpServlet {
 	public void insertStudentMarks(HttpServletRequest request, HttpServletResponse response) {
 		Subjects s = new Subjects();
 		StudentDao dao = new StudentDaoImpl();
-
-		String classid = request.getParameter("classid"), sectionid = request.getParameter("sectionid");
+		String[] classid = request.getParameter("classid").split(",");
+		String sectionid = request.getParameter("sectionid");
 		String rollno = request.getParameter("rollno");
 		String examid = request.getParameter("examid");
 
 		String[] thmarks = request.getParameterValues("thmarks"), prmarks = request.getParameterValues("prmarks"),
-				totalmarks = request.getParameterValues("totalmarks"),
 				subjecttype = request.getParameterValues("subtype"), subid = request.getParameterValues("subid"),
 				remarks = request.getParameterValues("remarks"), totalgrade = request.getParameterValues("totalgrade"),
-				fullmarks=request.getParameterValues("fullmarks"),passmarks=request.getParameterValues("passmarks");
+				fullmarks=request.getParameterValues("fullmarks"),passmarks=request.getParameterValues("passmarks"),
+				fullmarks_pr=request.getParameterValues("fullmarks_pr"),
+				passmarks_pr=request.getParameterValues("passmarks_pr");
 
-		s.setClassid(classid);
+		s.setClassid(classid[1]);
 		s.setSectionid(sectionid);
 		s.setExamid(examid);
 
-		StudentModel student = dao.getStudentId(classid, sectionid, rollno);
+		StudentModel student = dao.getStudentId(classid[1], sectionid, rollno);
 		s.setStudentid(student.getStudentid());
 		boolean status = false;
 
@@ -93,8 +94,8 @@ public class StudentAction extends HttpServlet {
 			s.setPrmarks(prmarks[i]);
 			s.setFullmarks(fullmarks[i]);
 			s.setPassmarks(passmarks[i]);
-			s.setTotalmarks(totalmarks[i]);
-
+			s.setFullmarks_pr(fullmarks_pr[i]);
+			s.setPassmarks_pr(passmarks_pr[i]);
 			s.setRemarks(remarks[i]);
 			s.setTotalgrade(totalgrade[i]);
 			// query
@@ -112,7 +113,12 @@ public class StudentAction extends HttpServlet {
 		} else {
 			request.setAttribute("msg", "successful");
 		}
-		// dispatcher
+		RequestDispatcher rd=request.getRequestDispatcher("createStudentReport.click");
+		try {
+			rd.forward(request, response);
+		} catch (ServletException | IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	//student exam report
@@ -120,8 +126,27 @@ public class StudentAction extends HttpServlet {
 		 DecimalFormat decimal = new DecimalFormat("##.00");
 		 
 		Subjects s=new Subjects();
-		String examid=request.getParameter("examid"),studentid=request.getParameter("studentid");
+		String examid=request.getParameter("examid"),
+				section=request.getParameter("section"),rollno=request.getParameter("rollno");
+		
+		String[] classdetail=request.getParameter("classname").split(",");
+		
 		RequestDispatcher rd=null;
+		
+		//get student admission no
+		StudentDao sdao = new StudentDaoImpl();
+		StudentModel student = sdao.getStudentId(classdetail[1], section, rollno);
+		if(student==null){request.setAttribute("msg", "Student Not Found!");
+		 rd=request.getRequestDispatcher("reportsearchbox.click");
+		 try {
+				rd.forward(request, response);
+			} catch (ServletException | IOException e) {
+				e.printStackTrace();
+			}
+		}
+		else{
+		String studentid=student.getStudentid();
+		
 		
 		s.setStudentid(studentid);
 		s.setExamid(examid);
@@ -133,8 +158,10 @@ public class StudentAction extends HttpServlet {
 		if(reportlist!=null){
 			StudentModel stdDetail=dao.getSpecificStudentDetails(studentid);
 			StudentOperations exam=new StudentOperations();
+			System.out.println(examid+studentid);
 			Subjects examSummary=exam.selectSpecificExam(examid, studentid);
-					request.setAttribute("examSummary", examSummary);
+		
+			request.setAttribute("examSummary", examSummary);
 			request.setAttribute("stdDetail", stdDetail);
 			request.setAttribute("reportlist", reportlist);
 			
@@ -146,12 +173,16 @@ public class StudentAction extends HttpServlet {
 			 rd=request.getRequestDispatcher("reportsearchbox.click");
 			
 		}
+		
 		try {
 			rd.forward(request, response);
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}
+		}
+		}
 		
-	}
+		
+	
 
 }

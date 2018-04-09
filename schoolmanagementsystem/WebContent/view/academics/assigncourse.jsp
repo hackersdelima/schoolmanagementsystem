@@ -1,8 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@page import="com.controller.student.classes.StudentOperations" %>
  <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <%@page import="java.util.*" %>
 <%@page import="java.sql.*" %>
-<link rel="import" href="include.jsp">
+<jsp:include page="/includefile"></jsp:include>
 <div class="background">
 <div class="breadcrumb-line">
 	<nav aria-label="breadcrumb" role="navigation">

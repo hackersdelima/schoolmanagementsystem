@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%><%@page import="com.controller.student.classes.StudentOperations"%>
 <%@page import="com.controller.student.classes.StudentOperations"%>
 <%@page import="java.util.*"%>
 <%@page import="java.sql.*"%>
@@ -5,7 +7,7 @@
 	%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<link rel="import" href="include1.jsp">
+<jsp:include page="/includefile"></jsp:include>
 <html>
 <head>
 <style type="text/css">
@@ -63,6 +65,7 @@ tfoot input {
 			</div>
 		</div>
 	</div> -->
+	<a id="clickhere">click here</a>
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<div class="x_panel">
 			<div class="x_title">
@@ -104,14 +107,14 @@ tfoot input {
                 <th></th>
             </tr>
         </tfoot>
-					<tbody>
+					<tbody id="tabledata">
 						<%
 			int sn=1;
 			%>
 						<c:forEach items="${slist }" var="s">
 							<tr>
 								<th scope="row"><%=sn %></th>
-								<td>${s.studentname }</td>
+								<td class="stdname">${s.studentname }</td>
 								<td>${s.rollno }</td>
 								<td>${s.admissionclass }</td>
 								<td>${s.section }</td>
@@ -188,6 +191,26 @@ $(".viewdetail").click(function()
 		{
 		$(".studentdetail").html(html);
 		$('#studentDetailModal').modal('show');
+		} 
+		});
+});
+$("#clickhere").click(function()
+		{
+	stdname=[];
+ stdname=$('.stdname').text();
+ var date=Date.now();
+ alert(stdname);
+ alert(date);
+var dataString={stdname:stdname};
+		$.ajax
+		({
+		type: "POST",
+		url: "teststdname.click",
+		data:dataString,
+		cache: false,
+		success: function(html)
+		{
+		alert('success');
 		} 
 		});
 });

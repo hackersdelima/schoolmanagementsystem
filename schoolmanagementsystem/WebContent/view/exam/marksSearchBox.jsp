@@ -1,11 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@page import="com.controller.student.classes.StudentOperations"%>
 <%@page import="java.util.*"%>
 <%@page import="java.sql.*"%>
 <%
 	if ((session.getAttribute("userdetail")) != null) {
 		ResultSet examlist = (ResultSet) request.getAttribute("examlist");
+		ResultSet classlist=(ResultSet)request.getAttribute("classlist");
+		ResultSet sectionlist=(ResultSet)request.getAttribute("sectionlist");
 %>
-<link rel="import" href="include1.jsp">
+<jsp:include page="/includefile"></jsp:include>
 <body class="background">
 	<div class="breadcrumb-line">
 		<nav aria-label="breadcrumb" role="navigation">
@@ -18,7 +22,7 @@
 			</ol>
 		</nav>
 	</div>
-	<div class="col-md-6 col-sm-6 col-xs-6">
+	<div class="col-md-10 col-sm-10 col-xs-10">
 
 		<div class="x_panel">
 			<div class="x_title">
@@ -26,13 +30,13 @@
 				<div class="clearfix"></div>
 			</div>
 			<div class="x_content">
-				<form method="post" action="specificStudentReport.view" id="form"></form>
-				<table class="table" >
+				<form method="post" action="specificStudentReport.view" >
+				<table class="table">
 					<tbody>
 						<tr>
 
 							<td><h6>Exam*</h6> <select class="form-control"
-								name="examid" form="form" required>
+								name="examid"  required>
 									<option value="" selected>Select exam</option>
 									<%
 										while (examlist.next()) {
@@ -42,19 +46,42 @@
 										}
 									%>
 							</select></td>
-							<td><h6>Student ID*</h6> <input type="text"
-								class="form-control" name="studentid" form="form" required></td>
-							
+							<td><h6>Class*</h6> 	<select class="form-control" name="classname" id="class" required>
+									<option value="">Select Class</option>
+									<%
+										while (classlist.next()) {
+									%>
+									<option value="<%=classlist.getString("classid")%>,<%=classlist.getString("classname")%>"><%=classlist.getString("classname")%></option>
+									<%
+										}
+									%>
+								</select></td>
+							<td><h6>Section</h6>  	<select class="form-control" name="section" id="section">
+									<option value="">Select Section</option>
+									<%
+										while (sectionlist.next()) {
+									%>
+									<option value="<%=sectionlist.getString("sectionname")%>"><%=sectionlist.getString("sectionname")%></option>
+									<%
+										}
+									%>
+								</select></td>
+							<td><h6>Roll No*</h6> <input type="text"
+								class="form-control" name="rollno" required></td>
+							<!-- <td><h6>Student ID*</h6> <input type="text"
+								class="form-control" name="studentid" form="form" required></td> -->
+
 						</tr>
 						<tr>
 							<td>
-							<button type="submit" class="btn btn-success"
-									form="form">
+								<button type="submit" class="btn btn-success" >
 									<i class="fa fa-check"></i> Search
-								</button></td>
+								</button>
+							</td>
 						</tr>
 					</tbody>
 				</table>
+				</form>
 			</div>
 		</div>
 	</div>

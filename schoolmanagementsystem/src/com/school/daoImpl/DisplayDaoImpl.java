@@ -28,8 +28,14 @@ public class DisplayDaoImpl implements DisplayDao{
 		while(rs.next()){
 			sub=new Subjects();
 			sub.setSubjectid(rs.getString("subjectid"));
+			sub.setSubjectcode(rs.getString("subjectCode"));
 			sub.setSubjectname(rs.getString("subjectname"));
 			sub.setSubjecttype(rs.getString("subjecttype"));
+			sub.setFullmarks(rs.getString("fullmarks"));
+			sub.setPassmarks(rs.getString("passmarks"));
+			sub.setFullmarks_pr(rs.getString("fullmarks_pr"));
+			sub.setPassmarks_pr(rs.getString("passmarks_pr"));
+			
 			list.add(sub);
 		}
 		if(list.size()>0){
@@ -93,6 +99,8 @@ public class DisplayDaoImpl implements DisplayDao{
 				sub.setRemarks(rs.getString("remarks"));
 				sub.setFullmarks(rs.getString("fullmarks"));
 				sub.setPassmarks(rs.getString("passmarks"));
+				sub.setFullmarks_pr(rs.getString("fullmarks_pr"));
+				sub.setPassmarks_pr(rs.getString("passmarks_pr"));
 				
 				list.add(sub);
 				

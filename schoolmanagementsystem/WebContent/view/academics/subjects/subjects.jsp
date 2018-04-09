@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@page import="com.controller.student.classes.StudentOperations"%>
 <%@page import="java.util.*"%>
 <%@page import="java.sql.*"%>
@@ -6,7 +8,7 @@
 		StudentOperations s = new StudentOperations();
 		ResultSet subjects = s.selectsubject();
 %>
-<link rel="import" href="include1.jsp">
+<jsp:include page="/includefile"></jsp:include>
 <body class="background">
 
 	<div class="breadcrumb-line">
@@ -52,7 +54,10 @@
 										<option value="common">Common</option>
 										<option value="optional">Optional</option>
 								</select></td>
-								<td></td>
+								<td><h6>Full Marks*</h6> <input type="text"
+									class="form-control" name="fullmarks" form="form" required></td>
+									<td><h6>Pass Marks*</h6> <input type="text"
+									class="form-control" name="passmarks" form="form" required></td>
 							</tr>
 						</tbody>
 					</table>
@@ -80,6 +85,7 @@
 						<tr class="headings">
 							<th>S No.</th>
 							<th>Subject Name</th>
+							<th>Subject Code</th>
 							<th>Subject Type</th>
 							<th><i class="fa fa-cog" aria-hidden="true"></i></th>
 						</tr>
@@ -92,6 +98,7 @@
 						<tr>
 							<td><%=sno%></td>
 							<td><%=subjects.getString("subjectname")%></td>
+							<td><%=subjects.getString("subjectCode")%></td>
 							<td><%=subjects.getString("subjecttype")%></td>
 							<td><a href=""><i class="fa fa-pencil-square-o"
 									aria-hidden="true" style="color: blue;"></i></a>&nbsp;&nbsp;&nbsp;<a

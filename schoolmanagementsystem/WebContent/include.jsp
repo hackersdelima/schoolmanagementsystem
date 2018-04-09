@@ -5,6 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<style media="print">
+ @page {
+  size: auto;
+  margin:0;
+  margin-right: 20px;
+  margin-left: 20px;
+       }
+</style>
 <!-- Bootstrap -->
     <link href="template/css/bootstrap.min.css" rel="stylesheet">
     <!-- Datatables -->
@@ -56,6 +64,7 @@
     <script src="template/js/custom.min.js"></script>
     
     <!-- Form Required Scripts -->
+     <script type="text/javascript" src="template/js/dateconverter.js"></script>
 	<script type="text/javascript" src="template/nepaliDatePicker/nepali.datepicker.v2.2.min.js"></script>
 	<script type="text/javascript" src="template/js/dconverter.js"></script>
 	<script type="text/javascript" src="template/js/selector.js"></script>    

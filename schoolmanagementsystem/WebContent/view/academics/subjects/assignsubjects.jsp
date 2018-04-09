@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@page import="com.controller.student.classes.StudentOperations"%>
 <%@page import="java.util.*"%>
 <%@page import="java.sql.*"%>
@@ -10,7 +12,7 @@
 		ResultSet classlist = s.selectclass();
 %>
 
-<link rel="import" href="include1.jsp">
+<jsp:include page="/includefile"></jsp:include>
 <body class="background">
 	<div class="breadcrumb-line">
 		<nav aria-label="breadcrumb" role="navigation">
@@ -37,15 +39,13 @@
 			</div>
 			<div class="x_content">
 				<form method="post" action="assignsubjects.add" id="form"
-					style="width: 60%">
+					>
 					<button type="submit" class="btn btn-success" form="form">
 						<i class="fa fa-check"></i> Save
 					</button>
-					<table class="table">
-						<tbody>
-							<tr>
-								<td>
-									<h6>Class</h6> <select class="form-control" name="classid" form="form"
+						<div class="col-md-12">
+						<div class="col-md-5">
+						<h6>Class</h6> <select class="form-control" name="classid" form="form"
 									id="class" required>
 										<option value="">Select Class</option>
 										<%
@@ -56,23 +56,20 @@
 											}
 										%>
 								</select>
-								</td>
-								<!-- <td><h6>Student Admission No. *</h6>
-				<input type="text" class="form-control" name="studentid" form="form"
-					required></td> -->
-								<td><h6>Subjects</h6> <select multiple class="form-control"
+						</div>
+						<div class="col-md-7">
+							<h6>Subjects</h6> <select multiple class="form-control"
 									name="subjectid" form="form">
 										<%
 											while (subjects.next()) {
 										%>
-										<option value="<%=subjects.getString("subjectid")%>"><%=subjects.getString("subjectname")%></option>
+										<option value="<%=subjects.getString("subjectid")%>"><%=subjects.getString("subjectCode")%> - <%=subjects.getString("subjectname")%></option>
 										<%
 											}
 										%>
-								</select></td>
-							</tr>
-						</tbody>
-					</table>
+								</select>
+						</div>
+						</div>
 				</form>
 			</div>
 		</div>

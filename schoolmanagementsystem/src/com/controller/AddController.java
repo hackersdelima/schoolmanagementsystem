@@ -45,17 +45,16 @@ public class AddController extends HttpServlet {
 			m.setExamname(request.getParameter("examname"));
 			m.setExamtype(request.getParameter("examtype"));
 			m.setStartdate(request.getParameter("startdate"));
+			m.setExamcode(request.getParameter("examcode"));
 			try {
 				status = s.createnewexam(m);
 				if (status) {
 					request.setAttribute("msg", "Successful!");
-					RequestDispatcher rd = request.getRequestDispatcher("examjsp");
-					rd.forward(request, response);
 				} else {
 					request.setAttribute("msg", "Unsuccessful!");
-					RequestDispatcher rd = request.getRequestDispatcher("examjsp");
-					rd.forward(request, response);
 				}
+				RequestDispatcher rd = request.getRequestDispatcher("examjsp");
+				rd.forward(request, response);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

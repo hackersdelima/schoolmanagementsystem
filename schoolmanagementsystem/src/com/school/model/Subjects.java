@@ -1,7 +1,23 @@
 package com.school.model;
 
 public class Subjects {
-private String percentage,examname,startdate,examtypename,curdate,subjectid, subjectname, subjecttype, subjectcode, classid, sectionid, studentid, subjecttypeid, thmarks, prmarks, totalmarks,examid,totalgrade,remarks, fullmarks, passmarks;
+private String percentage,examname,startdate,examtypename,curdate,subjectid, subjectname, subjecttype, subjectcode, classid, sectionid, studentid, subjecttypeid, thmarks, prmarks, totalmarks,examid,totalgrade,remarks, fullmarks, passmarks, fullmarks_pr, passmarks_pr;
+
+public String getFullmarks_pr() {
+	return fullmarks_pr;
+}
+
+public void setFullmarks_pr(String fullmarks_pr) {
+	this.fullmarks_pr = fullmarks_pr;
+}
+
+public String getPassmarks_pr() {
+	return passmarks_pr;
+}
+
+public void setPassmarks_pr(String passmarks_pr) {
+	this.passmarks_pr = passmarks_pr;
+}
 
 public String getCurdate() {
 	return curdate;

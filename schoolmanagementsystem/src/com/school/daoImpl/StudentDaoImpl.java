@@ -19,21 +19,24 @@ public class StudentDaoImpl implements StudentDao {
 	}
 
 	public boolean insertStudentMarks(Subjects s){
-		String query="insert into exam_marks_tbl(studentid,examid,subjectid,prmarks,thmarks,totalmarks,totalgrade,remarks,inputDate, fullmarks, passmarks) values(?,?,?,?,?,?,?,?,now(),?,?)";
+		String query="insert into exam_marks_tbl(studentid,examid,subjectid,prmarks,thmarks,totalgrade,remarks,inputDate, fullmarks, passmarks,totalmarks, fullmarks_pr, passmarks_pr) values(?,?,?,?,?,?,?,now(),?,?,?,?,?)";
 		int i=0;
 		con=DbConnection.getConnection();
 		try {
+			Double totalmarks=Double.parseDouble(s.getPrmarks())+Double.parseDouble(s.getThmarks());
 			ps=con.prepareStatement(query);
 			ps.setString(1, s.getStudentid());
 			ps.setString(2, s.getExamid());
 			ps.setString(3, s.getSubjectid());
 			ps.setString(4, s.getPrmarks());
 			ps.setString(5, s.getThmarks());
-			ps.setString(6, s.getTotalmarks());
-			ps.setString(7, s.getTotalgrade());
-			ps.setString(8, s.getRemarks());
-			ps.setString(9, s.getFullmarks());
-			ps.setString(10, s.getPassmarks());
+			ps.setString(6, s.getTotalgrade());
+			ps.setString(7, s.getRemarks());
+			ps.setString(8, s.getFullmarks());
+			ps.setString(9, s.getPassmarks());
+			ps.setString(10, totalmarks.toString());
+			ps.setString(11, s.getFullmarks_pr());
+			ps.setString(12, s.getPassmarks_pr());
 			i=ps.executeUpdate();
 			if(i>0)
 			{
@@ -67,6 +70,7 @@ public class StudentDaoImpl implements StudentDao {
 				
 				return s;
 			}
+			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -1,7 +1,15 @@
 package com.controller.student.classes;
 
 public class Model {
-	String examname, examtype,startdate, studentid,subjectid,companydb,classid,settings_id, type, description;
+	String examname,examcode, examtype,startdate, studentid,subjectid,companydb,classid,settings_id, type, description;
+
+	public String getExamcode() {
+		return examcode;
+	}
+
+	public void setExamcode(String examcode) {
+		this.examcode = examcode;
+	}
 
 	public String getSettings_id() {
 		return settings_id;
