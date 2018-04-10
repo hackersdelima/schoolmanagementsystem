@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.controller.student.classes.StudentOperations;
+import com.sahakari.account.dao.AccountDao;
+import com.sahakari.account.daoImpl.AccountDaoImpl;
 import com.school.academic.model.ClassModel;
 import com.school.dao.AcademicsSettingsAddDao;
 import com.school.dao.DisplayDao;
@@ -23,6 +25,7 @@ import com.school.dao.StudentDao;
 import com.school.daoImpl.AcademicsSettingsAddDaoImpl;
 import com.school.daoImpl.DisplayDaoImpl;
 import com.school.daoImpl.StudentDaoImpl;
+import com.school.model.AccountModel;
 import com.school.model.StudentModel;
 import com.school.model.Subjects;
 import com.school.model.UserModel;
@@ -188,6 +191,96 @@ public class NavigationController extends HttpServlet {
 			}
 			
 		}
+		
+		//account from sahahkari
+		else if (uri.endsWith("insertfinancialaccount.click")) {
+			AccountDao a = new AccountDaoImpl();
+			List<AccountModel> categorylist = a.getCategories();
+			request.setAttribute("categorylist", categorylist);
+			RequestDispatcher rd = request
+					.getRequestDispatcher("view/Account/insertFinancialAccount.jsp");
+			rd.forward(request, response);
+
+		} else if (uri.endsWith("insertaccount.click")) {
+			AccountDao a = new AccountDaoImpl();
+			List<AccountModel> categorylist = a.getCategories();
+			request.setAttribute("categorylist", categorylist);
+			RequestDispatcher rd = request
+					.getRequestDispatcher("view/Account/insertAccount.jsp");
+			rd.forward(request, response);
+
+		} else if (uri.endsWith("viewaccount.click")) {
+			AccountDao a = new AccountDaoImpl();
+			List<AccountModel> list = a.viewAccount();
+			request.setAttribute("accountlist", list);
+			RequestDispatcher rd = request
+					.getRequestDispatcher("view/Account/viewAccount.jsp");
+			rd.forward(request, response);
+
+		} else if (uri.endsWith("editaccount.click")) {
+			String accountNumber = request.getParameter("accountNumber");
+			request.setAttribute("accountNumber", accountNumber);
+			RequestDispatcher rd = request
+					.getRequestDispatcher("view/Account/editAccount.jsp");
+			rd.forward(request, response);
+
+		} else if (uri.endsWith("accounteditdisplayform.click")) {
+			String accountNumber = request.getParameter("id");
+			AccountDao a = new AccountDaoImpl();
+
+			List<AccountModel> categorylist = a.getCategories();
+			request.setAttribute("categorylist", categorylist);
+
+			AccountModel list = a.getAccountDetail(accountNumber);
+			request.setAttribute("accountdetail", list);
+			RequestDispatcher rd = request
+					.getRequestDispatcher("view/Account/editAccountDisplayForm.jsp");
+			rd.forward(request, response);
+
+		} else if (uri.endsWith("showaccounttype.click")) {
+			PrintWriter out = response.getWriter();
+			String categoryId = request.getParameter("id");
+			if (categoryId != null) {
+
+				AccountDao a = new AccountDaoImpl();
+
+				String accountType = a
+						.selectAccountTypeFromCategory(categoryId);
+
+				AccountModel am = a.getAccountTypes(accountType);
+				out.println("<option value='" + am.getAccountType() + "'>"
+						+ am.getAccountTypeHead() + "</option>");
+			} else {
+				out.println("<option value=''>Select Account Type</option>");
+			}
+
+		}
+		 else if (uri.endsWith("getmembername.click")) {
+				PrintWriter out = response.getWriter();
+				String pid = request.getParameter("id");
+				DisplayDao v = new DisplayDaoImpl();
+				StudentModel s = v.getSpecificStudentDetails(pid);
+				out.println(s.getStudentname());
+
+			} 
+		 else if (uri.endsWith("showaccounttype.click")) {
+				PrintWriter out = response.getWriter();
+				String categoryId = request.getParameter("id");
+				if (categoryId != null) {
+
+					AccountDao a = new AccountDaoImpl();
+
+					String accountType = a
+							.selectAccountTypeFromCategory(categoryId);
+
+					AccountModel am = a.getAccountTypes(accountType);
+					out.println("<option value='" + am.getAccountType() + "'>"
+							+ am.getAccountTypeHead() + "</option>");
+				} else {
+					out.println("<option value=''>Select Account Type</option>");
+				}
+
+			}
 	}
 
 }

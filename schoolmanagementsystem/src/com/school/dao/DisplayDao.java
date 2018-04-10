@@ -11,4 +11,5 @@ public interface DisplayDao {
 
 	public List<Subjects> getSpecificStudentReport(Subjects s);
 	public StudentModel getSpecificStudentDetails(String studentid);
+
 }

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.controller.action.AcademicsSettingsAction;
+import com.controller.action.AccountAction;
 import com.controller.action.StudentAction;
 import com.controller.student.classes.Model;
 import com.controller.student.classes.StudentOperations;
@@ -77,7 +78,7 @@ public class AddController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("subjectassign");
 			rd.forward(request, response);
 		}
-		if (uri.endsWith("studentMarks.add")) {
+		else if (uri.endsWith("studentMarks.add")) {
 			StudentAction action=new StudentAction();
 			action.insertStudentMarks(request,response);
 		}
@@ -85,6 +86,11 @@ public class AddController extends HttpServlet {
 			AcademicsSettingsAction a=new AcademicsSettingsAction();
 			a.updateGeneralSettings(request,response);
 		}
+		else if(uri.endsWith("account.add")){
+			AccountAction a=new AccountAction();
+			a.addAccount(request,response);
+		}
+		
 
 	}
 

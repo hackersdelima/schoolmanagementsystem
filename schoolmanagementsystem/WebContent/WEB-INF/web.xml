@@ -164,4 +164,14 @@
     <servlet-name>ViewController</servlet-name>
     <url-pattern>*.view</url-pattern>
   </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>UpdateController</display-name>
+    <servlet-name>UpdateController</servlet-name>
+    <servlet-class>com.controller.UpdateController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateController</servlet-name>
+    <url-pattern>*.update</url-pattern>
+  </servlet-mapping>
 </web-app>
