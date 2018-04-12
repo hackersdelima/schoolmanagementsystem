@@ -97,8 +97,39 @@
 														maintenance</a></li>
 												<li id="i"><a href="pageNotFound.jsp" target="iframe_a">Account Closure</a></li>
 											</ul></li>
+											<li id="generaltransaction"><a><i class="fa fa-tasks" aria-hidden="true"></i> General
+										Transaction <span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a><span class="fa fa-chevron-down"></span>Funds
+												Transfer</a>
+											<ul class="nav child_menu">
+												<li id="i"><a href="inserttransaction.click" target="iframe_a">New
+														Account Transfer </a></li>
+												<li id="e"><a href="viewtransaction.click" target="iframe_a">Amend
+														Account Transfer</a></li>
+												<li><a href="a" target="iframe_a">Authorize Account
+														Transfer</a></li>
+
+											</ul></li>
+										
+											
+										<li><a><span class="fa fa-chevron-down"></span>
+												Journal Entry (Multiple Debit - Multiple Credit) </a>
+											<ul class="nav child_menu">
+												<li id="i"><a href="insertMultiTxn.click" target="iframe_a">New
+														Journal Entry </a></li>
+												<li id="v"><a href="viewMultiTxn.click" target="iframe_a">Amend
+														Journal Entry </a></li>
+												<li id="a"><a href="pageNotFound.jsp" target="iframe_a"> Authorize
+														Journal Entry </a></li>
+
+											</ul></li>
+									</ul></li>
+											
                 </ul>
               </div>
+              
+              
               <div class="menu_section">
                 <h3>Settings</h3>
                 <ul class="nav side-menu">

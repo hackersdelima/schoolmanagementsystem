@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.controller.action.AccountAction;
+import com.controller.action.TransactionAction;
 
 @WebServlet("/UpdateController")
 public class UpdateController extends HttpServlet {
@@ -29,6 +30,10 @@ public class UpdateController extends HttpServlet {
 		if(uri.endsWith("account.update")){
 			AccountAction action=new AccountAction();
 			action.updateAccount(request,response);
+		}
+		else if(uri.endsWith("transaction.update")){
+			TransactionAction ta=new TransactionAction();
+			ta.updateTransaction(request,response);
 		}
 	}
 

@@ -15,9 +15,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.controller.action.Generator;
 import com.controller.student.classes.StudentOperations;
 import com.sahakari.account.dao.AccountDao;
 import com.sahakari.account.daoImpl.AccountDaoImpl;
+import com.sahakari.transaction.dao.TransactionDao;
+import com.sahakari.transaction.daoImpl.TransactionDaoImpl;
 import com.school.academic.model.ClassModel;
 import com.school.dao.AcademicsSettingsAddDao;
 import com.school.dao.DisplayDao;
@@ -28,7 +31,11 @@ import com.school.daoImpl.StudentDaoImpl;
 import com.school.model.AccountModel;
 import com.school.model.StudentModel;
 import com.school.model.Subjects;
+import com.school.model.TellerTransactionModel;
+import com.school.model.TransactionModel;
 import com.school.model.UserModel;
+
+
 
 /**
  * Servlet implementation class NavigationController
@@ -281,6 +288,77 @@ public class NavigationController extends HttpServlet {
 				}
 
 			}
+		
+		 else if (uri.endsWith("inserttransaction.click")) {
+				String branchid = "001";
+				Generator gen = new Generator();
+				String tid = gen.transactionidgenerator(branchid);
+				request.setAttribute("tid", tid);
+				RequestDispatcher rd = request
+						.getRequestDispatcher("view/Transaction/insertTransaction.jsp");
+				rd.forward(request, response);
+			} else if (uri.endsWith("viewtransaction.click")) {
+				TransactionDao td = new TransactionDaoImpl();
+				List<TransactionModel> list = td.gettransactions();
+				request.setAttribute("transactionlist", list);
+				RequestDispatcher rd = request
+						.getRequestDispatcher("view/Transaction/viewTransaction.jsp");
+				rd.forward(request, response);
+			} else if (uri.endsWith("edittransaction.click")) {
+				String id = request.getParameter("id");
+				request.setAttribute("id", id);
+				RequestDispatcher rd = request
+						.getRequestDispatcher("view/Transaction/editTransaction.jsp");
+				rd.forward(request, response);
+			} else if (uri.endsWith("transactioneditdisplayform.click")) {
+				String id = request.getParameter("id");
+				TransactionDao td = new TransactionDaoImpl();
+				TransactionModel list = td.getTransactionDetail(id);
+				request.setAttribute("tdetail", list);
+				RequestDispatcher rd = request
+						.getRequestDispatcher("view/Transaction/editTransactionDisplayForm.jsp");
+				rd.forward(request, response);
+			}
+	
+			// multi transactions
+			if (uri.endsWith("insertMultiTxn.click")) {
+				String branchid = "001";
+				Generator gen = new Generator();
+				String mid = gen.multitransactionidgenerator(branchid);
+				request.setAttribute("mid", mid);
+				RequestDispatcher rd = request
+						.getRequestDispatcher("view/Transaction/MultiTransactions/insertMultiTransaction.jsp");
+				rd.forward(request, response);
+
+			}
+			if (uri.endsWith("viewMultiTxn.click")) {
+				TransactionDao dao = new TransactionDaoImpl();
+				List<TellerTransactionModel> list = dao.getMultiTransaction();
+
+				request.setAttribute("multitransactionlist", list);
+				RequestDispatcher rd = request
+						.getRequestDispatcher("view/Transaction/MultiTransactions/viewMultiTransaction.jsp");
+				rd.forward(request, response);
+			}
+
+			else if (uri.endsWith("multitxneditdisplayform.click")) {
+				String id = request.getParameter("id");
+
+				TransactionDao td = new TransactionDaoImpl();
+				TellerTransactionModel list = td.getMultiTransactionDetail(id);
+				request.setAttribute("multitxn", list);
+				RequestDispatcher rd = request
+						.getRequestDispatcher("view/Transaction/MultiTransactions/editMultiTransactionDisplayForm.jsp");
+				rd.forward(request, response);
+			} else if (uri.endsWith("editmultitxn.click")) {
+				String id = request.getParameter("id");
+				request.setAttribute("id", id);
+				RequestDispatcher rd = request
+						.getRequestDispatcher("view/Transaction/MultiTransactions/editMultiTransaction.jsp");
+				rd.forward(request, response);
+
+			}
+
 	}
 
 }
