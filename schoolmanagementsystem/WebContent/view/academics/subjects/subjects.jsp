@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <%@page import="com.controller.student.classes.StudentOperations"%>
 <%@page import="java.util.*"%>
 <%@page import="java.sql.*"%>
@@ -54,10 +54,14 @@
 										<option value="common">Common</option>
 										<option value="optional">Optional</option>
 								</select></td>
-								<td><h6>Full Marks*</h6> <input type="text"
+								<td><h6>Th Full Marks*</h6> <input type="text"
 									class="form-control" name="fullmarks" form="form" required></td>
-									<td><h6>Pass Marks*</h6> <input type="text"
+								<td><h6>Pr Full Marks*</h6> <input type="text"
+									class="form-control" name="fullmarks_pr" form="form" required></td>
+								<td><h6>Th Pass Marks*</h6> <input type="text"
 									class="form-control" name="passmarks" form="form" required></td>
+								<td><h6>Pr Pass Marks*</h6> <input type="text"
+									class="form-control" name="passmarks_pr" form="form" required></td>
 							</tr>
 						</tbody>
 					</table>

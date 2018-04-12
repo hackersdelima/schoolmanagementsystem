@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.controller.action.AcademicsSettingsAction;
 import com.controller.action.AccountAction;
+import com.controller.action.CategoryAction;
 import com.controller.action.StudentAction;
 import com.controller.student.classes.Model;
 import com.controller.student.classes.StudentOperations;
@@ -89,6 +90,10 @@ public class AddController extends HttpServlet {
 		else if(uri.endsWith("account.add")){
 			AccountAction a=new AccountAction();
 			a.addAccount(request,response);
+		}
+		if(uri.endsWith("category.add")){
+			CategoryAction ca=new CategoryAction();
+			ca.addCategory(request,response);
 		}
 		
 

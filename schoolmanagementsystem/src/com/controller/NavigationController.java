@@ -15,17 +15,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import com.controller.student.classes.StudentOperations;
 import com.sahakari.account.dao.AccountDao;
 import com.sahakari.account.daoImpl.AccountDaoImpl;
 import com.school.academic.model.ClassModel;
 import com.school.dao.AcademicsSettingsAddDao;
+import com.school.dao.CategoryDao;
 import com.school.dao.DisplayDao;
 import com.school.dao.StudentDao;
 import com.school.daoImpl.AcademicsSettingsAddDaoImpl;
+import com.school.daoImpl.CategoryDaoImpl;
 import com.school.daoImpl.DisplayDaoImpl;
 import com.school.daoImpl.StudentDaoImpl;
 import com.school.model.AccountModel;
+import com.school.model.CategoryModel;
 import com.school.model.StudentModel;
 import com.school.model.Subjects;
 import com.school.model.UserModel;
@@ -281,6 +287,22 @@ public class NavigationController extends HttpServlet {
 				}
 
 			}
+		 else if (uri.endsWith("category.click")) {
+				CategoryDao c = new CategoryDaoImpl();
+				List<CategoryModel> accounttype = c.accounttype();
+				request.setAttribute("accounttype", accounttype);
+
+				RequestDispatcher rd = request
+						.getRequestDispatcher("view/categories/insertCategory.jsp");
+				rd.forward(request, response);
+			}
+		if (uri.endsWith("getCategoriesDetail.click")) {
+			PrintWriter out = response.getWriter();
+			CategoryDao c = new CategoryDaoImpl();
+			JSONObject list = c.selectCategories();
+			out.println(list);
+
+		}
 	}
 
 }

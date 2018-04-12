@@ -406,7 +406,7 @@ public class StudentOperations {
 	public boolean addsubject(Subjects sub) {
 		boolean status = false;
 		int a;
-		String query = "insert into subjectlist(subjectname,subjecttype, subjectCode, fullmarks, passmarks) values (?,?,?,?,?)";
+		String query = "insert into subjectlist(subjectname,subjecttype, subjectCode, fullmarks, passmarks, fullmarks_pr, passmarks_pr) values (?,?,?,?,?,?,?)";
 		try {
 			conn = DbConnection.getConnection();
 			ps = conn.prepareStatement(query);
@@ -415,6 +415,8 @@ public class StudentOperations {
 			ps.setString(3, sub.getSubjectcode());
 			ps.setString(4, sub.getFullmarks());
 			ps.setString(5, sub.getPassmarks());
+			ps.setString(6, sub.getFullmarks_pr());
+			ps.setString(7, sub.getPassmarks_pr());
 			a = ps.executeUpdate();
 			if (a > 0) {
 				status = true;

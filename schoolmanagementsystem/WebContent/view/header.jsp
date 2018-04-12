@@ -113,6 +113,13 @@
                             </li>
                           </ul>
                         </li>
+                         <li><a>Admin Settings<span class="fa fa-chevron-down"></span></a>
+                          <ul class="nav child_menu">
+                            <li ><a href="category.click" target="iframe_a">Category</a>
+                            </li>
+                            </li>
+                          </ul>
+                        </li>
                         <li><a href="initialdetails.click" target="iframe_a">Set Initial Details</a>
                         </li>
                     </ul>
