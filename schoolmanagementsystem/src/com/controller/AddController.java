@@ -16,6 +16,7 @@ import com.controller.action.AcademicsSettingsAction;
 import com.controller.action.AccountAction;
 import com.controller.action.CategoryAction;
 import com.controller.action.StudentAction;
+import com.controller.action.TransactionAction;
 import com.controller.student.classes.Model;
 import com.controller.student.classes.StudentOperations;
 
@@ -94,9 +95,19 @@ public class AddController extends HttpServlet {
 		if(uri.endsWith("category.add")){
 			CategoryAction ca=new CategoryAction();
 			ca.addCategory(request,response);
+		if(uri.endsWith("multitransaction.add"))
+		{
+			TransactionAction action=new TransactionAction();
+			action.addmultiTransaction(request,response);
+		}
+		
+	
+		if(uri.endsWith("transaction.add")){
+			TransactionAction ta=new TransactionAction();
+			ta.addTransaction(request,response);
 		}
 		
 
 	}
 
-}
+	}}
