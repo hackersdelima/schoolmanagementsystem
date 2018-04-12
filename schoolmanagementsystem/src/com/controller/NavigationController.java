@@ -288,10 +288,10 @@ public class NavigationController extends HttpServlet {
 
 			}
 		 else if (uri.endsWith("category.click")) {
+			 System.out.println("reached");
 				CategoryDao c = new CategoryDaoImpl();
 				List<CategoryModel> accounttype = c.accounttype();
 				request.setAttribute("accounttype", accounttype);
-
 				RequestDispatcher rd = request
 						.getRequestDispatcher("view/categories/insertCategory.jsp");
 				rd.forward(request, response);

@@ -97,6 +97,7 @@ h5 {
 							<th>Category Id</th>
 							<th>Category Head</th>
 							<th>Account Type</th>
+							<th>Action</th>
 						</tr>
 					</thead>
 				</table>
@@ -119,7 +120,13 @@ h5 {
 		        "columns":[
 		        	{"data":"categoryId"},
 		        	{"data":"categoryHead"},
-		        	{"data":"accountType"}
+		        	{"data":"accountType"},
+		        	{  "targets": 1,
+		        	    "data": "categoryId",
+		        	    "render": function ( data, type, row, meta ) {
+		        	      return '<a  class="btn btn-default" data-toggle="confirmation" href="editCategory.update?id='+data+'">Edit</a>';
+		        	    }
+		        	},
 		        ]
 		    } );
 		} );
