@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,12 +27,16 @@ public class AddController extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+PrintWriter out=response.getWriter();
+		
+		String uri=request.getRequestURI();
+		uri = uri.substring(uri.lastIndexOf("/") + 1, uri.length());
 		boolean status = false;
-		String uri = request.getRequestURI();
-	
 		Model m = new Model();
 		StudentOperations s = new StudentOperations();
-		if (uri.endsWith("examtype.add")) {
+		switch (uri) {
+		  case "examtype.add":  
+		
 			try {
 				String examtypename, description;
 				examtypename = request.getParameter("examtypename");
@@ -43,8 +48,8 @@ public class AddController extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}
-		if (uri.endsWith("exam.add")) {
+		
+		  case "exam.add":
 			m.setExamname(request.getParameter("examname"));
 			m.setExamtype(request.getParameter("examtype"));
 			m.setStartdate(request.getParameter("startdate"));
@@ -61,8 +66,8 @@ public class AddController extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}
-		if (uri.endsWith("assignsubjects.add")) {
+		break;
+		  case "assignsubjects.add":
 		
 			AcademicsSettingsAction asa = new AcademicsSettingsAction();
 			List<String> statuslist = new ArrayList<String>();
@@ -79,33 +84,46 @@ public class AddController extends HttpServlet {
 			}
 			RequestDispatcher rd = request.getRequestDispatcher("subjectassign");
 			rd.forward(request, response);
-		}
-		else if (uri.endsWith("studentMarks.add")) {
+		break;
+		
+		  case "studentMarks.add":
 			StudentAction action=new StudentAction();
 			action.insertStudentMarks(request,response);
-		}
-		else if(uri.endsWith("generalSettings.add")){
+		break;
+		
+		  case "generalSettings.add":
 			AcademicsSettingsAction a=new AcademicsSettingsAction();
 			a.updateGeneralSettings(request,response);
-		}
-		else if(uri.endsWith("account.add")){
-			AccountAction a=new AccountAction();
-			a.addAccount(request,response);
-		}
-		if(uri.endsWith("category.add")){
+		break;
+		
+		  case "account.add":
+			AccountAction accountaction=new AccountAction();
+			accountaction.addAccount(request,response);
+		break;
+		
+		  case "category.add":
 			CategoryAction ca=new CategoryAction();
 			ca.addCategory(request,response);
-		if(uri.endsWith("multitransaction.add"))
-		{
-			TransactionAction action=new TransactionAction();
-			action.addmultiTransaction(request,response);
-		}
+			break;
+			
+		  case "multitransaction.add":
+		
+			TransactionAction taa=new TransactionAction();
+			taa.addmultiTransaction(request,response);
+		break;
 		
 	
-		if(uri.endsWith("transaction.add")){
+		  case "transaction.add":
 			TransactionAction ta=new TransactionAction();
 			ta.addTransaction(request,response);
-		}
+		break;
+		
+		  default:
+				out.println("Invalid Action!");
+		
+			}
 	}
 
-	}}
+
+		
+	}

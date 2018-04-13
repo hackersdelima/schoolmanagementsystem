@@ -37,10 +37,12 @@ public class ViewController extends HttpServlet {
         case "specificStudentReport.view":  
         	StudentAction action=new StudentAction();
 		action.getSpecificStudentReport(request,response);
+		break;
 		
         case "examreport.view":
         	RequestDispatcher rd=request.getRequestDispatcher("view/exam/report.jsp");
 			rd.forward(request, response);
+			break;
 		
 		default:
 			out.println("Invalid Action!");
