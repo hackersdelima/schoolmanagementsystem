@@ -1,18 +1,16 @@
 package com.controller;
 
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import com.controller.action.AccountAction;
 import com.controller.action.StudentAction;
 import com.controller.student.classes.StudentOperations;
 
@@ -72,6 +70,10 @@ public class DeleteController extends HttpServlet {
 			}
 		
 		
+		}
+		else if(uri.endsWith("account.del")){
+			AccountAction action=new AccountAction();
+			action.deleteAccount(request,response);
 		}
 
 	}
