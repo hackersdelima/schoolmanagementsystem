@@ -65,7 +65,6 @@ tfoot input {
 			</div>
 		</div>
 	</div> -->
-	<a id="clickhere">click here</a>
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<div class="x_panel">
 			<div class="x_title">
@@ -194,7 +193,7 @@ $(".viewdetail").click(function()
 		} 
 		});
 });
-$("#clickhere").click(function()
+/* $("#clickhere").click(function()
 		{
 	stdname=[];
  stdname=$('.stdname').text();
@@ -213,7 +212,7 @@ var dataString={stdname:stdname};
 		alert('success');
 		} 
 		});
-});
+}); */
 </script>
 </body>
 </html>

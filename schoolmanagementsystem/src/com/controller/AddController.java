@@ -106,8 +106,6 @@ public class AddController extends HttpServlet {
 			TransactionAction ta=new TransactionAction();
 			ta.addTransaction(request,response);
 		}
-		
-
 	}
 
 	}}

@@ -29,9 +29,9 @@ String totalstd=s.totalstudents(); %>
               <p>Total Students</p>
             </div>
             <div class="icon">
-              <i class="fa fa-shopping-cart"></i>
+              <i class="fa fa-users"></i>
             </div>
-            <a href="#" class="small-box-footer">
+            <a href="../studentslist.click" class="small-box-footer">
               More info <i class="fa fa-arrow-circle-right"></i>
             </a>
           </div>
@@ -41,12 +41,12 @@ String totalstd=s.totalstudents(); %>
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>53<sup style="font-size: 20px"></sup></h3>
+              <h3>0<sup style="font-size: 20px"></sup></h3>
 
               <p>Total Teachers</p>
             </div>
             <div class="icon">
-              <i class="fa fa-dropbox"></i>
+              <i class="fa fa-users"></i>
             </div>
             <a href="#" class="small-box-footer">
               More info <i class="fa fa-arrow-circle-right"></i>
@@ -58,7 +58,7 @@ String totalstd=s.totalstudents(); %>
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>44</h3>
+              <h3>1</h3>
 
               <p>Total Users</p>
             </div>
@@ -75,7 +75,7 @@ String totalstd=s.totalstudents(); %>
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>65</h3>
+              <h3>101</h3>
 
               <p>Current Branch</p>
             </div>
@@ -96,7 +96,7 @@ String totalstd=s.totalstudents(); %>
           <div class="box box-widget widget-user">
             <!-- Add the bg color to the header using any of the bg-* classes -->
             <div class="widget-user-header bg-aqua-active">
-              <h3 class="widget-user-username">${sessionScope.userdetail.username }</h3>
+              <h3 class="widget-user-username">User: ${sessionScope.userdetail.username }</h3>
               <h5 class="widget-user-desc">${sessionScope.systemdetail[1].settingsdescription }</h5>
             </div>
             <div class="widget-user-image">
@@ -106,24 +106,24 @@ String totalstd=s.totalstudents(); %>
               <div class="row">
                 <div class="col-sm-4 border-right">
                   <div class="description-block">
-                    <h5 class="description-header">3,200</h5>
-                    <span class="description-text">SALES</span>
+                    <h5 class="description-header"><!-- 3,200 --></h5>
+                    <span class="description-text"><!-- SALES --></span>
                   </div>
                   <!-- /.description-block -->
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 border-right">
                   <div class="description-block">
-                    <h5 class="description-header">13,000</h5>
-                    <span class="description-text">FOLLOWERS</span>
+                    <h5 class="description-header"><!-- 13,000 --></h5>
+                    <span class="description-text"><!-- FOLLOWERS --></span>
                   </div>
                   <!-- /.description-block -->
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4">
                   <div class="description-block">
-                    <h5 class="description-header">35</h5>
-                    <span class="description-text">PRODUCTS</span>
+                    <h5 class="description-header"><!-- 35 --></h5>
+                    <span class="description-text"><!-- PRODUCTS --></span>
                   </div>
                   <!-- /.description-block -->
                 </div>

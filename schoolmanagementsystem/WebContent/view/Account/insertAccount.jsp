@@ -47,11 +47,20 @@ h5 {
 					<br />
 
 					<div class="form-group">
-						<label class="control-label col-md-2 col-sm-2 col-xs-12">Member Id</label>
+						
+					<div class="form-group">
+						<div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+							<button class="btn btn-info" type="button" id="validate">Validate</button>
+							<button class="btn btn-primary" type="reset">Reset</button>
+							<input type="submit" class="btn btn-success" value="Submit">
+						</div>
+					</div>
+					<div class="ln_solid"></div>
+						<label class="control-label col-md-2 col-sm-2 col-xs-12">Admission No</label>
 						<div class="col-md-2 col-sm-2 col-xs-12">
 							 <input type="text" id="memberid"
 									class="form-control sharecertmemberid memberid" name="pid"
-									value="" data-validation="number" data-validation-error-msg=" ">
+									value="" data-validation="number" data-validation-error-msg=" " required>
 						</div>
 						<div class="col-md-8 col-sm-8 col-xs-12 ">
 							<span id="customername"></span>
@@ -62,18 +71,18 @@ h5 {
 							No</label>
 						<div class="col-md-4 col-sm-4 col-xs-12">
 							 <input type="text"
-									class="form-control accountNumber" name="accountNumber"
-									value="${accountno }" data-validation="number"
-									data-validation-error-msg=" " required >
+									class="form-control accountNumber"id="accountno" name="accountNumber"
+									value="" data-validation="number"
+									data-validation-error-msg=" " required readonly>
 						</div>
 					</div>
 					<div class="form-group" id="cashWithdraw">
 						<label class="control-label col-md-2 col-sm-2 col-xs-12">Alternate
 							Account No</label>
 						<div class="col-md-4 col-sm-4 col-xs-12">
-							<input type="text"
+							<input type="text" 
 									class="form-control" name="alternativeAccounId" value=""
-									data-validation="number" data-validation-error-msg=" ">
+									data-validation="number"  >
 						</div>
 						<div class="col-md-6 col-sm-6 col-xs-12 ">
 							<span class="accountName"></span>
@@ -126,14 +135,7 @@ h5 {
 						</div>
 					</div>
 				
-					<div class="ln_solid"></div>
-					<div class="form-group">
-						<div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-							<button class="btn btn-info" type="button" id="validate">Validate</button>
-							<button class="btn btn-primary" type="reset">Reset</button>
-							<input type="submit" class="btn btn-success" value="Submit">
-						</div>
-					</div>
+				
 
 
 				</div>
@@ -196,6 +198,7 @@ $("#validate").click(function()
 		{
 		$("#membername").val(html);
 		$("#accountname").val(html);
+		$("#accountno").val(id);
 		} 
 		});
 		});

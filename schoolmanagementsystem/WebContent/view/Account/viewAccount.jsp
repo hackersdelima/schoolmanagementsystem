@@ -58,10 +58,10 @@ display:none;}
 								<td>${list.accountName }</td>
 								<td>${list.openingBal }</td>
 								<td><a
-									href="editaccount.click?accountNumber=${list.accountNumber }"
-									 class="btn btn-primary btn-xs">View</a> &nbsp;&nbsp;&nbsp;&nbsp;
-										<a href="account.del?id=${list.accountNumber }"
-									class="clickbtn btn btn-danger btn-xs">Remove</a></td>
+									href="accounteditdisplayform.click?id=${list.accountNumber }"
+									 class="btn btn-primary btn-xs">Edit</a>
+										<%-- <a href="account.del?id=${list.accountNumber }"
+									class="clickbtn btn btn-danger btn-xs">Remove</a> --%></td>
 							</tr>
 						</c:forEach>
 					</tbody>
