@@ -10,7 +10,7 @@ import com.sahakari.transaction.dao.TransactionDao;
 import com.school.dbconnection.DbConnection;
 import com.school.model.TellerTransactionModel;
 import com.school.model.TransactionModel;
-public class TransactionDaoImpl implements TransactionDao{
+public class TransactionDaoImpl implements TransactionDao{//fdas
 	Connection con=null;
 	PreparedStatement ps=null;
 	ResultSet rs=null;
