@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.controller.action.LoginAction;
 import com.school.model.UserModel;
 
 @WebServlet("/LoginServlet")
@@ -33,8 +34,11 @@ public class LoginServlet extends HttpServlet {
 				
 				session.setAttribute("userdetail", userdetail);
 				session.setAttribute("systemdetail", systemdetail);
-				RequestDispatcher rs = request.getRequestDispatcher("view/header.jsp");
-				rs.forward(request, response);
+				
+				
+				LoginAction la=new LoginAction();
+				la.userlogin(request, response);
+				
 			} else {
 				String errormsg = "Invalid login credentials!";
 				request.setAttribute("errormsg", errormsg);
