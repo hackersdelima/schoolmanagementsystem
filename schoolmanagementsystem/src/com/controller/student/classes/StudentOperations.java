@@ -182,7 +182,7 @@ public class StudentOperations {
 
 	public ResultSet districts() {
 		ResultSet rs = null;
-		String query = "select * from schoolmanagementsystemdb.districtcodes";
+		String query = "select * from districtcodes";
 		try {
 			conn = DbConnection.getConnection();
 			Statement stmt = conn.createStatement();
@@ -196,7 +196,7 @@ public class StudentOperations {
 
 	public ResultSet disabletypelist() {
 		ResultSet rs = null;
-		String query = "select * from schoolmanagementsystemdb.disabledtype";
+		String query = "select * from disabledtype";
 		try {
 			conn = DbConnection.getConnection();
 			Statement stmt = conn.createStatement();
