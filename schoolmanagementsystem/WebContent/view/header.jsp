@@ -3,10 +3,23 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@page import='java.sql.*' %>
-    <%@page import='com.school.model.UserModel' %>
-<%if((session.getAttribute("userdetail"))!=null){
-	UserModel userdetail=(UserModel)session.getAttribute("userdetail");
-	%>
+    <%@page import='com.school.user.model.UserModel' %>
+
+	<%
+	if ((session.getAttribute("userdetail")) != null) {
+		UserModel userdetail = (UserModel) session
+				.getAttribute("userdetail");
+		String currentBranchCode=(String)session.getAttribute("currentBranchcode");
+		
+		String mainRole=(String)session.getAttribute("mainRole");
+		
+		String currentBranchFunctions=(String)session.getAttribute("currentBranchFunctions");
+		
+		String additionalFunctions=userdetail.getAdditionalFunctions();
+		
+		
+		
+%>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -26,6 +39,17 @@
 
     <!-- Custom Theme Style -->
     <link href="template/css/custom.min.css" rel="stylesheet">
+    <style>
+#exam,#generaltransaction,#account,#adminsettings,#student, #i, #v,#e,#a,#r,#d{
+display:none;}
+<%=mainRole%>{
+display:block;}
+
+<%=currentBranchFunctions%>{
+display:block}
+<%=additionalFunctions%>{
+display:block;}
+</style>
   </head>
 
   <body class="nav-md">
@@ -64,22 +88,22 @@
                       <li><a href="view/dashboard.jsp" target="iframe_a">Dashboard</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-edit"></i> Student <span class="fa fa-chevron-down"></span></a>
+                  <li id="student"><a><i class="fa fa-edit"></i> Student <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="studentadmission.click" target="iframe_a">Student Admission</a></li>
-                      <li><a href="studentslist.click" target="iframe_a">Students List</a></li>
+                      <li id="i"><a href="studentadmission.click" target="iframe_a">Student Admission</a></li>
+                      <li id="v"><a href="studentslist.click" target="iframe_a">Students List</a></li>
                     </ul>
                   </li>
-                   <li><a><i class="fa fa-edit"></i> Exam <span class="fa fa-chevron-down"></span></a>
+                   <li id="exam"><a><i class="fa fa-edit"></i> Exam <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                    	 <li><a href="createexam.click" target="iframe_a">Create Exam</a>
+                    	 <li id="i"><a href="createexam.click" target="iframe_a">Create Exam</a>
                             </li>
-                      <li><a href="createStudentReport.click" target="iframe_a">Create Marks Report</a></li>
-                       <li><a href="reportsearchbox.click" target="iframe_a">Search Report</a>
+                      <li id="i"><a href="createStudentReport.click" target="iframe_a">Create Marks Report</a></li>
+                       <li id="v"><a href="reportsearchbox.click" target="iframe_a">Search Report</a>
                             </li>
                     </ul>
                   </li>
-                  <li><a><span class="fa fa-chevron-down"></span><i class="fa fa-user"></i>Account</a>
+                  <li id="account"><a><span class="fa fa-chevron-down"></span><i class="fa fa-user"></i>Account</a>
 											<ul class="nav child_menu">
 												<li id="i"><a href="insertaccount.click" target="iframe_a">Open
 														New member Account</a></li>
@@ -135,8 +159,20 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-sitemap"></i> Settings <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                    <li ><a href="generalSet.click" target="iframe_a">General Settings</a>
-                        <li><a>Academic Settings<span class="fa fa-chevron-down"></span></a>
+                    <li id="adminsettings"><a href="generalSet.click" target="iframe_a">General Settings</a>
+                        
+                        		<li><a><span class="fa fa-chevron-down"></span>User</a>
+											<ul class="nav child_menu">
+
+												<li id="i"><a href="adduser.user" target="iframe_a">
+														Create New user </a></li>
+												<li id="i"><a href="addusergroup.user" target="iframe_a">
+														Create user Group</a></li>
+												<li id="i"><a href="pageNotFound.jsp" target="iframe_a"> Amendment of
+														user </a></li>
+												<li id="a"><a href="pageNotFound.jsp" target="iframe_a"> Authorize user </a></li>
+											</ul></li>
+											<li><a>Academic Settings<span class="fa fa-chevron-down"></span></a>
                           <ul class="nav child_menu">
                             <li ><a href="subjects.click" target="iframe_a">Subjects</a>
                             </li>
