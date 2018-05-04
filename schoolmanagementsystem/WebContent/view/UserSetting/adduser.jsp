@@ -212,7 +212,6 @@ if (request.getAttribute ("updatebtn ") != null ) { %> .updatebtn {
 						id="datatable">
 						<thead>
 							<tr>
-								<th>S No.</th>
 								<th>User Name</th>
 								<th>Actions</th>
 
@@ -220,8 +219,13 @@ if (request.getAttribute ("updatebtn ") != null ) { %> .updatebtn {
 						</thead>
 						<tbody>
 							<c:forEach items="${userInfo}" var="user">
+							<c:if test="${user.username==sessionScope.userdetail.username }">
 								<tr>
+									<td>${user.username }</td>
 									<td></td>
+								</tr>
+							</c:if>
+								<tr>
 									<td>${user.username }</td>
 
 									<td><a href="edituser.user?userid=${user.userid })"><i

@@ -39,12 +39,13 @@ public class LoginDaoImpl implements LoginDao {
 	public UserModel getUserDetail(UserModel u){
 		UserModel um=null;
 		ResultSet rs=null;
-		String query="Select *,branchtbl.companyId from usertbl join branchtbl on usertbl.branchCode=branchtbl.branchId where usertbl.username=? and usertbl.password=?";
+		String query="Select *,branchtbl.companyId from usertbl join branchtbl on usertbl.branchCode=branchtbl.branchId where usertbl.username=? and usertbl.password=? and staffCode=?";
 		try{
 			con=DbConnection.getConnection();
 			ps=con.prepareStatement(query);
 			ps.setString(1, u.getUsername());
 			ps.setString(2, u.getPassword());
+			ps.setString(3, u.getStaffCode());
 			rs=ps.executeQuery();
 			if(rs.next()){
 				um=new UserModel();
@@ -59,8 +60,6 @@ public class LoginDaoImpl implements LoginDao {
 				um.setBranchAllowed(rs.getString("branchAllowed"));
 				um.setBranchAllowedFunctions(rs.getString("branchAllowedFunctions"));
 				um.setCompanyId(rs.getString("companyId"));
-
-				
 				return um;
 			}
 		}catch(Exception e){

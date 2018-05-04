@@ -70,23 +70,7 @@ String totalstd=s.totalstudents(); %>
             </a>
           </div>
         </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-3">
-          <!-- small box -->
-          <div class="small-box bg-red">
-            <div class="inner">
-              <h3>101</h3>
-
-              <p>Current Branch</p>
-            </div>
-            <div class="icon">
-              <i class="fa fa-sitemap"></i>
-            </div>
-            <a href="#" class="small-box-footer">
-              More info <i class="fa fa-arrow-circle-right"></i>
-            </a>
-          </div>
-        </div>
+       
         <!-- ./col -->
       </div>
       <div class="row">

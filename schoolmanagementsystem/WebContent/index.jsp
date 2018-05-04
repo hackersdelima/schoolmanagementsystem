@@ -32,6 +32,10 @@
 					<form method="post" action="login">
 						<h1>Login Form</h1>
 						<div>
+							<input type="password" name="staffCode" class="form-control"
+								placeholder="Staff Code" required="" />
+						</div>
+						<div>
 							<input type="password" name="username" class="form-control"
 								placeholder="Username" required="" />
 						</div>

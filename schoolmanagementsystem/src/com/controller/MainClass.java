@@ -8,16 +8,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.school.dbconnection.DbConnection;
-import com.school.model.UserModel;
+import com.school.user.model.UserModel;
 public class MainClass {
 	static Connection conn=null;
 	Statement stmt=null;
 	PreparedStatement ps=null;
 	ResultSet rs=null;
 	
-	public boolean checkuser(String username, String password){
+	public boolean checkuser(String username, String password, String staffCode){
 		boolean status=false;
-		String query="select * from usertbl where username='"+username+"' and password='"+password+"';";
+		String query="select * from usertbl where username='"+username+"' and password='"+password+"' and staffCode='"+staffCode+"';";
 		try{
 			conn=DbConnection.getConnection();
 			stmt=conn.createStatement();
@@ -36,10 +36,10 @@ public class MainClass {
 	}
 	
 	// userdetails contains every information about user including database to be connected
-	public UserModel userdetails(String username, String password){
+	public UserModel userdetails(String username, String password, String staffCode){
 		ResultSet rs=null;
 		UserModel u;
-		String query="select * from usertbl where username='"+username+"' and password='"+password+"'; ";
+		String query="select * from usertbl where username='"+username+"' and password='"+password+"' and staffCode='"+staffCode+"'; ";
 		try{
 			conn=DbConnection.getConnection();
 			stmt=conn.createStatement();

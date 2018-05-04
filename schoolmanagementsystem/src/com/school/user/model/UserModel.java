@@ -5,6 +5,32 @@ public class UserModel {
 	
 	String branchCode,branchName;
 	String companyId;
+	
+	private String settingsid, settingstype, settingsdescription;
+	public String getSettingsid() {
+		return settingsid;
+	}
+
+	public void setSettingsid(String settingsid) {
+		this.settingsid = settingsid;
+	}
+
+	public String getSettingstype() {
+		return settingstype;
+	}
+
+	public void setSettingstype(String settingstype) {
+		this.settingstype = settingstype;
+	}
+
+	public String getSettingsdescription() {
+		return settingsdescription;
+	}
+
+	public void setSettingsdescription(String settingsdescription) {
+		this.settingsdescription = settingsdescription;
+	}
+
 	public String getCompanyId() {
 		return companyId;
 	}

@@ -1,9 +1,6 @@
 package com.controller.student.servlets;
 
 import java.io.IOException;
-import java.net.URLEncoder;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.controller.student.classes.StudentOperations;
 import com.controller.student.classes.StudentRegistrationModel;
-import com.school.model.UserModel;
+import com.school.user.model.UserModel;
 @WebServlet("/StudentRegistrationServlet")
 public class StudentRegistrationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

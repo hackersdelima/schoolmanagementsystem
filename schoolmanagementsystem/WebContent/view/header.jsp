@@ -165,11 +165,9 @@ display:block;}
 											<ul class="nav child_menu">
 
 												<li id="i"><a href="adduser.user" target="iframe_a">
-														Create New user </a></li>
+														Manage User </a></li>
 												<li id="i"><a href="addusergroup.user" target="iframe_a">
 														Create user Group</a></li>
-												<li id="i"><a href="pageNotFound.jsp" target="iframe_a"> Amendment of
-														user </a></li>
 												<li id="a"><a href="pageNotFound.jsp" target="iframe_a"> Authorize user </a></li>
 											</ul></li>
 											<li><a>Academic Settings<span class="fa fa-chevron-down"></span></a>

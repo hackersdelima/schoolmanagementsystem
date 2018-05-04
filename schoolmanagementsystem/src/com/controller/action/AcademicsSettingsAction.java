@@ -15,7 +15,7 @@ import com.controller.MainClass;
 import com.controller.student.classes.Model;
 import com.school.dao.AcademicsSettingsAddDao;
 import com.school.daoImpl.AcademicsSettingsAddDaoImpl;
-import com.school.model.UserModel;
+import com.school.user.model.UserModel;
 
 public class AcademicsSettingsAction {
 	Model m=new Model();

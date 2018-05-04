@@ -39,6 +39,7 @@ public class LoginAction extends HttpServlet {
 			HttpServletResponse response) {
 		
 		UserModel u=new UserModel();
+		u.setStaffCode(request.getParameter("staffCode"));
 		u.setUsername(request.getParameter("username"));
 		u.setPassword(request.getParameter("password"));
 		LoginDao l=new LoginDaoImpl();
@@ -78,7 +79,7 @@ public class LoginAction extends HttpServlet {
 			HttpServletResponse response) {
 		HttpSession session=request.getSession();
 		session.invalidate();
-		RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
+		RequestDispatcher rd=request.getRequestDispatcher("../index.jsp");
 		try {
 			rd.forward(request,response);
 		} catch (ServletException | IOException e) {

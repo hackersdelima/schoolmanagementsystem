@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.controller.action.LoginAction;
-import com.school.model.UserModel;
+import com.school.user.model.UserModel;
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
@@ -24,11 +24,13 @@ public class LoginServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
+		String staffCode = request.getParameter("staffCode");
+		
 		UserModel user = new UserModel();
 		MainClass m = new MainClass();
-		if (m.checkuser(username, password) == true) {
+		if (m.checkuser(username, password, staffCode) == true) {
 			HttpSession session = request.getSession(true);
-			UserModel userdetail = (UserModel) m.userdetails(username, password);
+			UserModel userdetail = (UserModel) m.userdetails(username, password, staffCode);
 			if (userdetail.getStatus().equals("1")) {
 				List<UserModel> systemdetail = m.getSystemDetails(user);
 				

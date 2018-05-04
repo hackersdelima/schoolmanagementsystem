@@ -15,7 +15,7 @@ public class DbConnection {
     }
     public static Connection getConnection(){
         try{
-            conn=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/aranikodb","root","");//javproject name of database
+            conn=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/nalanda","root","centos");//javproject name of database
         }
         catch(Exception e){
             e.printStackTrace();
